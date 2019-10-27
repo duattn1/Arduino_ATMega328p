@@ -72,7 +72,7 @@ void Gpio_PinMode(uint8_t arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction)
 	
 	gpiox = Gpio_GetPortBase(port);
 	if(NULL != gpiox){
-		gpiox->DDRx &= ~(Gpio_DDRx_Output << pin);
+		gpiox->DDRx &= ~(MASK_1BIT << pin);
 		gpiox->DDRx |= direction << pin;
 	} else {
 		// Do nothing

@@ -42,19 +42,19 @@ void Usart_InitUSART(Struct_Usart_Config_Typedef *config){
 	uint8_t UCSZn1To0 = (config->dataFrame) & 0x03;;
 	
 	// Select sync or async USART
-	UCSR0C &= ~(config->mode << 6);
-	UCSR0C |= config->mode << 6;
+	UCSR0C &= ~(MASK_2BIT << UMSEL00);
+	UCSR0C |= config->mode << UMSEL00;
 	// Select parity mode
-	UCSR0C &= ~(config->parity << 4);
-	UCSR0C |= config->parity << 4;
+	UCSR0C &= ~(MASK_2BIT << UPM00);
+	UCSR0C |= config->parity << UPM00;
 	// Select number of stop bit
-	UCSR0C &= ~(config->stopBit << 3);
-	UCSR0C |= config->stopBit << 3;
+	UCSR0C &= ~(MASK_1BIT << USBS0);
+	UCSR0C |= config->stopBit << USBS0;
 	// Select data frame size
-	UCSR0B &= ~(UCSZn2 << 2);
-	UCSR0B |= UCSZn2 << 2;
-	UCSR0C &= ~(UCSZn1To0 << 1);
-	UCSR0C |= UCSZn1To0 << 1;
+	UCSR0B &= ~(MASK_1BIT << UCSZ02);
+	UCSR0C &= ~(MASK_2BIT << UCSZ00);
+	UCSR0B |= UCSZn2 << UCSZ02;	
+	UCSR0C |= UCSZn1To0 << UCSZ00;
 }
 
 
@@ -68,7 +68,7 @@ void Usart_SetBaudrate(Enum_Usart_Baudrate_Typedef baudrate){
 		UBRRnValue = FOSC/(baudrate*8) - 1;
 	}
 	
-	/* Set baudrate. Since baurate value range from 0..0x0FFF, the UBRRnL and UBRRnH are compared with 
+	/* Set baudrate. Since baudrate value range from 0..0x0FFF, the UBRRnL and UBRRnH are compared with 
 	0x00FF and 0x0F00 respectively. */
 	UBRR0L = (UBRRnValue & 0x00FF);
 	UBRR0H = (UBRRnValue & 0x0F00);

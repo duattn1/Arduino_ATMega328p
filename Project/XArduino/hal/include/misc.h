@@ -23,7 +23,15 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-
+/* Bit Masks definition */
+#define MASK_1BIT	0x01
+#define MASK_2BIT	0x03
+#define MASK_3BIT	0x07
+#define MASK_4BIT	0x0F
+#define MASK_5BIT	0x1F
+#define MASK_6BIT	0x3F
+#define MASK_7BIT	0x7F
+#define MASK_8BIT	0xFF
 	
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others

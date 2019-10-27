@@ -48,20 +48,20 @@ Struct_Spi_ClockFrequencyConfigBits_Typedef clkFreqConfig[] =
  ******************************************************************************/
 void Spi_InitSPI(Struct_Spi_Config_Typedef *config){
 	// Select data transmission order
-	SPCR &= ~(1 << DORD);
+	SPCR &= ~(MASK_1BIT << DORD);
 	SPCR |= config->dataTxOrder << DORD;
 	// Select mode: Master or Slave
-	SPCR &= ~(1 << MSTR);
+	SPCR &= ~(MASK_1BIT << MSTR);
 	SPCR |= config->masterSlaveMode << MSTR;
 	// Select clock polarity
-	SPCR &= ~(1 << CPOL);
+	SPCR &= ~(MASK_1BIT << CPOL);
 	SPCR |= config->clockPolarity << CPOL;
 	// Select clock phase
-	SPCR &= ~(1 << CPHA);
+	SPCR &= ~(MASK_1BIT << CPHA);
 	SPCR |= config->clockPhase << CPHA;
 	// Select clock frequency
-	SPCR &= ~(3 << SPR0);	/* 2-bit mask */
-	SPSR &= ~(1 << SPI2X);
+	SPCR &= ~(MASK_2BIT << SPR0);
+	SPSR &= ~(MASK_1BIT << SPI2X);
 	SPCR |= (clkFreqConfig[config->clockFrequency].SPR1_value | 
 		clkFreqConfig[config->clockFrequency].SPR0_value) << SPR0;
 	SPSR |= clkFreqConfig[config->clockFrequency].SPI2X_value << SPI2X;
