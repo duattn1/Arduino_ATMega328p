@@ -18,7 +18,7 @@
 #include "usart_hal.h"
 #include "spi_hal.h"
 
-/* Kit interfaces including */
+/* Kit interfaces including */	
 #include "ledMatrix_Max7219.h"
 
 /*******************************************************************************

@@ -35,6 +35,21 @@
  ******************************************************************************/
 extern const uint8_t characterLib[43][8];
 
+#ifdef USART_SAMPLE
+const Struct_Usart_Config_Typedef usartSampleConfig[1] = 
+{
+	{ Usart_UCSRnC_AsyncMode, Usart_UCSRnC_DisabledParity,
+	Usart_UCSRnC_1StopBit, Usart_UCSRnC_8bitsData }
+};
+#endif
+
+#ifdef SPI_SAMPLE
+Struct_Spi_Config_Typedef spiSampleConfig[1] =
+{
+	{ Spi_SPCR_TransmitMSBFirst, Spi_SPCR_MasterMode,
+	Spi_SPCR_IdleLow, Spi_SPCR_LeadingEdgeSampling,	Spi_FoscDiv16 }
+};
+#endif
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
@@ -46,27 +61,15 @@ void setup(void){
 
 #ifdef USART_SAMPLE
 	uint8_t *strStart = "Start";
-	uint8_t *strEnd = "End";
-	Struct_Usart_Config_Typedef config;
-	config.mode = Usart_UCSRnC_AsyncMode;
-	config.parity = Usart_UCSRnC_DisabledParity;
-	config.stopBit = Usart_UCSRnC_1StopBit;
-	config.dataFrame = Usart_UCSRnC_8bitsData;
-	Usart_InitUSART(&config);
+	Usart_InitUSART(&usartSampleConfig[0]);
 	Usart_SetBaudrate(Usart_9600bps);
 	Usart_CommandTransmitter(Enable);
 	Usart_CommandReceiver(Enable);
 	Usart_SendString(strStart);
 #endif
 
-#ifdef SPI_SAMPLE
-	Struct_Spi_Config_Typedef config;
-	config.dataTxOrder = Spi_SPCR_TransmitMSBFirst;
-	config.masterSlaveMode = Spi_SPCR_MasterMode;
-	config.clockPolarity = Spi_SPCR_IdleLow;
-	config.clockPhase = Spi_SPCR_LeadingEdgeSampling;
-	config.clockFrequency = Spi_FoscDiv16 ;
-	Spi_InitSPI(&config);
+#ifdef SPI_SAMPLE	
+	Spi_InitSPI(&spiSampleConfig[0]);
 	Spi_CommandSPI(Enable);
 	Spi_MasterTransmit('A');
 #endif
@@ -77,9 +80,7 @@ void setup(void){
 	for(i = 0; i < 8; i++){
 		write_Max7219(i + 1, characterLib['A' - '0'][i]);
 	}
-#endif
-	
-	
+#endif	
 
 }
 

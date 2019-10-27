@@ -98,7 +98,7 @@ void Usart_SendChar(uint8_t data){
 }
 
 void Usart_SendString(uint8_t *str){
-	while(NULL != *str){
+	while('\0' != *str){
 		Usart_SendChar(*str);
 		str++;
 	}
