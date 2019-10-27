@@ -23,8 +23,6 @@
  ******************************************************************************/
 #define FOSC 16000000UL
 #define RECEIVED_STRING_LENGTH 50
-#define LF_SYMBOL	10
-#define CR_SYMBOL	13
 
 /*******************************************************************************
  * 3. Function-like Macros
@@ -39,75 +37,77 @@
  */
 typedef enum
 {
-	USART_UCSRnC_AsyncMode = 0x00,			/**< UART mode */
-	USART_UCSRnC_SyncMode = 0x01,			/**< USART mode */
+	Usart_UCSRnC_AsyncMode = 0x00,			/**< UART mode */
+	Usart_UCSRnC_SyncMode = 0x01,			/**< USART mode */
 	// Reserved value: 0x02
-	USART_UCSRnC_SPIMode = 0x03				/**< USART in SPI mode */
-} USART_Mode_Typedef;
+	Usart_UCSRnC_SPIMode = 0x03				/**< USART in SPI mode */
+} Enum_Usart_Mode_Typedef;
 
 /**
  * @enum This enumeration is a list of parity bit options.
  */
 typedef enum
 {
-	USART_UCSRnC_DisabledParity = 0x00,			/**< Parity is disabled */
+	Usart_UCSRnC_DisabledParity = 0x00,			/**< Parity is disabled */
 	// Reserved value: 0x01
-	USART_UCSRnC_EvenParity = 0x02,				/**< Even parity mode */
-	USART_UCSRnC_OddParity = 0x03				/**< Odd parity mode */
-} USART_ParityMode_Typedef;
+	Usart_UCSRnC_EvenParity = 0x02,				/**< Even parity mode */
+	Usart_UCSRnC_OddParity = 0x03				/**< Odd parity mode */
+} Enum_Usart_ParityMode_Typedef;
 
 /**
  * @enum This enumeration is a list of stop bit options.
  */
 typedef enum
 {	
-	USART_UCSRnC_1StopBit = 0x00,				/**< 1 stop bit */
-	USART_UCSRnC_2StopBits = 0x01				/**< 2 stop bits */
-} USART_StopBit_Typedef;
+	Usart_UCSRnC_1StopBit = 0x00,				/**< 1 stop bit */
+	Usart_UCSRnC_2StopBits = 0x01				/**< 2 stop bits */
+} Enum_Usart_StopBit_Typedef;
 
 /**
  * @enum This enumeration is a list of data frame size options.
  */
 typedef enum
 {	
-	USART_UCSRnC_5bitsData = 0x00,				/**< 5-bit data frame */
-	USART_UCSRnC_6bitsData = 0x01,				/**< 6-bit data frame */
-	USART_UCSRnC_7bitsData = 0x02,				/**< 7-bit data frame */
-	USART_UCSRnC_8bitsData = 0x03,				/**< 8-bit data frame */
+	Usart_UCSRnC_5bitsData = 0x00,				/**< 5-bit data frame */
+	Usart_UCSRnC_6bitsData = 0x01,				/**< 6-bit data frame */
+	Usart_UCSRnC_7bitsData = 0x02,				/**< 7-bit data frame */
+	Usart_UCSRnC_8bitsData = 0x03,				/**< 8-bit data frame */
 	// Reserved value: 0x04
 	// Reserved value: 0x05
 	// Reserved value: 0x06
-	USART_UCSRnC_9bitsData = 0x07				/**< 9-bit data frame */
-} USART_DataFrameSize_Typedef;
+	Usart_UCSRnC_9bitsData = 0x07				/**< 9-bit data frame */
+} Enum_Usart_DataFrameSize_Typedef;
 
 /**
  * @enum This enumeration is a list USART baudrate options.
  */
 typedef enum
 {	
-	USART_2400bps = 2400,				/**< 2400 bps */
-	USART_4800bps = 4800,				/**< 4800 bps */
-	USART_9600bps = 9600,				/**< 9600 bps */
-	USART_14400bps = 14400,				/**< 14400 bps */
-	USART_19200bps = 19200,				/**< 19200 bps */
-	USART_28800bps = 28800,				/**< 28800 bps */
-	USART_38400bps = 38400,				/**< 38400 bps */
-	USART_57600bps = 57600,				/**< 57600 bps */
-	USART_76800bps = 76800,				/**< 76800 bps */
-	USART_115200bps = 115200,			/**< 115200 bps */
-	USART_230400bps = 230400,			/**< 230400 bps */
-	USART_250000bps = 250000			/**< 250000 bps */
-} USART_Baudrate_Typedef;
+	Usart_2400bps = 2400,				/**< 2400 bps */
+	Usart_4800bps = 4800,				/**< 4800 bps */
+	Usart_9600bps = 9600,				/**< 9600 bps */
+	Usart_14400bps = 14400,				/**< 14400 bps */
+	Usart_19200bps = 19200,				/**< 19200 bps */
+	Usart_28800bps = 28800,				/**< 28800 bps */
+	Usart_38400bps = 38400,				/**< 38400 bps */
+	Usart_57600bps = 57600,				/**< 57600 bps */
+	Usart_76800bps = 76800,				/**< 76800 bps */
+	Usart_115200bps = 115200,			/**< 115200 bps */
+	Usart_230400bps = 230400,			/**< 230400 bps */
+	Usart_250000bps = 250000			/**< 250000 bps */
+} Enum_Usart_Baudrate_Typedef;
 
 /**
  * @struct This structure is for USART configuration.
  */
 typedef struct {
-	USART_Mode_Typedef mode;
-	USART_ParityMode_Typedef parity;
-	USART_StopBit_Typedef stopBit;
-	USART_DataFrameSize_Typedef dataFrame;
-} USART_Config_Typedef;
+	Enum_Usart_Mode_Typedef mode;
+	Enum_Usart_ParityMode_Typedef parity;
+	Enum_Usart_StopBit_Typedef stopBit;
+	Enum_Usart_DataFrameSize_Typedef dataFrame;
+} Struct_Usart_Config_Typedef;
+
+
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
@@ -125,49 +125,49 @@ extern "C"{
  *  @param config Initializing configuration
  *  @return none
  */
-void initUSART(USART_Config_Typedef *config);
+void Usart_InitUSART(Struct_Usart_Config_Typedef *config);
 
 /** @brief Set the USART baudrate.
  *
  *  @param baudrate The desired baudrate
  *  @return none
  */
-void setBaudrate(USART_Baudrate_Typedef baudrate);
+void Usart_SetBaudrate(Enum_Usart_Baudrate_Typedef baudrate);
 
 /** @brief Enable/Disable the USART transmitter.
  *
  *  @param cmd Enable or Disable option
  *  @return none
  */
-void commandTransmitter(Command_Typedef cmd);
+void Usart_CommandTransmitter(Enum_Command_Typedef cmd);
 	
 /** @brief Enable/Disable the USART receiver.
  *
  *  @param cmd Enable or Disable option
  *  @return none
  */
-void commandReceiver(Command_Typedef cmd);
+void Usart_CommandReceiver(Enum_Command_Typedef cmd);
 
 /** @brief Transmit a character in polling mode.
  *
  *  @param data Character to be sent.
  *  @return none
  */
-void sendChar(uint8_t data);
+void Usart_SendChar(uint8_t data);
 
 /** @brief Transmit a string in polling mode.
  *
  *  @param str String to be sent.
  *  @return none
  */
-void sendString(uint8_t *str);
+void Usart_SendString(uint8_t *str);
 
 /** @brief Receive a character in polling mode.
  *
  *  @param none
  *  @return Received character
  */
-uint8_t receiveChar(void);
+uint8_t Usart_ReceiveChar(void);
 
 #ifdef __cplusplus
 } // extern "C"

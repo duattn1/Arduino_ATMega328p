@@ -27,9 +27,9 @@
 #define GPIOB_BASE	&PINB 
 #define GPIOC_BASE	&PINC
 #define GPIOD_BASE	&PIND
-#define GPIOB		((GPIO_Typedef *) GPIOB_BASE)
-#define GPIOC		((GPIO_Typedef *) GPIOC_BASE)
-#define GPIOD		((GPIO_Typedef *) GPIOD_BASE)
+#define GPIOB		((Struct_Gpio_Typedef *) GPIOB_BASE)
+#define GPIOC		((Struct_Gpio_Typedef *) GPIOC_BASE)
+#define GPIOD		((Struct_Gpio_Typedef *) GPIOD_BASE)
 
 /*******************************************************************************
  * 3. Function-like Macros
@@ -44,9 +44,9 @@
  */
 typedef enum
 {
-	GPIO_DDRx_Input = 0x00,			/**< Input mode */
-	GPIO_DDRx_Output = 0x01			/**< Output mode */
-} GPIO_DDRxDirection_Typedef;
+	Gpio_DDRx_Input = 0x00,			/**< Input mode */
+	Gpio_DDRx_Output = 0x01			/**< Output mode */
+} Enum_Gpio_DDRxDirection_Typedef;
 
 /**
  * @struct This structure list all registers of each GPIO port.
@@ -55,11 +55,11 @@ typedef struct {
 	uint8_t PINx;
 	uint8_t DDRx;
 	uint8_t PORTx;
-} GPIO_Typedef;
+} Struct_Gpio_Typedef;
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern const BoardPin_Typedef pins[];
+extern const Struct_BoardPin_Typedef pins[];
 
 /*******************************************************************************
  * 6. Function Prototypes
@@ -73,14 +73,14 @@ extern "C"{
  *  @param port Port name
  *  @return Pointer to port X structure.
  */
-GPIO_Typedef* getPortBase(GPIO_Port_Typedef port);
+Struct_Gpio_Typedef* Gpio_GetPortBase(Enum_Gpio_Port_Typedef port);
 
 /** @brief Disable pull-up resistor
  *
- *  @param none.
+ *  @param cmd Enable or Disable option.
  *  @return none.
  */
-void disablePullUpResistor(void);
+void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd);
 
 /** @brief Configure a pin direction.
  *
@@ -88,7 +88,7 @@ void disablePullUpResistor(void);
  *  @param direction Pin direction
  *  @return none.
  */
-void pinMode(uint8_t arduinoPin, GPIO_DDRxDirection_Typedef direction);
+void Gpio_PinMode(uint8_t arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction);
 
 /** @brief Set or reset a pin value.
  *
@@ -96,7 +96,7 @@ void pinMode(uint8_t arduinoPin, GPIO_DDRxDirection_Typedef direction);
  *  @param value Pin value
  *  @return none.
  */
-void digitalWrite(uint8_t arduinoPin, IOValue_Typedef value);
+void Gpio_DigitalWrite(uint8_t arduinoPin, Enum_IOValue_Typedef value);
 
 
 #ifdef __cplusplus

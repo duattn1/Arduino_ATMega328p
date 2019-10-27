@@ -31,7 +31,7 @@
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 /* This array list all values of SPI2X, SPR1 and SPR0 to configure each clock frequency. */
-SPI_ClockFrequencyConfigBits_Typedef clkFreqConfig[] = 
+Struct_Spi_ClockFrequencyConfigBits_Typedef clkFreqConfig[] = 
 {
 	{0, 0, 0},  /* Fosc/4 */
 	{0, 0, 1},  /* Fosc/16 */
@@ -46,7 +46,7 @@ SPI_ClockFrequencyConfigBits_Typedef clkFreqConfig[] =
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void initSPI(SPI_Config_Typedef *config){
+void Spi_InitSPI(Struct_Spi_Config_Typedef *config){
 	// Select data transmission order
 	SPCR &= ~(1 << DORD);
 	SPCR |= config->dataTxOrder << DORD;
@@ -67,15 +67,15 @@ void initSPI(SPI_Config_Typedef *config){
 	SPSR |= clkFreqConfig[config->clockFrequency].SPI2X_value << SPI2X;
 }
 
-void commandSPI(Command_Typedef cmd){
-	if(ENABLE == cmd){
+void Spi_CommandSPI(Enum_Command_Typedef cmd){
+	if(Enable == cmd){
 		SPCR |= 1 << SPE;
 	} else {
 		SPCR &= ~(1 << SPE);
 	}
 }
 
-void masterTransmit(uint8_t data) {
+void Spi_MasterTransmit(uint8_t data) {
 	SPDR = data;
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));

@@ -81,26 +81,26 @@ const uint8_t characterLib[43][8]={
  ******************************************************************************/
 void write_Max7219_byte(uint8_t data) {
 	uint8_t i;
-	digitalWrite(CS_PIN, LOW);
+	Gpio_DigitalWrite(CS_PIN, Low);
 	for(i = 8; i >= 1; i--) {
-		digitalWrite(CLK_PIN, LOW);
+		Gpio_DigitalWrite(CLK_PIN, Low);
 
 		if(data & 0x80) { // TODO:Extracting a bit data
-			digitalWrite(MOSI_PIN, HIGH);
+			Gpio_DigitalWrite(MOSI_PIN, High);
 		} else {
-			digitalWrite(MOSI_PIN, LOW);
+			Gpio_DigitalWrite(MOSI_PIN, Low);
 		}
 
 	data = data << 1;
-	digitalWrite(CLK_PIN, HIGH);
+	Gpio_DigitalWrite(CLK_PIN, High);
 	}
 }
 
 void write_Max7219(uint8_t address, uint8_t data) {
-	digitalWrite(CS_PIN, LOW);
+	Gpio_DigitalWrite(CS_PIN, Low);
 	write_Max7219_byte(address);
 	write_Max7219_byte(data); 
-	digitalWrite(CS_PIN, HIGH);
+	Gpio_DigitalWrite(CS_PIN, High);
 }
 
 void init_Max7219(void) {

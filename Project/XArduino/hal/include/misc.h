@@ -33,18 +33,18 @@
  */
 typedef enum
 {
-	LOW = 0x00,			/**< I/O LOW(0) value */
-	HIGH = 0x01			/**< I/O HIGH(1) value */
-} IOValue_Typedef;
+	Low = 0x00,			/**< I/O Low(0) value */
+	High = 0x01			/**< I/O High(1) value */
+} Enum_IOValue_Typedef;
 
 /**
  * @enum This enumeration is a list of pin direction modes.
  */
 typedef enum
 {
-	DISABLE = 0x00,			/**< Disable a configuration */
-	ENABLE = 0x01			/**< Enable a configuration */
-} Command_Typedef;
+	Disable = 0x00,			/**< Disable a configuration */
+	Enable = 0x01			/**< Enable a configuration */
+} Enum_Command_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables

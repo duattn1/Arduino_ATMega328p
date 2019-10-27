@@ -35,7 +35,7 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void initUSART(USART_Config_Typedef *config){
+void Usart_InitUSART(Struct_Usart_Config_Typedef *config){
 	/* Declare 2 local variables since data frame size configuring bits 
 	   are located in 2 registers.*/
 	uint8_t UCSZn2 = (config->dataFrame) & 0x04;
@@ -58,7 +58,7 @@ void initUSART(USART_Config_Typedef *config){
 }
 
 
-void setBaudrate(USART_Baudrate_Typedef baudrate){
+void Usart_SetBaudrate(Enum_Usart_Baudrate_Typedef baudrate){
 	uint16_t UBRRnValue;
 	uint8_t isDoubleSpeed = UCSR0A & (1 << U2X0);
 	
@@ -74,37 +74,37 @@ void setBaudrate(USART_Baudrate_Typedef baudrate){
 	UBRR0H = (UBRRnValue & 0x0F00);
 }
 
-void commandTransmitter(Command_Typedef cmd){
-	if(ENABLE == cmd){
+void Usart_CommandTransmitter(Enum_Command_Typedef cmd){
+	if(Enable == cmd){
 		UCSR0B |= 1 << TXEN0;
 	} else {
 		UCSR0B &= ~(1 << TXEN0);
 	}
 }
 
-void commandReceiver(Command_Typedef cmd){
-	if(ENABLE == cmd){
+void Usart_CommandReceiver(Enum_Command_Typedef cmd){
+	if(Enable == cmd){
 		UCSR0B |= 1 << RXEN0;
 	} else {
 		UCSR0B &= ~(1 << RXEN0);
 	}
 }
 
-void sendChar(uint8_t data){
+void Usart_SendChar(uint8_t data){
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & (1 << UDRE0)));
 	/* Put data into buffer to send the data */
 	UDR0 = data;
 }
 
-void sendString(uint8_t *str){
+void Usart_SendString(uint8_t *str){
 	while(NULL != *str){
-		sendChar(*str);
+		Usart_SendChar(*str);
 		str++;
 	}
 }
 
-uint8_t receiveChar(void){
+uint8_t Usart_ReceiveChar(void){
 	/* Wait for data to be received */
 	while (!(UCSR0A & (1<<RXC0)));
 	/* Get and return received data from buffer */
@@ -116,7 +116,7 @@ uint8_t* receiveString(void){
 	uint8_t data, i = 0;
 
 	do {
-		data = receiveChar();
+		data = Usart_ReceiveChar();
 		str[i++] = data;		
 	} while('\n' != data);
 	

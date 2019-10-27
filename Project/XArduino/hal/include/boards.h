@@ -34,38 +34,38 @@
  */
 typedef enum
 {
-	GPIO_PortB,		/**< Port B */
-	GPIO_PortC,		/**< Port C */
-	GPIO_PortD		/**< Port D */
-} GPIO_Port_Typedef;
+	Gpio_PortB,		/**< Port B */
+	Gpio_PortC,		/**< Port C */
+	Gpio_PortD		/**< Port D */
+} Enum_Gpio_Port_Typedef;
 
 /**
  * @enum This enumeration is a list of pins of each port.
  */
 typedef enum
 {
-	GPIO_Pin0,		/**< Pin 0 */
-	GPIO_Pin1,		/**< Pin 1 */
-	GPIO_Pin2,		/**< Pin 2 */
-	GPIO_Pin3,		/**< Pin 3 */
-	GPIO_Pin4,		/**< Pin 4 */
-	GPIO_Pin5,		/**< Pin 5 */
-	GPIO_Pin6,		/**< Pin 6 */
-	GPIO_Pin7		/**< Pin 7 */
-} GPIO_Pin_Typedef;
+	Gpio_Pin0,		/**< Pin 0 */
+	Gpio_Pin1,		/**< Pin 1 */
+	Gpio_Pin2,		/**< Pin 2 */
+	Gpio_Pin3,		/**< Pin 3 */
+	Gpio_Pin4,		/**< Pin 4 */
+	Gpio_Pin5,		/**< Pin 5 */
+	Gpio_Pin6,		/**< Pin 6 */
+	Gpio_Pin7		/**< Pin 7 */
+} Enum_Gpio_Pin_Typedef;
 
 /**
  * @struct This structure define a way for Arduino pin naming.
  */
 typedef struct {
-	GPIO_Port_Typedef port;
-	GPIO_Pin_Typedef pin;
-} BoardPin_Typedef;
+	Enum_Gpio_Port_Typedef port;
+	Enum_Gpio_Pin_Typedef pin;
+} Struct_BoardPin_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern const BoardPin_Typedef pins[];
+extern const Struct_BoardPin_Typedef pins[];
 
 /*******************************************************************************
  * 6. Function Prototypes

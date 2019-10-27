@@ -1,0 +1,1 @@
+"C:\Users\PC\AppData\Local\Programs\Python\Python37-32\python.exe" "C:\Users\PC\Documents\GitHub\STM32F4Discovery\Script\UnitTestScript\main.py"

@@ -40,36 +40,36 @@ extern const uint8_t characterLib[43][8];
  ******************************************************************************/
 void setup(void){
 #ifdef GPIO_SAMPLE	
-	pinMode(ARDUINO_NANO_USER_LED, GPIO_DDRx_Output);
-	digitalWrite(ARDUINO_NANO_USER_LED, HIGH);
+	Gpio_PinMode(ARDUINO_NANO_USER_LED, GPIO_DDRx_Output);
+	Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
 #endif
 
 #ifdef USART_SAMPLE
 	uint8_t *strStart = "Start";
 	uint8_t *strEnd = "End";
-	USART_Config_Typedef config;
-	config.mode = USART_UCSRnC_AsyncMode;
-	config.parity = USART_UCSRnC_DisabledParity;
-	config.stopBit = USART_UCSRnC_1StopBit;
-	config.dataFrame = USART_UCSRnC_8bitsData;
-	initUSART(&config);
-	setBaudrate(USART_9600bps);
-	commandTransmitter(ENABLE);
-	commandReceiver(ENABLE);
-	sendString(strStart);
+	Struct_Usart_Config_Typedef config;
+	config.mode = Usart_UCSRnC_AsyncMode;
+	config.parity = Usart_UCSRnC_DisabledParity;
+	config.stopBit = Usart_UCSRnC_1StopBit;
+	config.dataFrame = Usart_UCSRnC_8bitsData;
+	Usart_InitUSART(&config);
+	Usart_SetBaudrate(Usart_9600bps);
+	Usart_CommandTransmitter(Enable);
+	Usart_CommandReceiver(Enable);
+	Usart_SendString(strStart);
 #endif
 
-
-	SPI_Config_Typedef config;
-	config.dataTxOrder = SPI_SPCR_TransmitMSBFirst;
-	config.masterSlaveMode = SPI_SPCR_MasterMode;
-	config.clockPolarity = SPI_SPCR_IdleLow;
-	config.clockPhase = SPI_SPCR_LeadingEdgeSampling;
-	config.clockFrequency = SPI_FoscDiv16 ;
-	initSPI(&config);
-	commandSPI(ENABLE);
-	masterTransmit('A');
-
+#ifdef SPI_SAMPLE
+	Struct_Spi_Config_Typedef config;
+	config.dataTxOrder = Spi_SPCR_TransmitMSBFirst;
+	config.masterSlaveMode = Spi_SPCR_MasterMode;
+	config.clockPolarity = Spi_SPCR_IdleLow;
+	config.clockPhase = Spi_SPCR_LeadingEdgeSampling;
+	config.clockFrequency = Spi_FoscDiv16 ;
+	Spi_InitSPI(&config);
+	Spi_CommandSPI(Enable);
+	Spi_MasterTransmit('A');
+#endif
 
 #ifdef MAX7219_SAMPLE	
 	init_Max7219();
