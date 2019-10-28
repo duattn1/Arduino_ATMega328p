@@ -1,1 +1,1 @@
-"C:\Users\PC\AppData\Local\Programs\Python\Python37-32\python.exe" "C:\Users\PC\Documents\GitHub\STM32F4Discovery\Script\UnitTestScript\main.py"
+"C:\Users\PC\AppData\Local\Programs\Python\Python37-32\python.exe" "C:\Users\PC\Documents\GitHub\Arduino_ATMega328p\Script\UnitTestScript\main.py"

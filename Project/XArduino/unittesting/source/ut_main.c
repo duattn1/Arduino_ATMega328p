@@ -1,18 +1,40 @@
+/** @file ut_main.c
+ *  @brief Function implementation for unit testing main controlling.
+ *
+ *  This is the source file for the definition of unit testing main controlling.
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ */
+
+/*******************************************************************************
+ * 1. Included Files
+ ******************************************************************************/
+
 #ifdef UNIT_TESTING	
 
-/************************************************
- *  1. Included Files
- ***********************************************/
 #include "ut_main.h"
 #include <stdio.h>
 #include <math.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 
-/************************************************
- *  2. Global, Static and Extern Variables
- ***********************************************/
-extern void (*testcaseList[1])(void);
+/*******************************************************************************
+ * 2. Object-like Macros
+ ******************************************************************************/
+
+/*******************************************************************************
+ * 3. Function-like Macros
+ ******************************************************************************/
+
+/*******************************************************************************
+ * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ ******************************************************************************/
+
+/*******************************************************************************
+ * 5. Global, Static and Extern Variables
+ ******************************************************************************/
+extern void (*testcaseList[3])(void);
 
 const Struct_Usart_Config_Typedef usartRedirectConfig[1] = 
 {
@@ -28,14 +50,15 @@ const Struct_Usart_Config_Typedef usartRedirectConfig[1] =
  */
 FILE usart_stream = FDEV_SETUP_STREAM((int (*)(char, FILE *)) Usart_SendChar, NULL, _FDEV_SETUP_RW);
 
-/************************************************
- *  3. Function Definition
- ***********************************************/
+/*******************************************************************************
+ * 6. Function Definitions
+ ******************************************************************************/
 void setUp(void) {  
-	
+	// Thing to do before running test
 }
 
 void tearDown(void) {
+	// Thing to do after running test
 }
 
 /**
@@ -62,5 +85,6 @@ void runTest(void) {
 	UNITY_END();	
 }
 
-
 #endif /* UNIT_TESTING	*/
+
+/** End of File ***************************************************************/

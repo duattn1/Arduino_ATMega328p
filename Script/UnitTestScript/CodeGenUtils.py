@@ -50,15 +50,23 @@ def gen_var_assignment(fileType, var_name, assign_operator, value):
     if "HeaderFile" == fileType:
         headerFile(content)
 
-def gen_function_call_no_arg(fileType, func_name):
-    content = func_name + "();"
+def gen_function_call_no_arg(fileType, func_name, noOfReturnObj):
+    if 0 == noOfReturnObj:
+        content = func_name + "();"
+    else:
+        content = "return_obj = " + func_name + "();"
+        
     if "SourceFile" == fileType:
         sourceFile(content)
     if "HeaderFile" == fileType:
         headerFile(content)
     
-def gen_function_call_with_arg(fileType, func_name, params):   
-    content = func_name + "("
+def gen_function_call_with_arg(fileType, func_name, params, noOfReturnObj): 
+    if 0 == noOfReturnObj:
+        content = func_name + "("
+    else:
+        content = "return_obj = " + func_name + "("
+        
     first = True
     for param in params:
         if first:
@@ -81,5 +89,5 @@ def gen_break_line(fileType):
  
 ############################################################################### 
 # Create the generated file
-headerFile = CppFile("ut_usart_driver.h")
-sourceFile = CppFile("ut_usart_driver.c")
+headerFile = CppFile("ut_gpio_hal.h")
+sourceFile = CppFile("ut_gpio_hal.c")

@@ -13,7 +13,13 @@ GenHeaderFile = "HeaderFile"
 ################################################################################
 # 3. Function definition
 ################################################################################
-def init_global_var(testcase):
+def init_output_var(testcase):
+    # Initialize return object
+    for obj in testcase.return_objs:
+        gen_comment_line(GenSourceFile, "Declare object to store returning value")
+        gen_var_declaration(GenSourceFile, "Uint32Data_Typedef", obj.gen_name)
+        
+    # Initialize global variables   
     for var in testcase.global_vars:
         gen_comment_line(GenSourceFile, "Declare object to check value of " + var.actual_mem)
         gen_var_declaration(GenSourceFile, "Uint32Data_Typedef", var.gen_name)
@@ -21,7 +27,7 @@ def init_global_var(testcase):
 
 def init_param(testcase):
     for param in testcase.params:
-        gen_comment_line(GenSourceFile, "Init " + param.gen_name)
+        gen_comment_line(GenSourceFile, "Initialize " + param.gen_name)
         if param.isStructType == "False":
             gen_var_definition(GenSourceFile, param.type, param.param_name, param.init_value)
         else:
@@ -55,15 +61,37 @@ def call_test_method(testcase):
     gen_comment_line(GenSourceFile, "Call the tested function")
     params_count = len(param_list)
     if params_count > 0:
-        gen_function_call_with_arg(GenSourceFile,testcase.function_name, param_list)
+        gen_function_call_with_arg(GenSourceFile,testcase.function_name, param_list, noReturnObjs)
     else:
-        gen_function_call_no_arg(GenSourceFile, testcase.function_name)
-    gen_break_line(GenSourceFile)
+        gen_function_call_no_arg(GenSourceFile, testcase.function_name, noReturnObjs)
+    gen_break_line(GenSourceFile)    
+
+def compare_returning_value(return_obj):
+    return_obj_name = return_obj.gen_name
+
+    # define temporary array to pass as parameters to gen_function_call_with_arg()
+    temp_return_obj = [return_obj_name]
+
+    gen_comment_line(GenSourceFile, "Compare " + return_obj_name + " with expected value")
+    
+    # Contents of actual result after function calling
+    actual_content = return_obj_name + ".actual = "
+    actual_content += "return_obj" # the object in the test file that store returning value
+    actual_content += ";"
+    # Contents of return_obj.expected_value
+    expected_content = return_obj_name + ".expected = "
+    expected_content += return_obj.expected_value
+    expected_content += ";"
+        
+    sourceFile(actual_content)
+    sourceFile(expected_content)
+    
+    gen_function_call_with_arg(GenSourceFile, "compare", temp_return_obj, 0)
 
 def compare_one_register(global_var):
     global_var_name = global_var.gen_name
 
-    # define temporary array to pass to gen_function_call_with_arg()
+    # define temporary array to pass as parameters to gen_function_call_with_arg()
     temp_global_var = [global_var_name]
 
     gen_comment_line(GenSourceFile, "Compare " + global_var_name + " with expected value")
@@ -85,9 +113,11 @@ def compare_one_register(global_var):
     sourceFile(expected_content)
     sourceFile(mask_content)
     
-    gen_function_call_with_arg(GenSourceFile, "compareBits", temp_global_var)  
+    gen_function_call_with_arg(GenSourceFile, "compareBits", temp_global_var, 0)  
 
 def compare(testcase):
+    for returnObj in testcase.return_objs:
+        compare_returning_value(returnObj)
     for var in testcase.global_vars:
         compare_one_register(var)
 
@@ -105,43 +135,43 @@ def gen_externC_ending():
 
 def gen_section_0_header_comment_block(fileType):
     if "SourceFile" == fileType:
-        sourceFile("/** @file ut_usart_driver.c") 
-        sourceFile(" *  @brief Function implementation for unit test of USART driver.")
+        sourceFile("/** @file ut_gpio_hal.c") 
+        sourceFile(" *  @brief Function implementation for unit test of GPIO driver.")
         sourceFile(" *")
         sourceFile(" *  This file is generated from scripts. This is the source file for ")
-        sourceFile(" *  the unit test definition of USART driver.")
+        sourceFile(" *  the unit test definition of GPIO driver.")
         sourceFile(" *")
         sourceFile(" *  @author 	Tran Nhat Duat (duattn)")
         sourceFile(" *  @version 	V1.0")
         sourceFile(" */")
         gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
-        headerFile("/** @file ut_usart_driver.h")
-        headerFile(" *  @brief Function prototypes for unit test of USART driver.")
+        headerFile("/** @file ut_gpio_hal.h")
+        headerFile(" *  @brief Function prototypes for unit test of GPIO driver.")
         headerFile(" *")
         headerFile(" *  This file is generated from scripts. This is the header file for ")
-        headerFile(" *  the unit test definition of USART driver.")
+        headerFile(" *  the unit test definition of GPIO driver.")
         headerFile(" *")
         headerFile(" *  @author 	Tran Nhat Duat (duattn)")
         headerFile(" *  @version 	V1.0")
         headerFile(" */")
         gen_break_line(GenHeaderFile)
-        headerFile("#ifndef _UT_USART_DRIVER_H")
-        headerFile("#define _UT_USART_DRIVER_H")
+        headerFile("#ifndef _UT_GPIO_HAL_H")
+        headerFile("#define _UT_GPIO_HAL_H")
         gen_break_line(GenHeaderFile)
     
 def gen_section_1_include_file(fileType):
     
     if "SourceFile" == fileType:
         gen_comment_block(GenSourceFile, "1. Included Files") 
-        sourceFile("#include \"ut_usart_driver.h\"")
+        sourceFile("#include \"ut_gpio_hal.h\"")
         gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
         gen_comment_block(GenHeaderFile, "1. Included Files") 
         headerFile("#include <stdlib.h>")
         headerFile("#include \"unity.h\"")
         headerFile("#include \"ut_base.h\"")
-        headerFile("#include \"usart_driver.h\"")
+        headerFile("#include \"gpio_hal.h\"")
         gen_break_line(GenHeaderFile)
     
 def gen_section_2_object_macro():
@@ -185,6 +215,7 @@ def gen_section_5_variable(fileType):
         gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
         gen_comment_block(GenHeaderFile, "5. Global, Static and Extern Variables")
+        gen_break_line(GenHeaderFile)
         
 def gen_section_6_function_definition(fileType):
     if "SourceFile" == fileType:
@@ -193,14 +224,14 @@ def gen_section_6_function_definition(fileType):
         for testcase in testSuite.testcases:
             testcase_prototype = "void " + testcase.testcase_name + "(void)"
             with sourceFile.block(testcase_prototype):
-                init_global_var(testcase)    
+                init_output_var(testcase)    
                 init_param(testcase)
                 call_funct_preconditon(testcase)
                 call_test_method(testcase)    
                 compare(testcase)      
             gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
-        gen_comment_block(GenSourceFile, "6. Function Prototypes")
+        gen_comment_block(GenHeaderFile, "6. Function Prototypes")
         gen_externC_beginning()
         for testcase in testSuite.testcases:
             headerFile("void " + testcase.testcase_name + "(void);")
@@ -209,10 +240,10 @@ def gen_section_6_function_definition(fileType):
         
 def gen_ending_header():
     # Generate source contents
-    headerFile("/** End of File ***************************************************************/")
+    sourceFile("/** End of File ***************************************************************/")
     gen_break_line(GenSourceFile)
     # Generate header contents
-    headerFile("#endif /* _UT_USART_DRIVER_H */")
+    headerFile("#endif /* _UT_GPIO_HAL_H */")
     gen_break_line(GenHeaderFile)
     headerFile("/** End of File ***************************************************************/")
     gen_break_line(GenHeaderFile)

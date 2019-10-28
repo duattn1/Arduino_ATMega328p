@@ -71,7 +71,7 @@
       <Value>UNIT_TESTING</Value>
       <Value>USE_USART_HAL</Value>
       <Value>USART_HAL_SAMPLE</Value>
-      <Value>AVR</Value>
+      <Value>USE_GPIO_HAL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
