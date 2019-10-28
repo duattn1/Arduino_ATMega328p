@@ -52,14 +52,14 @@ void runTest(void) {
 	Usart_SetBaudrate(Usart_9600bps);
 	Usart_CommandTransmitter(Enable);
 	stdout = &usart_stream;
-	printf("hello %d", 1);
+	
 	UNITY_BEGIN();
 	
 	for(i = 0; i < noTestcase; i++) {
 		RUN_TEST(testcaseList[i]);
 	}	
-
-	UNITY_END();
+	
+	UNITY_END();	
 }
 
 

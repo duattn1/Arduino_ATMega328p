@@ -68,8 +68,10 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
+      <Value>UNIT_TESTING</Value>
       <Value>USE_USART_HAL</Value>
       <Value>USART_HAL_SAMPLE</Value>
+      <Value>AVR</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>

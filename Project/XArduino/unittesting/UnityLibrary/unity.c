@@ -2,17 +2,18 @@
     Unity Project - A Test Framework for C
     Copyright (c) 2007-19 Mike Karlesky, Mark VanderVoord, Greg Williams
     [Released under MIT License. Please refer to license.txt for details]
+	
+	######################### Revision History ######################### 
+	Oct 28, 2019	- Removed the "#include <avr/pgmspace.h>" and define 
+					PROGMEM as empty since the STDOUT redirect via USART
+					has problems.
 ============================================================================ */
 #ifdef UNIT_TESTING	
 
 #include "unity.h"
 #include <stddef.h>
 
-#ifdef AVR
-#include <avr/pgmspace.h>
-#else
 #define PROGMEM
-#endif
 
 /* If omitted from header, declare overrideable prototypes here so they're ready for use */
 #ifdef UNITY_OMIT_OUTPUT_CHAR_HEADER_DECLARATION

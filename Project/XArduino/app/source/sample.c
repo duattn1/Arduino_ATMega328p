@@ -60,7 +60,7 @@ void setup(void){
 #endif
 
 #ifdef USART_HAL_SAMPLE
-	uint8_t *strStart = "Start";
+	uint8_t strStart[] = "Start";
 	Usart_InitUSART(&usartSampleConfig[0]);
 	Usart_SetBaudrate(Usart_9600bps);
 	Usart_CommandTransmitter(Enable);

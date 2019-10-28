@@ -44,7 +44,7 @@ int main(void)
 #ifndef UNIT_TESTING	
 	setup();
 	loop();	
-#else UNIT_TESTING	
+#else
 	runTest();
 #endif
 }
