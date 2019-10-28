@@ -14,6 +14,7 @@
  * 1. Included Files
  ******************************************************************************/
 #include <avr/io.h>
+#include <stdio.h>
 #include <stdint.h>
 #include "boards.h"
 #include "misc.h"
@@ -151,9 +152,11 @@ void Usart_CommandReceiver(Enum_Command_Typedef cmd);
 /** @brief Transmit a character in polling mode.
  *
  *  @param data Character to be sent.
+ *  @param stream Standard output stream (Applied in testing stdio redirect)
+ *	@note This function return a integer to become compatible with the stdout. 
  *  @return none
  */
-void Usart_SendChar(uint8_t data);
+uint8_t Usart_SendChar(uint8_t data, FILE *stream);
 
 /** @brief Transmit a string in polling mode.
  *
@@ -164,10 +167,10 @@ void Usart_SendString(uint8_t *str);
 
 /** @brief Receive a character in polling mode.
  *
- *  @param none
+ *  @param stream Standard input stream (Applied in testing stdio redirect)
  *  @return Received character
  */
-uint8_t Usart_ReceiveChar(void);
+uint8_t Usart_ReceiveChar(FILE *stream);
 
 #ifdef __cplusplus
 } // extern "C"

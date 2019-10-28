@@ -2013,6 +2013,7 @@ int UnityTestMatches(void)
 }
 
 #endif /* UNITY_USE_COMMAND_LINE_ARGS */
-/*-----------------------------------------------*/
 
-#endif /* UNIT_TESTING */
+#endif /* UNIT_TESTING	*/
+
+/*-----------------------------------------------*/

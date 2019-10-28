@@ -40,11 +40,11 @@
  * 6. Function Definitions
  ******************************************************************************/
 int main(void)
-{	
-	//setup();
-	//loop();
-	
-#ifdef UNIT_TESTING	
+{
+#ifndef UNIT_TESTING	
+	setup();
+	loop();	
+#else UNIT_TESTING	
 	runTest();
 #endif
 }

@@ -92,37 +92,29 @@ void Usart_CommandReceiver(Enum_Command_Typedef cmd){
 	}
 }
 
-void Usart_SendChar(uint8_t data){
+uint8_t Usart_SendChar(uint8_t data, FILE *stream){
+	if(data == '\n') {
+      Usart_SendChar('\r', 0);
+	}
 	/* Wait for empty transmit buffer */
 	while (!(UCSR0A & (1 << UDRE0)));
 	/* Put data into buffer to send the data */
 	UDR0 = data;
+	return 0;
 }
 
 void Usart_SendString(uint8_t *str){
 	while('\0' != *str){
-		Usart_SendChar(*str);
+		Usart_SendChar(*str, 0);
 		str++;
 	}
 }
 
-uint8_t Usart_ReceiveChar(void){
+uint8_t Usart_ReceiveChar(FILE *stream){
 	/* Wait for data to be received */
 	while (!(UCSR0A & (1<<RXC0)));
 	/* Get and return received data from buffer */
-	return UDR0;
-}
-
-uint8_t* receiveString(void){
-	static uint8_t *str;//TODO str[RECEIVED_STRING_LENGTH];
-	uint8_t data, i = 0;
-
-	do {
-		data = Usart_ReceiveChar();
-		str[i++] = data;		
-	} while('\n' != data);
-	
-	return str;
+	return (uint8_t)UDR0;
 }
 
 #endif /* USE_USART_HAL */
