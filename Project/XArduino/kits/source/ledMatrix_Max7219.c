@@ -6,6 +6,8 @@
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
  */
+
+#ifdef USE_MAX7219_KIT
  
 /*******************************************************************************
  * 1. Included Files
@@ -112,4 +114,7 @@ void init_Max7219(void) {
 	write_Max7219(0x0c, 0x01);       //power-down mode:0,normal mode:1
 	write_Max7219(0x0f, 0x00);       //test display:1;EOT,display:0
 }
+
+#endif /* USE_MAX7219_KIT */
+
 /** End of File ***************************************************************/

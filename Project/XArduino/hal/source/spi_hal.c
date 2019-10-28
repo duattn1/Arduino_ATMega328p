@@ -6,6 +6,8 @@
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
  */
+
+#ifdef USE_SPI_HAL
  
 /*******************************************************************************
  * 1. Included Files
@@ -80,5 +82,7 @@ void Spi_MasterTransmit(uint8_t data) {
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));
 }
+
+#endif /* USE_SPI_HAL */
 
 /** End of File ***************************************************************/

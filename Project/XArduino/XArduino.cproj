@@ -63,15 +63,13 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
   <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
+      <Value>USE_USART_HAL</Value>
+      <Value>USART_HAL_SAMPLE</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -79,9 +77,10 @@
       <Value>../hal/include</Value>
       <Value>../app/include</Value>
       <Value>../kits/include</Value>
+      <Value>../unittesting/include</Value>
+      <Value>../unittesting/UnityLibrary</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
-  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
   <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
   <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
@@ -141,6 +140,33 @@
     <Compile Include="kits\source\ledMatrix_Max7219.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="unittesting\include\ut_base.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\include\ut_gpio_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\include\ut_main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\source\ut_base.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\source\ut_gpio_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\source\ut_main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\UnityLibrary\unity.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\UnityLibrary\unity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="unittesting\UnityLibrary\unity_internals.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\include" />
@@ -152,6 +178,10 @@
     <Folder Include="kits" />
     <Folder Include="kits\include" />
     <Folder Include="kits\source" />
+    <Folder Include="unittesting" />
+    <Folder Include="unittesting\include" />
+    <Folder Include="unittesting\source" />
+    <Folder Include="unittesting\UnityLibrary" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

@@ -35,7 +35,7 @@
  ******************************************************************************/
 extern const uint8_t characterLib[43][8];
 
-#ifdef USART_SAMPLE
+#ifdef USART_HAL_SAMPLE
 const Struct_Usart_Config_Typedef usartSampleConfig[1] = 
 {
 	{ Usart_UCSRnC_AsyncMode, Usart_UCSRnC_DisabledParity,
@@ -43,7 +43,7 @@ const Struct_Usart_Config_Typedef usartSampleConfig[1] =
 };
 #endif
 
-#ifdef SPI_SAMPLE
+#ifdef SPI_HAL_SAMPLE
 Struct_Spi_Config_Typedef spiSampleConfig[1] =
 {
 	{ Spi_SPCR_TransmitMSBFirst, Spi_SPCR_MasterMode,
@@ -54,27 +54,27 @@ Struct_Spi_Config_Typedef spiSampleConfig[1] =
  * 6. Function Definitions
  ******************************************************************************/
 void setup(void){
-#ifdef GPIO_SAMPLE	
+#ifdef GPIO_HAL_SAMPLE	
 	Gpio_PinMode(ARDUINO_NANO_USER_LED, GPIO_DDRx_Output);
 	Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
 #endif
 
-#ifdef USART_SAMPLE
+#ifdef USART_HAL_SAMPLE
 	uint8_t *strStart = "Start";
 	Usart_InitUSART(&usartSampleConfig[0]);
 	Usart_SetBaudrate(Usart_9600bps);
 	Usart_CommandTransmitter(Enable);
-	Usart_CommandReceiver(Enable);
-	Usart_SendString(strStart);
+	//Usart_CommandReceiver(Enable);
+	Usart_SendString(strStart);	
 #endif
 
-#ifdef SPI_SAMPLE	
+#ifdef SPI_HAL_SAMPLE	
 	Spi_InitSPI(&spiSampleConfig[0]);
 	Spi_CommandSPI(Enable);
 	Spi_MasterTransmit('A');
 #endif
 
-#ifdef MAX7219_SAMPLE	
+#ifdef MAX7219_KIT_SAMPLE	
 	init_Max7219();
 	uint8_t i;
 	for(i = 0; i < 8; i++){

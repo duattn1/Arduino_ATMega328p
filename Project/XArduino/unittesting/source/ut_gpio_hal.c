@@ -1,76 +1,66 @@
-/** @file misc.h
- *  @brief Function prototypes for miscellaneous things.
- * 
- *  This is the header file for the definition of miscellaneous things.
- *  
- * 	@author Tran Nhat Duat (duattn)
- *	@version 	V1.0
+/** @file ut_gpio_driver.c
+ *  @brief Function implementation for unit test of GPIO driver.
+ *
+ *  This file is generated from scripts. This is the source file for 
+ *  the unit test definition of GPIO driver.
+ *
+ *  @author 	Tran Nhat Duat (duattn)
+ *  @version 	V1.0
  */
 
-#ifndef MISC_H_
-#define MISC_H_
+#ifdef UNIT_TESTING	
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include <avr/io.h>
+#include "ut_gpio_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-/* Bit Masks definition */
-#define MASK_1BIT	0x01
-#define MASK_2BIT	0x03
-#define MASK_3BIT	0x07
-#define MASK_4BIT	0x0F
-#define MASK_5BIT	0x1F
-#define MASK_6BIT	0x3F
-#define MASK_7BIT	0x7F
-#define MASK_8BIT	0xFF
-	
+
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-/**
- * @enum This enumeration is a list of pin direction modes.
- */
-typedef enum
-{
-	Low = 0x00,			/**< I/O Low(0) value */
-	High = 0x01			/**< I/O High(1) value */
-} Enum_IOValue_Typedef;
-
-/**
- * @enum This enumeration is a list of pin direction modes.
- */
-typedef enum
-{
-	Disable = 0x00,			/**< Disable a configuration */
-	Enable = 0x01			/**< Enable a configuration */
-} Enum_Command_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-
+// List of all test cases
+void (*testcaseList[1])(void) = 
+{
+	Test_GPIO_Enable_TC1
+};
 
 /*******************************************************************************
  * 6. Function Prototypes
  ******************************************************************************/
-#ifdef __cplusplus
-extern "C"{
-#endif
+/*******************************************************************************
+ * 6. Function Definitions
+ ******************************************************************************/
+void Test_GPIO_Enable_TC1(void)
+{
+	// Declare object to check value of RCC->AHB1ENR
+	Uint32Data_Typedef global_var_1;
+	
+	// Init param_1
+	//Enum_GPIO_Port_Typedef port = GPIO_PortGPIOA;
+	
+	// Call the tested function
+	//GPIO_Enable(port);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = DDRB;
+	global_var_1.expected = 0x01;
+	global_var_1.mask = 0x01;
+	compareBits(global_var_1);
+}
 
-
-#ifdef __cplusplus
-} // extern "C"
-#endif
-
-#endif /* MISC_H_ */
+#endif /* UNIT_TESTING	*/
 
 /** End of File ***************************************************************/
+

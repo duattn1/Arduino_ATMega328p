@@ -125,7 +125,7 @@ extern "C"{
  *  @param config Initializing configuration
  *  @return none
  */
-void Usart_InitUSART(Struct_Usart_Config_Typedef *config);
+void Usart_InitUSART(const Struct_Usart_Config_Typedef *config);
 
 /** @brief Set the USART baudrate.
  *

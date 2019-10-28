@@ -15,6 +15,7 @@
  ******************************************************************************/
 #include <avr/io.h>
 #include <stdint.h>
+#include <stddef.h>
 #include "boards.h"
 #include "misc.h"
 

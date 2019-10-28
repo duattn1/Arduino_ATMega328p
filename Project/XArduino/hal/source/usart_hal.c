@@ -6,6 +6,8 @@
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
  */
+
+#ifdef USE_USART_HAL
  
 /*******************************************************************************
  * 1. Included Files
@@ -35,7 +37,7 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Usart_InitUSART(Struct_Usart_Config_Typedef *config){
+void Usart_InitUSART(const Struct_Usart_Config_Typedef *config){
 	/* Declare 2 local variables since data frame size configuring bits 
 	   are located in 2 registers.*/
 	uint8_t UCSZn2 = (config->dataFrame) & 0x04;
@@ -122,5 +124,7 @@ uint8_t* receiveString(void){
 	
 	return str;
 }
+
+#endif /* USE_USART_HAL */
 
 /** End of File ***************************************************************/

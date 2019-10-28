@@ -18,3 +18,11 @@ hal\source\usart_hal.c
 
 kits\source\ledMatrix_Max7219.c
 
+unittesting\source\ut_base.c
+
+unittesting\source\ut_gpio_hal.c
+
+unittesting\source\ut_main.c
+
+unittesting\UnityLibrary\unity.c
+

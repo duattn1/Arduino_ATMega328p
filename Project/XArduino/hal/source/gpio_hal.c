@@ -6,7 +6,9 @@
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
  */
- 
+
+#ifdef USE_GPIO_HAL
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
@@ -98,5 +100,7 @@ void Gpio_DigitalWrite(uint8_t arduinoPin, Enum_IOValue_Typedef value){
 	}		
 	
 }
+
+#endif /* USE_GPIO_HAL */
 
 /** End of File ***************************************************************/
