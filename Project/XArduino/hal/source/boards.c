@@ -31,7 +31,7 @@
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 #ifdef ARDUINO_NANO
-const Struct_BoardPin_Typedef pins[] = 
+const Struct_BoardPin_Typedef pins[20] = 
 	{
 	{Gpio_PortD, Gpio_Pin0},	/* Arduino Nano Pin 0 */
 	{Gpio_PortD, Gpio_Pin1},	/* Arduino Nano Pin 1 */

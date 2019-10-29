@@ -34,7 +34,7 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern void (*testcaseList[3])(void);
+extern void (*testcaseList[85])(void);
 
 const Struct_Usart_Config_Typedef usartRedirectConfig[1] = 
 {

@@ -42,13 +42,12 @@ class returnObjCollection:
     gen_name = ""
     type = ""
     expected_value = ""
-    actual_result = ""
-    isStructType = "False"
-    def __init__(self, gen_name, type, expected_value, isStructType):
+    isPointer = "False"
+    def __init__(self, gen_name, type, expected_value, isPointer):
         self.gen_name = str(gen_name)
         self.type = str(type)
         self.expected_value = str(expected_value)
-        self.isStructType = str(isStructType)
+        self.isPointer = str(isPointer)
         
 class globalVarCollection:
     gen_name = ""
@@ -79,9 +78,20 @@ def find_output_position(firstParamColumn):
 def isStructure(type):
     result = "True"
 
-    # check if "type" exists in "basicTypes"
+    # check if "type" param has the "Struct_" prefix
     try:        
         type.index("Struct_")
+    except ValueError:
+        result = "False"
+            
+    return result
+    
+def isPointer(type):
+    result = "True"
+
+    # check if "type" param has the "*" character
+    try:        
+        type.index("*")
     except ValueError:
         result = "False"
             
@@ -92,7 +102,7 @@ def isStructure(type):
 ################################################################################
 loc = ("C:\\Users\\PC\\Documents\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
 # Open Workbook 
-testcaseSheetList = [1]
+testcaseSheetList = [4]
 firstParamColumn = 3
 tcFirstLine = 5
 tcNameColumn = 0
@@ -158,9 +168,9 @@ for tcSheet in testcaseSheetList:
                 gen_name = "return_obj"
                 type = sheet.cell_value(ioTypeRow, j) # unchanged                
                 expected_value = sheet.cell_value(i, j)
-                isStructType = "False"
+                isPtr = isPointer(type)
                 testcase.return_objs[0] = \
-                returnObjCollection(gen_name, type, expected_value, isStructType)
+                returnObjCollection(gen_name, type, expected_value, isPtr)
             else:
                 gen_name = "global_var_" + str(index + 1)
                 type = sheet.cell_value(ioTypeRow, j) # unchanged

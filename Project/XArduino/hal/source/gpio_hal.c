@@ -67,7 +67,7 @@ void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd)
 	}
 }
 
-void Gpio_PinMode(uint8_t arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction){
+void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction){
 	Struct_Gpio_Typedef *gpiox = NULL;
 	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
 	Enum_Gpio_Pin_Typedef pin = pins[arduinoPin].pin;
@@ -82,7 +82,7 @@ void Gpio_PinMode(uint8_t arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction)
 	
 }
 
-void Gpio_DigitalWrite(uint8_t arduinoPin, Enum_IOValue_Typedef value){
+void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_IOValue_Typedef value){
 	Struct_Gpio_Typedef *gpiox = NULL;
 	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
 	Enum_Gpio_Pin_Typedef pin = pins[arduinoPin].pin;

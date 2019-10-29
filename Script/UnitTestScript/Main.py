@@ -10,19 +10,37 @@ from XlsProcessing import * # This module is for XLS file parsing
 # global variables
 GenSourceFile = "SourceFile"
 GenHeaderFile = "HeaderFile"
+systemRegisterSize = 8 # Arduino is a 8-bit MCU 
 ################################################################################
 # 3. Function definition
 ################################################################################
 def init_output_var(testcase):
     # Initialize return object
+    
+    
+    ###################################
+    
+    data_type = "Uint8Data_Typedef"
+    #is obj.isPointer == "True":
+    #    if 8 = systemRegisterSize:
+    #        data_type = "Uint8Data_Typedef"
+    #    if 16 = systemRegisterSize:
+    #        data_type = "Uint16Data_Typedef"
+    #    if 32 = systemRegisterSize:
+    #        data_type = "Uint32Data_Typedef"
+        
+    ###########################################    
+        
+        
+        
     for obj in testcase.return_objs:
         gen_comment_line(GenSourceFile, "Declare object to store returning value")
-        gen_var_declaration(GenSourceFile, "Uint32Data_Typedef", obj.gen_name)
+        gen_var_declaration(GenSourceFile, data_type, obj.gen_name)
         
     # Initialize global variables   
     for var in testcase.global_vars:
         gen_comment_line(GenSourceFile, "Declare object to check value of " + var.actual_mem)
-        gen_var_declaration(GenSourceFile, "Uint32Data_Typedef", var.gen_name)
+        gen_var_declaration(GenSourceFile, data_type, var.gen_name)
     gen_break_line(GenSourceFile)
 
 def init_param(testcase):
@@ -113,7 +131,7 @@ def compare_one_register(global_var):
     sourceFile(expected_content)
     sourceFile(mask_content)
     
-    gen_function_call_with_arg(GenSourceFile, "compareBits", temp_global_var, 0)  
+    gen_function_call_with_arg(GenSourceFile, "compareBitsOnUint8", temp_global_var, 0)  
 
 def compare(testcase):
     for returnObj in testcase.return_objs:

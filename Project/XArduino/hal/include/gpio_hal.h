@@ -89,7 +89,7 @@ void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd);
  *  @param direction Pin direction
  *  @return none.
  */
-void Gpio_PinMode(uint8_t arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction);
+void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction);
 
 /** @brief Set or reset a pin value.
  *
@@ -97,7 +97,7 @@ void Gpio_PinMode(uint8_t arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction)
  *  @param value Pin value
  *  @return none.
  */
-void Gpio_DigitalWrite(uint8_t arduinoPin, Enum_IOValue_Typedef value);
+void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_IOValue_Typedef value);
 
 
 #ifdef __cplusplus

@@ -19,7 +19,7 @@
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-#define ARDUINO_NANO_USER_LED 13
+#define ARDUINO_NANO_USER_LED Pin13
 
 /*******************************************************************************
  * 3. Function-like Macros
@@ -29,6 +29,35 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
+#ifdef ARDUINO_NANO
+/**
+ * @enum This enumeration is a list of pin direction modes.
+ */
+typedef enum
+{
+	Pin0 = 0,		/**< Arduino pin 0 */
+	Pin1,			/**< Arduino pin 1 */
+	Pin2,			/**< Arduino pin 2 */
+	Pin3,			/**< Arduino pin 3 */
+	Pin4,			/**< Arduino pin 4 */
+	Pin5,			/**< Arduino pin 5 */
+	Pin6,			/**< Arduino pin 6 */
+	Pin7,			/**< Arduino pin 7 */
+	Pin8,			/**< Arduino pin 8 */
+	Pin9,			/**< Arduino pin 9 */
+	Pin10,			/**< Arduino pin 10 */
+	Pin11,			/**< Arduino pin 11 */
+	Pin12,			/**< Arduino pin 12 */
+	Pin13,			/**< Arduino pin 13 */
+	Pin14,			/**< Arduino pin 14 */
+	Pin15,			/**< Arduino pin 15 */
+	Pin16,			/**< Arduino pin 16 */
+	Pin17,			/**< Arduino pin 17 */
+	Pin18,			/**< Arduino pin 18 */
+	Pin19			/**< Arduino pin 19 */
+} Enum_Gpio_ArduinoPin_Typedef;
+#endif
+
 /**
  * @enum This enumeration is a list of pins of each port.
  */
