@@ -38,7 +38,7 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern const uint8_t characterLib[43][8];
+extern const uint8_t CharacterLib_array[43][8];
 
 /*******************************************************************************
  * 6. Function Prototypes
@@ -49,18 +49,18 @@ extern "C"{
 
 /** @brief Send 1 byte to Max7219.
  *
- *  @param data To be sent data
+ *  @param data_uint8 To be sent data
  *  @return none
  */
-void write_Max7219_byte(uint8_t data);
+void write_Max7219_byte(uint8_t data_uint8);
 
 /** @brief Send a command to Max7219.
  *
- *  @param address Address to receive the command
- *  @param data To be sent command
+ *  @param address_uint8 Address to receive the command
+ *  @param data_uint8 To be sent command
  *  @return none
  */
-void write_Max7219(uint8_t address, uint8_t data);
+void write_Max7219(uint8_t address_uint8, uint8_t data_uint8);
 
 /** @brief Initialize Max7219
  *

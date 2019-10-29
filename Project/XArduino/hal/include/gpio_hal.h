@@ -53,14 +53,14 @@ typedef enum
  * @struct This structure list all registers of each GPIO port.
  */
 typedef struct {
-	uint8_t PINx;
-	uint8_t DDRx;
-	uint8_t PORTx;
+	uint8_t PINx_uint8;
+	uint8_t DDRx_uint8;
+	uint8_t PORTx_uint8;
 } Struct_Gpio_Typedef;
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern const Struct_BoardPin_Typedef pins[];
+extern const Struct_BoardPin_Typedef Pins_array[];
 
 /*******************************************************************************
  * 6. Function Prototypes
@@ -71,33 +71,33 @@ extern "C"{
 
 /** @brief Get the pointer to port X structure.
  *
- *  @param port Port name
+ *  @param port_enum Port name
  *  @return Pointer to port X structure.
  */
-Struct_Gpio_Typedef* Gpio_GetPortBase(Enum_Gpio_Port_Typedef port);
+Struct_Gpio_Typedef* Gpio_GetPortBase(Enum_Gpio_Port_Typedef port_enum);
 
 /** @brief Disable pull-up resistor
  *
- *  @param cmd Enable or Disable option.
+ *  @param cmd_enum Enable or Disable option.
  *  @return none.
  */
-void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd);
+void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd_enum);
 
 /** @brief Configure a pin direction.
  *
- *  @param arduinoPin Arduino digital pin
- *  @param direction Pin direction
+ *  @param arduinoPin_enum Arduino digital pin
+ *  @param direction_enum Pin direction
  *  @return none.
  */
-void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction);
+void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirection_Typedef direction_enum);
 
 /** @brief Set or reset a pin value.
  *
- *  @param arduinoPin Arduino digital pin
- *  @param value Pin value
+ *  @param arduinoPin_enum Arduino digital pin
+ *  @param value_enum Pin value
  *  @return none.
  */
-void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_IOValue_Typedef value);
+void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_IOValue_Typedef value_enum);
 
 
 #ifdef __cplusplus

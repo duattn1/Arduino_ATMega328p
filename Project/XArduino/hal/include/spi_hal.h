@@ -119,24 +119,24 @@ extern "C"{
 
 /** @brief Initialize SPI module.
  *
- *  @param config Initializing configuration
+ *  @param config_ptr Initializing configuration
  *  @return none
  */
-void Spi_InitSPI(Struct_Spi_Config_Typedef *config);
+void Spi_InitSPI(Struct_Spi_Config_Typedef *config_ptr);
 
 /** @brief Enable/Disable the SPI.
  *
- *  @param cmd Enable or Disable option
+ *  @param cmd_enum Enable or Disable option
  *  @return none
  */
-void Spi_CommandSPI(Enum_Command_Typedef cmd);
+void Spi_CommandSPI(Enum_Command_Typedef cmd_enum);
 
 /** @brief Transmit a byte from master node.
  *
- *  @param data To be sent data
+ *  @param data_uint8 To be sent data
  *  @return none
  */
-void Spi_MasterTransmit(uint8_t data);
+void Spi_MasterTransmit(uint8_t data_uint8);
 
 #ifdef __cplusplus
 } // extern "C"

@@ -2,17 +2,25 @@
 # 1. Including files
 ################################################################################
 from CodeGen import *
+from Configuration import * # This module is the global configuration
 import shutil               # This module is for file copying
 
-################################################################################
-# 2. Class definition
-################################################################################
 
 ################################################################################
-# 3. Function definition
+# 2. Global Variables
+################################################################################
+
+
+################################################################################
+# 3. Class definition
+################################################################################
+
+
+################################################################################
+# 4. Function definition
 ################################################################################
 def gen_comment_line(fileType, comment):
-    content = "// " + comment
+    content = "/* " + comment + " */"
     if "SourceFile" == fileType:
         sourceFile(content)
     if "HeaderFile" == fileType:
@@ -87,7 +95,8 @@ def gen_break_line(fileType):
     if "HeaderFile" == fileType:
         headerFile(content)
  
-############################################################################### 
-# Create the generated file
-headerFile = CppFile("ut_gpio_hal.h")
-sourceFile = CppFile("ut_gpio_hal.c")
+################################################################################
+# 5. Main processing: Create the generated file
+################################################################################ 
+headerFile = CppFile(generatedHeaderFileName)
+sourceFile = CppFile(generatedSourceFileName)

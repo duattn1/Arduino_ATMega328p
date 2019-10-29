@@ -33,9 +33,9 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern void (*testcaseList[85])(void);
+extern void (*TestcaseList_array[85])(void);
 
-const Struct_Usart_Config_Typedef usartRedirectConfig[1] = 
+const Struct_Usart_Config_Typedef UsartRedirectConfig_array[1] = 
 {
 	{ Usart_UCSRnC_AsyncMode, Usart_UCSRnC_DisabledParity,
 	Usart_UCSRnC_1StopBit, Usart_UCSRnC_8bitsData }
@@ -47,7 +47,7 @@ const Struct_Usart_Config_Typedef usartRedirectConfig[1] =
  * @note Usart_SendChar function pointer is casted into "(int (*)(char, FILE *))"
  * become to compatible with argument "put" of fdev_setup_stream() function.
  */
-FILE usart_stream = FDEV_SETUP_STREAM((int (*)(char, FILE *)) Usart_SendChar, NULL, _FDEV_SETUP_RW);
+FILE Usart_stream = FDEV_SETUP_STREAM((int (*)(char, FILE *)) Usart_SendChar, NULL, _FDEV_SETUP_RW);
 
 /*******************************************************************************
  * 6. Function Definitions
@@ -67,18 +67,17 @@ void tearDown(void) {
  *       Adding "-r" flag for archiver will enable linker static libraries.
  */
 void runTest(void) {
-	int i;
-	int noTestcase = sizeof(testcaseList)/ sizeof(testcaseList[0]);
+	uint16_t noTestcase_uint16 = sizeof(TestcaseList_array)/ sizeof(TestcaseList_array[0]);
 
-	Usart_InitUSART(&(usartRedirectConfig[0]));
+	Usart_InitUSART(&(UsartRedirectConfig_array[0]));
 	Usart_SetBaudrate(Usart_9600bps);
 	Usart_CommandTransmitter(Enable);
-	stdout = &usart_stream;
+	stdout = &Usart_stream;
 	
 	UNITY_BEGIN();
 	
-	for(i = 0; i < noTestcase; i++) {
-		RUN_TEST(testcaseList[i]);
+	for(uint8_t i = 0; i < noTestcase_uint16; i++) {
+		RUN_TEST(TestcaseList_array[i]);
 	}	
 	
 	UNITY_END();	

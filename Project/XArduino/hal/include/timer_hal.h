@@ -33,12 +33,21 @@
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
 /**
+ * @enum This enumeration is a list n-bit Timers max counter value.
+ */
+typedef enum
+{
+	Timer_8bitTimerMaxCounterValue = 254,		/**< 8-bit Timer */
+	Timer_16bitTimerMaxCounterValue = 65535		/**< 16-bit Timer */
+} Enum_Timer_TimerMaxCounterValue_Typedef;
+
+/**
  * @enum This enumeration is a list of TODO.
  */
 typedef enum
 {
 	Timer_ChannelA,		/**< Timer channel A */
-	Timer_ChannelB,		/**< Timer channel B */
+	Timer_ChannelB		/**< Timer channel B */
 } Enum_Timer_Channels_Typedef;
 
 /**
@@ -99,8 +108,8 @@ typedef enum
 	Timer_TCCR0B_ClkIoDiv64,								/**< IO clock frequency divided by 64 */
 	Timer_TCCR0B_ClkIoDiv256,								/**< IO clock frequency divided by 256 */
 	Timer_TCCR0B_ClkIoDiv1024,								/**< IO clock frequency divided by 1024 */
-	Timer_TCCR0B_T0PinExternalClock_FallingEdgeClocked,		/**< External clock source on T0 pin. Clock on falling edge */
-	Timer_TCCR0B_T0PinExternalClock_RisingEdgeClocked		/**< External clock source on T0 pin. Clock on rising edge */
+	Timer_TCCR0B_TnPinExternalClock_FallingEdgeClocked,		/**< External clock source on T0 pin. Clock on falling edge */
+	Timer_TCCR0B_TnPinExternalClock_RisingEdgeClocked		/**< External clock source on T0 pin. Clock on rising edge */
 } Enum_Timer_TCCR0B_ClockSelect_Typedef;
 
 /**
@@ -112,6 +121,14 @@ typedef struct {
 	Enum_Timer_TCCR0B_ClockSelect_Typedef clockPrescaler;
 	uint8_t compareOutputValue;
 } Struct_Timer_Config_Typedef;
+
+/**
+ * @struct This structure is for mapping TCCR0B Clock Select options to their real value.
+ */
+typedef struct {
+	Enum_Timer_TCCR0B_ClockSelect_Typedef prescalerName;
+	uint16_t prescalerValue;
+} Struct_Timer_PrescalerValue_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -127,11 +144,19 @@ extern "C"{
 
 /** @brief Initialize Timer module
  *
- *  @param config Initializing configuration
- *  @param channel Timer channel selection
+ *  @param config_ptr Initializing configuration
+ *  @param channel_enum Timer channel selection
  *  @return none
  */
-void Timer_InitTimer(Struct_Timer_Config_Typedef *config, Enum_Timer_Channels_Typedef channel);
+void Timer_InitTimer(Struct_Timer_Config_Typedef *config_ptr, Enum_Timer_Channels_Typedef channel_enum);
+
+/** @brief Suggest a prescaler value to make interrupt after a number of seconds
+ *
+ *  @param seconds_uint32 Number of seconds that makes the Timer interrupt occur
+ *  @param maxCounterValue_enum Maximum counter value of n-bit Timer
+ *  @return none
+ */
+uint16_t suggestPrescalerValue(uint32_t seconds_uint32, Enum_Timer_TimerMaxCounterValue_Typedef maxCounterValue_enum);
 
 #ifdef __cplusplus
 } // extern "C"

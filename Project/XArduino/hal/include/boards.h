@@ -94,7 +94,7 @@ typedef struct {
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern const Struct_BoardPin_Typedef pins[];
+extern const Struct_BoardPin_Typedef Pins_array[];
 
 /*******************************************************************************
  * 6. Function Prototypes

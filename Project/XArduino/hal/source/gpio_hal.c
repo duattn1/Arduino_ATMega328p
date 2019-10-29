@@ -37,27 +37,27 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-Struct_Gpio_Typedef* Gpio_GetPortBase(Enum_Gpio_Port_Typedef port){
-	Struct_Gpio_Typedef* gpiox = NULL;
+Struct_Gpio_Typedef* Gpio_GetPortBase(Enum_Gpio_Port_Typedef port_enum){
+	Struct_Gpio_Typedef* gpiox_ptr = NULL;
 	
-	switch(port){
+	switch(port_enum){
 		case Gpio_PortB:
-			gpiox = GPIOB;
+			gpiox_ptr = GPIOB;
 			break;
 		case Gpio_PortC:
-			gpiox = GPIOC;
+			gpiox_ptr = GPIOC;
 			break;
 		case Gpio_PortD:
-			gpiox = GPIOD;
+			gpiox_ptr = GPIOD;
 			break;
 	}
 	
-	return gpiox;
+	return gpiox_ptr;
 }
 
-void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd)
+void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd_enum)
 {
-	if (Disable == cmd)
+	if (Disable == cmd_enum)
 	{
 		MCUCR |= 0x01 << PUD; /* Write 1 to PUD bit to disable pull-up resistor */
 	} 
@@ -67,32 +67,32 @@ void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd)
 	}
 }
 
-void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_Gpio_DDRxDirection_Typedef direction){
-	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
-	Enum_Gpio_Pin_Typedef pin = pins[arduinoPin].pin;
+void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirection_Typedef direction_enum){
+	Struct_Gpio_Typedef *gpiox_ptr = NULL;
+	Enum_Gpio_Port_Typedef port_enum = Pins_array[arduinoPin_enum].port;
+	Enum_Gpio_Pin_Typedef pin_enum = Pins_array[arduinoPin_enum].pin;
 	
-	gpiox = Gpio_GetPortBase(port);
-	if(NULL != gpiox){
-		gpiox->DDRx &= ~(MASK_1BIT << pin);
-		gpiox->DDRx |= direction << pin;
+	gpiox_ptr = Gpio_GetPortBase(port_enum);
+	if(NULL != gpiox_ptr){
+		gpiox_ptr->DDRx_uint8 &= ~(MASK_1BIT << pin_enum);
+		gpiox_ptr->DDRx_uint8 |= direction_enum << pin_enum;
 	} else {
 		// Do nothing
 	}
 	
 }
 
-void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin, Enum_IOValue_Typedef value){
-	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
-	Enum_Gpio_Pin_Typedef pin = pins[arduinoPin].pin;
+void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_IOValue_Typedef value_enum){
+	Struct_Gpio_Typedef *gpiox_ptr = NULL;
+	Enum_Gpio_Port_Typedef port_enum = Pins_array[arduinoPin_enum].port;
+	Enum_Gpio_Pin_Typedef pin_enum = Pins_array[arduinoPin_enum].pin;
 	
-	gpiox = Gpio_GetPortBase(port);
-	if(NULL != gpiox){
-		if(High == value){
-			gpiox->PORTx |= High << pin;
+	gpiox_ptr = Gpio_GetPortBase(port_enum);
+	if(NULL != gpiox_ptr){
+		if(High == value_enum){
+			gpiox_ptr->PORTx_uint8 |= High << pin_enum;
 		} else {
-			gpiox->PORTx &= ~(High << pin);
+			gpiox_ptr->PORTx_uint8 &= ~(High << pin_enum);
 		}
 		
 	} else {

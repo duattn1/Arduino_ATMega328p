@@ -35,7 +35,7 @@ typedef struct {
 	uint8_t actual;
 	uint8_t expected;
 	uint8_t mask;
-} Uint8Data_Typedef;
+} Struct_Uint8Data_Typedef;
 
 /**
  * @struct This structure is a object for comparison with type of uint8_t pointer.
@@ -43,7 +43,7 @@ typedef struct {
 typedef struct {
 	uint8_t *actual;
 	uint8_t *expected;
-} Uint8PtrData_Typedef;
+} Struct_Uint8PtrData_Typedef;
 
 /**
  * @struct This structure is a object for comparison with type of uint32_t.
@@ -52,7 +52,7 @@ typedef struct {
 	uint32_t actual;
 	uint32_t expected;
 	uint32_t mask;
-} Uint32Data_Typedef;
+} Struct_Uint32Data_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -67,38 +67,38 @@ extern "C"{
 
 /** @brief Perform binary comparison on register values with type of uint8_t.
  *
- *  @param data The object which contains compared mask, expected and actual value
+ *  @param data_ptr The object which contains compared mask, expected and actual value
  *  @return none
  */
-void compareBitsOnUint8(Uint8Data_Typedef data);
+void compareBitsOnUint8(Struct_Uint8Data_Typedef *data_ptr);
 
 /** @brief Perform binary comparison on register values with type of uint32_t.
  *
- *  @param data The object which contains compared mask, expected and actual value
+ *  @param data_ptr The object which contains compared mask, expected and actual value
  *  @return none
  */
-void compareBitsOnUint32(Uint32Data_Typedef data);
+void compareBitsOnUint32(Struct_Uint32Data_Typedef *data_ptr);
 
 /** @brief Perform comparison with 2 uint8_t values.
  *
- *  @param data The object which contains expected and actual value
+ *  @param data_ptr The object which contains expected and actual value
  *  @return none
  */
-void compareOnUint8(Uint8Data_Typedef data);
+void compareOnUint8(Struct_Uint8Data_Typedef *data_ptr);
 
 /** @brief Perform comparison with 2 uint8_t pointers.
  *
- *  @param data The object which contains expected and actual value
+ *  @param data_ptr The object which contains expected and actual value
  *  @return none
  */
-void compareOnUint8Ptr(Uint8PtrData_Typedef data);
+void compareOnUint8Ptr(Struct_Uint8PtrData_Typedef *data_ptr);
 
 /** @brief Perform comparison with 2 uint32_t values.
  *
- *  @param data The object which contains expected and actual value
+ *  @param data_ptr The object which contains expected and actual value
  *  @return none
  */
-void compareOnUint32(Uint32Data_Typedef data);
+void compareOnUint32(Struct_Uint32Data_Typedef *data_ptr);
 
 #ifdef __cplusplus
 } // extern "C"

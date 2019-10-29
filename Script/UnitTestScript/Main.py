@@ -4,15 +4,24 @@
 from CodeGenUtils import *  # This module is for contents generating utilities
 from XlsProcessing import * # This module is for XLS file parsing
 
+
 ################################################################################
-# 2. Class definition
+# 2. Global Variables
 ################################################################################
-# global variables
+
+
+################################################################################
+# 3. Class definition
+################################################################################
+
+# Global variables
 GenSourceFile = "SourceFile"
 GenHeaderFile = "HeaderFile"
 systemRegisterSize = 8 # Arduino is a 8-bit MCU 
+
+
 ################################################################################
-# 3. Function definition
+# 4. Function definition
 ################################################################################
 def init_output_var(testcase):
     # Initialize return object
@@ -154,42 +163,44 @@ def gen_externC_ending():
 def gen_section_0_header_comment_block(fileType):
     if "SourceFile" == fileType:
         sourceFile("/** @file ut_gpio_hal.c") 
-        sourceFile(" *  @brief Function implementation for unit test of GPIO driver.")
+        sourceFile(" *  @brief Function implementation for unit test of " + testTarget + ".")
         sourceFile(" *")
         sourceFile(" *  This file is generated from scripts. This is the source file for ")
-        sourceFile(" *  the unit test definition of GPIO driver.")
+        sourceFile(" *  the unit test definition of " + testTarget + ".")
         sourceFile(" *")
         sourceFile(" *  @author 	Tran Nhat Duat (duattn)")
         sourceFile(" *  @version 	V1.0")
         sourceFile(" */")
         gen_break_line(GenSourceFile)
+        sourceFile("#ifdef UNIT_TESTING")
+        gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
         headerFile("/** @file ut_gpio_hal.h")
-        headerFile(" *  @brief Function prototypes for unit test of GPIO driver.")
+        headerFile(" *  @brief Function prototypes for unit test of " + testTarget + ".")
         headerFile(" *")
         headerFile(" *  This file is generated from scripts. This is the header file for ")
-        headerFile(" *  the unit test definition of GPIO driver.")
+        headerFile(" *  the unit test definition of " + testTarget + ".")
         headerFile(" *")
         headerFile(" *  @author 	Tran Nhat Duat (duattn)")
         headerFile(" *  @version 	V1.0")
         headerFile(" */")
         gen_break_line(GenHeaderFile)
-        headerFile("#ifndef _UT_GPIO_HAL_H")
-        headerFile("#define _UT_GPIO_HAL_H")
+        headerFile("#ifndef " + headerIncludingGuard)
+        headerFile("#define " + headerIncludingGuard)
         gen_break_line(GenHeaderFile)
     
 def gen_section_1_include_file(fileType):
     
     if "SourceFile" == fileType:
         gen_comment_block(GenSourceFile, "1. Included Files") 
-        sourceFile("#include \"ut_gpio_hal.h\"")
+        sourceFile("#include \"" + generatedHeaderFileName + "\"")
         gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
         gen_comment_block(GenHeaderFile, "1. Included Files") 
         headerFile("#include <stdlib.h>")
         headerFile("#include \"unity.h\"")
         headerFile("#include \"ut_base.h\"")
-        headerFile("#include \"gpio_hal.h\"")
+        headerFile("#include \"" + testedHeaderFile + "\"")
         gen_break_line(GenHeaderFile)
     
 def gen_section_2_object_macro():
@@ -258,16 +269,18 @@ def gen_section_6_function_definition(fileType):
         
 def gen_ending_header():
     # Generate source contents
+    sourceFile("#endif /* UNIT_TESTING */")
+    gen_break_line(GenSourceFile)
     sourceFile("/** End of File ***************************************************************/")
     gen_break_line(GenSourceFile)
     # Generate header contents
-    headerFile("#endif /* _UT_GPIO_HAL_H */")
+    headerFile("#endif /* " + headerIncludingGuard + " */")
     gen_break_line(GenHeaderFile)
     headerFile("/** End of File ***************************************************************/")
     gen_break_line(GenHeaderFile)
     
 ################################################################################
-# 4. Main processing: File generating
+# 5. Main processing: File generating
 ################################################################################
 gen_section_0_header_comment_block(GenHeaderFile)
 gen_section_0_header_comment_block(GenSourceFile)
@@ -288,6 +301,6 @@ gen_section_6_function_definition(GenSourceFile)
 gen_ending_header()
 
 
-
 # Close the generated file
 sourceFile.close()
+headerFile.close()

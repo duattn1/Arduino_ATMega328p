@@ -2,9 +2,16 @@
 # 1. Including files
 ################################################################################
 import xlrd
+from Configuration import * # This module is the global configuration
+
 
 ################################################################################
-# 2. Class definition
+# 2. Global Variables
+################################################################################
+
+
+################################################################################
+# 3. Class definition
 ################################################################################
 class testSuiteCollection:
     test_suite_name = ""
@@ -63,9 +70,8 @@ class globalVarCollection:
         self.mask = str(mask)
         
 
-
 ################################################################################
-# 3. Function definition
+# 4. Function definition
 ################################################################################
 def find_output_position(firstParamColumn):
     output_position = firstParamColumn # assume that there is no INPUT data, 
@@ -97,24 +103,15 @@ def isPointer(type):
             
     return result
     
+    
 ################################################################################
-# 4. Main processing: XLS file parsing
+# 5. Main processing: XLS file parsing
 ################################################################################
-loc = ("C:\\Users\\PC\\Documents\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
-# Open Workbook 
-testcaseSheetList = [4]
-firstParamColumn = 3
-tcFirstLine = 5
-tcNameColumn = 0
-tcInvokedFuncColumn = 1
-ioTypeRow = 4
-ioNameRow = 3
 
-
-testSuite = testSuiteCollection("ut_gpio_hal")
+testSuite = testSuiteCollection(testSuiteName)
 
 # Open XLS file
-wb = xlrd.open_workbook(loc) 
+wb = xlrd.open_workbook(testSuiteExcelFile) 
 for tcSheet in testcaseSheetList:
     # Open a sheet
     sheet = wb.sheet_by_index(tcSheet)

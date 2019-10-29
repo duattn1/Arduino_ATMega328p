@@ -123,54 +123,54 @@ extern "C"{
 
 /** @brief Initialize USART module.
  *
- *  @param config Initializing configuration
+ *  @param config_ptr Initializing configuration
  *  @return none
  */
-void Usart_InitUSART(const Struct_Usart_Config_Typedef *config);
+void Usart_InitUSART(const Struct_Usart_Config_Typedef *config_ptr);
 
 /** @brief Set the USART baudrate.
  *
- *  @param baudrate The desired baudrate
+ *  @param baudrate_enum The desired baudrate
  *  @return none
  */
-void Usart_SetBaudrate(Enum_Usart_Baudrate_Typedef baudrate);
+void Usart_SetBaudrate(Enum_Usart_Baudrate_Typedef baudrate_enum);
 
 /** @brief Enable/Disable the USART transmitter.
  *
- *  @param cmd Enable or Disable option
+ *  @param cmd_enum Enable or Disable option
  *  @return none
  */
-void Usart_CommandTransmitter(Enum_Command_Typedef cmd);
+void Usart_CommandTransmitter(Enum_Command_Typedef cmd_enum);
 	
 /** @brief Enable/Disable the USART receiver.
  *
- *  @param cmd Enable or Disable option
+ *  @param cmd_enum Enable or Disable option
  *  @return none
  */
-void Usart_CommandReceiver(Enum_Command_Typedef cmd);
+void Usart_CommandReceiver(Enum_Command_Typedef cmd_enum);
 
 /** @brief Transmit a character in polling mode.
  *
- *  @param data Character to be sent.
- *  @param stream Standard output stream (Applied in testing stdio redirect)
+ *  @param data_uint8 Character to be sent.
+ *  @param stream_ptr Standard output stream (Applied in testing stdio redirect)
  *	@note This function return a integer to become compatible with the stdout. 
  *  @return none
  */
-uint8_t Usart_SendChar(uint8_t data, FILE *stream);
+uint8_t Usart_SendChar(uint8_t data_uint8, FILE *stream_ptr);
 
 /** @brief Transmit a string in polling mode.
  *
- *  @param str String to be sent.
+ *  @param string_ptr String to be sent.
  *  @return none
  */
-void Usart_SendString(uint8_t *str);
+void Usart_SendString(uint8_t *string_ptr);
 
 /** @brief Receive a character in polling mode.
  *
- *  @param stream Standard input stream (Applied in testing stdio redirect)
+ *  @param stream_ptr Standard input stream (Applied in testing stdio redirect)
  *  @return Received character
  */
-uint8_t Usart_ReceiveChar(FILE *stream);
+uint8_t Usart_ReceiveChar(FILE *stream_ptr);
 
 #ifdef __cplusplus
 } // extern "C"

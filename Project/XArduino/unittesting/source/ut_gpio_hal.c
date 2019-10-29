@@ -31,7 +31,7 @@
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 // List of all test cases
-void (*testcaseList[85])(void) = 
+void (*TestcaseList_array[85])(void) = 
 {
 	Test_Gpio_GetPortBase_TC1,
 	Test_Gpio_GetPortBase_TC2,
@@ -126,26 +126,25 @@ void (*testcaseList[85])(void) =
 void Test_Gpio_GetPortBase_TC1(void)
 {
 	// Declare object to store returning value
-	Uint8PtrData_Typedef return_obj;
+	Struct_Uint8PtrData_Typedef return_obj;
 	uint8_t *x;
 	
 	// Initialize param_1
 	Enum_Gpio_Port_Typedef port = Gpio_PortB;
 	
 	// Call the tested function
-	x = (uint8_t*)
-	(port);
+	x = (uint8_t*)Gpio_GetPortBase(port);
 	
 	// Compare return_obj with expected value
 	return_obj.actual = x;
 	return_obj.expected = (uint8_t*)GPIOB;
-	compareOnUint8Ptr(return_obj);
+	compareOnUint8Ptr(&return_obj);
 }
 
 void Test_Gpio_GetPortBase_TC2(void)
 {
 	// Declare object to store returning value
-	Uint8PtrData_Typedef return_obj;
+	Struct_Uint8PtrData_Typedef return_obj;
 	uint8_t *x;
 	
 	// Initialize param_1
@@ -157,13 +156,13 @@ void Test_Gpio_GetPortBase_TC2(void)
 	// Compare return_obj with expected value
 	return_obj.actual = x;
 	return_obj.expected = (uint8_t*)GPIOC;
-	compareOnUint8Ptr(return_obj);
+	compareOnUint8Ptr(&return_obj);
 }
 
 void Test_Gpio_GetPortBase_TC3(void)
 {
 	// Declare object to store returning value
-	Uint8PtrData_Typedef return_obj;
+	Struct_Uint8PtrData_Typedef return_obj;
 	uint8_t *x;
 	
 	// Initialize param_1
@@ -175,13 +174,13 @@ void Test_Gpio_GetPortBase_TC3(void)
 	// Compare return_obj with expected value
 	return_obj.actual = x;
 	return_obj.expected = (uint8_t*)GPIOD;
-	compareOnUint8Ptr(return_obj);
+	compareOnUint8Ptr(&return_obj);
 }
 
 void Test_Gpio_CommandPullUpResistorSetting_TC1(void)
 {
 	// Declare object to check value of MCUCR
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	Enum_Command_Typedef cmd = Disable;
@@ -193,13 +192,13 @@ void Test_Gpio_CommandPullUpResistorSetting_TC1(void)
 	global_var_1.actual = MCUCR;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_CommandPullUpResistorSetting_TC2(void)
 {
 	// Declare object to check value of MCUCR
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	Enum_Command_Typedef cmd = Enable;
@@ -211,13 +210,13 @@ void Test_Gpio_CommandPullUpResistorSetting_TC2(void)
 	global_var_1.actual = MCUCR;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC1(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin0;
@@ -226,23 +225,23 @@ void Test_Gpio_PinMode_TC1(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC2(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin0;
@@ -251,23 +250,23 @@ void Test_Gpio_PinMode_TC2(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x01;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC3(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin1;
@@ -276,23 +275,23 @@ void Test_Gpio_PinMode_TC3(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC4(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin1;
@@ -301,23 +300,23 @@ void Test_Gpio_PinMode_TC4(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x02;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC5(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin2;
@@ -326,23 +325,23 @@ void Test_Gpio_PinMode_TC5(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC6(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin2;
@@ -351,23 +350,23 @@ void Test_Gpio_PinMode_TC6(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x04;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC7(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin3;
@@ -376,23 +375,23 @@ void Test_Gpio_PinMode_TC7(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC8(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin3;
@@ -401,23 +400,23 @@ void Test_Gpio_PinMode_TC8(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x08;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC9(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin4;
@@ -426,23 +425,23 @@ void Test_Gpio_PinMode_TC9(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC10(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin4;
@@ -451,23 +450,23 @@ void Test_Gpio_PinMode_TC10(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC11(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin5;
@@ -476,23 +475,23 @@ void Test_Gpio_PinMode_TC11(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC12(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin5;
@@ -501,23 +500,23 @@ void Test_Gpio_PinMode_TC12(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x20;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC13(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin6;
@@ -526,23 +525,23 @@ void Test_Gpio_PinMode_TC13(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x40;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC14(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin6;
@@ -551,23 +550,23 @@ void Test_Gpio_PinMode_TC14(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x40;
 	global_var_1.mask = 0x40;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC15(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin7;
@@ -576,23 +575,23 @@ void Test_Gpio_PinMode_TC15(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x80;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC16(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin7;
@@ -601,23 +600,23 @@ void Test_Gpio_PinMode_TC16(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x80;
 	global_var_1.mask = 0x80;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC17(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin8;
@@ -626,23 +625,23 @@ void Test_Gpio_PinMode_TC17(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC18(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin8;
@@ -651,23 +650,23 @@ void Test_Gpio_PinMode_TC18(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x01;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC19(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin9;
@@ -676,23 +675,23 @@ void Test_Gpio_PinMode_TC19(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC20(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin9;
@@ -701,23 +700,23 @@ void Test_Gpio_PinMode_TC20(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x02;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC21(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin10;
@@ -726,23 +725,23 @@ void Test_Gpio_PinMode_TC21(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC22(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin10;
@@ -751,23 +750,23 @@ void Test_Gpio_PinMode_TC22(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x04;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC23(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin11;
@@ -776,23 +775,23 @@ void Test_Gpio_PinMode_TC23(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC24(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin11;
@@ -801,23 +800,23 @@ void Test_Gpio_PinMode_TC24(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x08;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC25(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin12;
@@ -826,23 +825,23 @@ void Test_Gpio_PinMode_TC25(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC26(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin12;
@@ -851,23 +850,23 @@ void Test_Gpio_PinMode_TC26(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC27(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin13;
@@ -876,23 +875,23 @@ void Test_Gpio_PinMode_TC27(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC28(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin13;
@@ -901,23 +900,23 @@ void Test_Gpio_PinMode_TC28(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x20;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC29(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin14;
@@ -926,23 +925,23 @@ void Test_Gpio_PinMode_TC29(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC30(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin14;
@@ -951,23 +950,23 @@ void Test_Gpio_PinMode_TC30(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x01;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC31(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin15;
@@ -976,23 +975,23 @@ void Test_Gpio_PinMode_TC31(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC32(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin15;
@@ -1001,23 +1000,23 @@ void Test_Gpio_PinMode_TC32(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x02;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC33(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin16;
@@ -1026,23 +1025,23 @@ void Test_Gpio_PinMode_TC33(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC34(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin16;
@@ -1051,23 +1050,23 @@ void Test_Gpio_PinMode_TC34(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x04;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC35(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin17;
@@ -1076,23 +1075,23 @@ void Test_Gpio_PinMode_TC35(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC36(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin17;
@@ -1101,23 +1100,23 @@ void Test_Gpio_PinMode_TC36(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x08;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC37(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin18;
@@ -1126,23 +1125,23 @@ void Test_Gpio_PinMode_TC37(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC38(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin18;
@@ -1151,23 +1150,23 @@ void Test_Gpio_PinMode_TC38(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC39(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin19;
@@ -1176,23 +1175,23 @@ void Test_Gpio_PinMode_TC39(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_PinMode_TC40(void)
 {
 	// Declare object to check value of gpiox->DDRx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin19;
@@ -1201,23 +1200,23 @@ void Test_Gpio_PinMode_TC40(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port;
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port;
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_PinMode(arduinoPin, direction);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->DDRx;
+	global_var_1.actual = gpiox->DDRx_uint8;
 	global_var_1.expected = 0x20;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC1(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin0;
@@ -1226,23 +1225,23 @@ void Test_Gpio_DigitalWrite_TC1(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC2(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin0;
@@ -1251,23 +1250,23 @@ void Test_Gpio_DigitalWrite_TC2(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x01;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC3(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin1;
@@ -1276,23 +1275,23 @@ void Test_Gpio_DigitalWrite_TC3(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC4(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin1;
@@ -1301,23 +1300,23 @@ void Test_Gpio_DigitalWrite_TC4(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x02;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC5(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin2;
@@ -1326,23 +1325,23 @@ void Test_Gpio_DigitalWrite_TC5(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC6(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin2;
@@ -1351,23 +1350,23 @@ void Test_Gpio_DigitalWrite_TC6(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x04;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC7(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin3;
@@ -1376,23 +1375,23 @@ void Test_Gpio_DigitalWrite_TC7(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC8(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin3;
@@ -1401,23 +1400,23 @@ void Test_Gpio_DigitalWrite_TC8(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x08;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC9(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin4;
@@ -1426,23 +1425,23 @@ void Test_Gpio_DigitalWrite_TC9(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC10(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin4;
@@ -1451,23 +1450,23 @@ void Test_Gpio_DigitalWrite_TC10(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC11(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin5;
@@ -1476,23 +1475,23 @@ void Test_Gpio_DigitalWrite_TC11(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC12(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin5;
@@ -1501,23 +1500,23 @@ void Test_Gpio_DigitalWrite_TC12(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x20;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC13(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin6;
@@ -1526,23 +1525,23 @@ void Test_Gpio_DigitalWrite_TC13(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x40;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC14(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin6;
@@ -1551,23 +1550,23 @@ void Test_Gpio_DigitalWrite_TC14(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x40;
 	global_var_1.mask = 0x40;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC15(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin7;
@@ -1576,23 +1575,23 @@ void Test_Gpio_DigitalWrite_TC15(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x80;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC16(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin7;
@@ -1601,23 +1600,23 @@ void Test_Gpio_DigitalWrite_TC16(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x80;
 	global_var_1.mask = 0x80;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC17(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin8;
@@ -1626,23 +1625,23 @@ void Test_Gpio_DigitalWrite_TC17(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC18(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin8;
@@ -1651,23 +1650,23 @@ void Test_Gpio_DigitalWrite_TC18(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x01;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC19(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin9;
@@ -1676,23 +1675,23 @@ void Test_Gpio_DigitalWrite_TC19(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC20(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin9;
@@ -1701,23 +1700,23 @@ void Test_Gpio_DigitalWrite_TC20(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x02;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC21(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin10;
@@ -1726,23 +1725,23 @@ void Test_Gpio_DigitalWrite_TC21(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC22(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin10;
@@ -1751,23 +1750,23 @@ void Test_Gpio_DigitalWrite_TC22(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x04;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC23(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin11;
@@ -1776,23 +1775,23 @@ void Test_Gpio_DigitalWrite_TC23(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC24(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin11;
@@ -1801,23 +1800,23 @@ void Test_Gpio_DigitalWrite_TC24(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x08;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC25(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin12;
@@ -1826,23 +1825,23 @@ void Test_Gpio_DigitalWrite_TC25(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC26(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin12;
@@ -1851,23 +1850,23 @@ void Test_Gpio_DigitalWrite_TC26(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC27(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin13;
@@ -1876,23 +1875,23 @@ void Test_Gpio_DigitalWrite_TC27(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC28(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin13;
@@ -1901,23 +1900,23 @@ void Test_Gpio_DigitalWrite_TC28(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x20;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC29(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin14;
@@ -1926,23 +1925,23 @@ void Test_Gpio_DigitalWrite_TC29(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC30(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin14;
@@ -1951,23 +1950,23 @@ void Test_Gpio_DigitalWrite_TC30(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x01;
 	global_var_1.mask = 0x01;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC31(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin15;
@@ -1976,23 +1975,23 @@ void Test_Gpio_DigitalWrite_TC31(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC32(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin15;
@@ -2001,23 +2000,23 @@ void Test_Gpio_DigitalWrite_TC32(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x02;
 	global_var_1.mask = 0x02;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC33(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin16;
@@ -2026,23 +2025,23 @@ void Test_Gpio_DigitalWrite_TC33(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC34(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin16;
@@ -2051,23 +2050,23 @@ void Test_Gpio_DigitalWrite_TC34(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x04;
 	global_var_1.mask = 0x04;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC35(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin17;
@@ -2076,23 +2075,23 @@ void Test_Gpio_DigitalWrite_TC35(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC36(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin17;
@@ -2101,23 +2100,23 @@ void Test_Gpio_DigitalWrite_TC36(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x08;
 	global_var_1.mask = 0x08;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC37(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin18;
@@ -2126,23 +2125,23 @@ void Test_Gpio_DigitalWrite_TC37(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC38(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin18;
@@ -2151,23 +2150,23 @@ void Test_Gpio_DigitalWrite_TC38(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x10;
 	global_var_1.mask = 0x10;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC39(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin19;
@@ -2176,23 +2175,23 @@ void Test_Gpio_DigitalWrite_TC39(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x00;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 void Test_Gpio_DigitalWrite_TC40(void)
 {
 	// Declare object to check value of gpiox->PORTx
-	Uint8Data_Typedef global_var_1;
+	Struct_Uint8Data_Typedef global_var_1;
 	
 	// Initialize param_1
 	uint8_t arduinoPin = Pin19;
@@ -2201,17 +2200,17 @@ void Test_Gpio_DigitalWrite_TC40(void)
 	
 	// Test case precondition configuration
 	Struct_Gpio_Typedef *gpiox = NULL;
-	Enum_Gpio_Port_Typedef port = pins[arduinoPin].port; 
+	Enum_Gpio_Port_Typedef port = Pins_array[arduinoPin].port; 
 	gpiox = Gpio_GetPortBase(port);
 	
 	// Call the tested function
 	Gpio_DigitalWrite(arduinoPin, value);
 	
 	// Compare global_var_1 with expected value
-	global_var_1.actual = gpiox->PORTx;
+	global_var_1.actual = gpiox->PORTx_uint8;
 	global_var_1.expected = 0x20;
 	global_var_1.mask = 0x20;
-	compareBitsOnUint8(global_var_1);
+	compareBitsOnUint8(&global_var_1);
 }
 
 #endif /* UNIT_TESTING */

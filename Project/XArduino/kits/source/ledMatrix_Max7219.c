@@ -32,8 +32,7 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-#ifdef MAX7219_SAMPLE
-const uint8_t characterLib[43][8]={
+const uint8_t CharacterLib_array[43][8]={
 {0x3C,0x42,0x42,0x42,0x42,0x42,0x42,0x3C},//0
 {0x10,0x18,0x14,0x10,0x10,0x10,0x10,0x10},//1
 {0x7E,0x02,0x02,0x7E,0x40,0x40,0x40,0x7E},//2
@@ -78,32 +77,30 @@ const uint8_t characterLib[43][8]={
 {0x41,0x22,0x14,0x08,0x08,0x08,0x08,0x08},//Y
 {0x00,0x7F,0x02,0x04,0x08,0x10,0x20,0x7F},//Z
 };
-#endif
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void write_Max7219_byte(uint8_t data) {
-	uint8_t i;
+void write_Max7219_byte(uint8_t data_uint8) {
 	Gpio_DigitalWrite(CS_PIN, Low);
-	for(i = 8; i >= 1; i--) {
+	for(uint8_t i = 8; i >= 1; i--) {
 		Gpio_DigitalWrite(CLK_PIN, Low);
 
-		if(data & 0x80) { // TODO:Extracting a bit data
+		if(data_uint8 & 0x80) { // TODO:Extracting a bit data
 			Gpio_DigitalWrite(MOSI_PIN, High);
 		} else {
 			Gpio_DigitalWrite(MOSI_PIN, Low);
 		}
 
-	data = data << 1;
+	data_uint8 = data_uint8 << 1;
 	Gpio_DigitalWrite(CLK_PIN, High);
 	}
 }
 
-void write_Max7219(uint8_t address, uint8_t data) {
+void write_Max7219(uint8_t address_uint8, uint8_t data_uint8) {
 	Gpio_DigitalWrite(CS_PIN, Low);
-	write_Max7219_byte(address);
-	write_Max7219_byte(data); 
+	write_Max7219_byte(address_uint8);
+	write_Max7219_byte(data_uint8); 
 	Gpio_DigitalWrite(CS_PIN, High);
 }
 

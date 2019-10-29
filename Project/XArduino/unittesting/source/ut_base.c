@@ -33,29 +33,29 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void compareBitsOnUint8(Uint8Data_Typedef data){
+void compareBitsOnUint8(Struct_Uint8Data_Typedef *data_ptr){
 	// Run 1 test case as basic test
-	TEST_ASSERT_BITS(data.mask, data.expected, data.actual);	
+	TEST_ASSERT_BITS(data_ptr->mask, data_ptr->expected, data_ptr->actual);	
 }
 
-void compareBitsOnUint32(Uint32Data_Typedef data){
+void compareBitsOnUint32(Struct_Uint32Data_Typedef *data_ptr){
 	// Run 1 test case as basic test
-	TEST_ASSERT_BITS(data.mask, data.expected, data.actual);	
+	TEST_ASSERT_BITS(data_ptr->mask, data_ptr->expected, data_ptr->actual);	
 }
 
-void compareOnUint8(Uint8Data_Typedef data){
+void compareOnUint8(Struct_Uint8Data_Typedef *data_ptr){
 	// Run 1 test case as basic test
-	TEST_ASSERT_EQUAL(data.expected, data.actual);	
+	TEST_ASSERT_EQUAL(data_ptr->expected, data_ptr->actual);	
 }
 
-void compareOnUint8Ptr(Uint8PtrData_Typedef data){
+void compareOnUint8Ptr(Struct_Uint8PtrData_Typedef *data_ptr){
 	// Run 1 test case as basic test
-	TEST_ASSERT_EQUAL(*(data.expected), *(data.actual));	
+	TEST_ASSERT_EQUAL_PTR(data_ptr->expected, data_ptr->actual);	
 }
 
-void compareOnUint32(Uint32Data_Typedef data){
+void compareOnUint32(Struct_Uint32Data_Typedef *data_ptr){
 	// Run 1 test case as basic test
-	TEST_ASSERT_EQUAL(data.expected, data.actual);	
+	TEST_ASSERT_EQUAL(data_ptr->expected, data_ptr->actual);	
 }
 
 
