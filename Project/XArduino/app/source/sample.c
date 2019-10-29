@@ -74,6 +74,13 @@ void setup(void){
 	Spi_MasterTransmit('A');
 #endif
 
+Struct_Timer_Config_Typedef config;
+config.compareOutputMode = Timer_TCCR0A_CompareOutputMode0;
+config.waveformGenerationMode = Timer_TCCR0A_WaveformGenerationMode2;
+config.clockPrescaler = Timer_TCCR0B_ClkIoDiv1;
+config.compareOutputValue = 100;
+Timer_InitTimer(&config, Timer_ChannelA);
+
 #ifdef MAX7219_KIT_SAMPLE	
 	init_Max7219();
 	uint8_t i;
@@ -81,6 +88,8 @@ void setup(void){
 		write_Max7219(i + 1, characterLib['A' - '0'][i]);
 	}
 #endif	
+
+
 
 }
 

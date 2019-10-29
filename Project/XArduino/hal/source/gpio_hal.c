@@ -59,11 +59,11 @@ void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd)
 {
 	if (Disable == cmd)
 	{
-		MCUCR |= 0x01 << 4;
+		MCUCR |= 0x01 << PUD; /* Write 1 to PUD bit to disable pull-up resistor */
 	} 
 	else
 	{
-		MCUCR &= ~(0x01 << 4);
+		MCUCR &= ~(MASK_1BIT << PUD);
 	}
 }
 

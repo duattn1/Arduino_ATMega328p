@@ -68,10 +68,7 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
-      <Value>UNIT_TESTING</Value>
-      <Value>USE_USART_HAL</Value>
-      <Value>USART_HAL_SAMPLE</Value>
-      <Value>USE_GPIO_HAL</Value>
+      <Value>USE_TIMER_HAL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -118,6 +115,9 @@
     <Compile Include="hal\include\spi_hal.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="hal\include\timer_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="hal\include\usart_hal.h">
       <SubType>compile</SubType>
     </Compile>
@@ -131,6 +131,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\source\spi_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\source\timer_hal.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\source\usart_hal.c">

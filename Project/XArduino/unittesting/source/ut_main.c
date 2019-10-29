@@ -7,12 +7,11 @@
  *  @version V1.0
  */
 
+#ifdef UNIT_TESTING	
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-
-#ifdef UNIT_TESTING	
-
 #include "ut_main.h"
 #include <stdio.h>
 #include <math.h>

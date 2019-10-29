@@ -17,6 +17,7 @@
 #include "gpio_hal.h"
 #include "usart_hal.h"
 #include "spi_hal.h"
+#include "timer_hal.h"
 
 /* Kit interfaces including */	
 #include "ledMatrix_Max7219.h"

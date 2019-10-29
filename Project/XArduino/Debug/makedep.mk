@@ -14,6 +14,8 @@ hal\source\misc.c
 
 hal\source\spi_hal.c
 
+hal\source\timer_hal.c
+
 hal\source\usart_hal.c
 
 kits\source\ledMatrix_Max7219.c

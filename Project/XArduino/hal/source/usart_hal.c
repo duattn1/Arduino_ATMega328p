@@ -41,7 +41,7 @@ void Usart_InitUSART(const Struct_Usart_Config_Typedef *config){
 	/* Declare 2 local variables since data frame size configuring bits 
 	   are located in 2 registers.*/
 	uint8_t UCSZn2 = (config->dataFrame) & 0x04;
-	uint8_t UCSZn1To0 = (config->dataFrame) & 0x03;;
+	uint8_t UCSZn1To0 = (config->dataFrame) & 0x03;
 	
 	// Select sync or async USART
 	UCSR0C &= ~(MASK_2BIT << UMSEL00);
@@ -78,17 +78,17 @@ void Usart_SetBaudrate(Enum_Usart_Baudrate_Typedef baudrate){
 
 void Usart_CommandTransmitter(Enum_Command_Typedef cmd){
 	if(Enable == cmd){
-		UCSR0B |= 1 << TXEN0;
+		UCSR0B |= Enable << TXEN0;
 	} else {
-		UCSR0B &= ~(1 << TXEN0);
+		UCSR0B &= ~(MASK_1BIT << TXEN0);
 	}
 }
 
 void Usart_CommandReceiver(Enum_Command_Typedef cmd){
 	if(Enable == cmd){
-		UCSR0B |= 1 << RXEN0;
+		UCSR0B |= Enable << RXEN0;
 	} else {
-		UCSR0B &= ~(1 << RXEN0);
+		UCSR0B &= ~(MASK_1BIT << RXEN0);
 	}
 }
 
@@ -112,7 +112,7 @@ void Usart_SendString(uint8_t *str){
 
 uint8_t Usart_ReceiveChar(FILE *stream){
 	/* Wait for data to be received */
-	while (!(UCSR0A & (1<<RXC0)));
+	while (!(UCSR0A & (1 << RXC0)));
 	/* Get and return received data from buffer */
 	return (uint8_t)UDR0;
 }
