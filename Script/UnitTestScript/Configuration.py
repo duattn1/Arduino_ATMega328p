@@ -9,7 +9,7 @@
 
 # Test case Excel file global names
 testSuiteExcelFile = ("C:\\Users\\PC\\Documents\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
-testcaseSheetList = [4]
+testcaseSheetList = [1, 2, 3, 4]
 firstParamColumn = 3
 tcFirstLine = 5
 tcNameColumn = 0
@@ -27,7 +27,7 @@ testSuiteName = "ut_" + testedFile
 testTarget = "GPIO driver"
 headerIncludingGuard = "_UT_GPIO_HAL_H"
 
-
+systemRegisterSize = 8 # Arduino is a 8-bit MCU 
 ################################################################################
 # 3. Class definition
 ################################################################################

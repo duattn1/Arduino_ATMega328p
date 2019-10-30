@@ -1,8 +1,8 @@
 ################################################################################
 # 1. Including files
 ################################################################################
-from CodeGen import *
-from Configuration import * # This module is the global configuration
+import CodeGen as CodeGen
+import Configuration as Config  # This module is the global configuration
 import shutil               # This module is for file copying
 
 
@@ -58,22 +58,23 @@ def gen_var_assignment(fileType, var_name, assign_operator, value):
     if "HeaderFile" == fileType:
         headerFile(content)
 
-def gen_function_call_no_arg(fileType, func_name, noOfReturnObj):
-    if 0 == noOfReturnObj:
-        content = func_name + "();"
-    else:
-        content = "return_obj = " + func_name + "();"
-        
+def gen_function_call_no_arg(fileType, func_name, result_var, type_cast):
+    content = ""
+    if "" != result_var:
+        content += result_var + " = "
+
+    content += type_cast + func_name + "();"        
     if "SourceFile" == fileType:
         sourceFile(content)
     if "HeaderFile" == fileType:
         headerFile(content)
     
-def gen_function_call_with_arg(fileType, func_name, params, noOfReturnObj): 
-    if 0 == noOfReturnObj:
-        content = func_name + "("
-    else:
-        content = "return_obj = " + func_name + "("
+def gen_function_call_with_arg(fileType, func_name, result_var, type_cast, params): 
+    content = ""
+    if "" != result_var:
+        content += result_var + " = "
+
+    content += type_cast + func_name + "("
         
     first = True
     for param in params:
@@ -98,5 +99,5 @@ def gen_break_line(fileType):
 ################################################################################
 # 5. Main processing: Create the generated file
 ################################################################################ 
-headerFile = CppFile(generatedHeaderFileName)
-sourceFile = CppFile(generatedSourceFileName)
+headerFile = CodeGen.CppFile(Config.generatedHeaderFileName)
+sourceFile = CodeGen.CppFile(Config.generatedSourceFileName)

@@ -2,7 +2,7 @@
 # 1. Including files
 ################################################################################
 import xlrd
-from Configuration import * # This module is the global configuration
+import Configuration as Config # This module is the global configuration
 
 
 ################################################################################
@@ -108,29 +108,29 @@ def isPointer(type):
 # 5. Main processing: XLS file parsing
 ################################################################################
 
-testSuite = testSuiteCollection(testSuiteName)
+testSuite = testSuiteCollection(Config.testSuiteName)
 
 # Open XLS file
-wb = xlrd.open_workbook(testSuiteExcelFile) 
-for tcSheet in testcaseSheetList:
+wb = xlrd.open_workbook(Config.testSuiteExcelFile) 
+for tcSheet in Config.testcaseSheetList:
     # Open a sheet
     sheet = wb.sheet_by_index(tcSheet)
     
     noRows = sheet.nrows
     noCols = sheet.ncols
     func_name = sheet.cell_value(0, 1)
-    output_position = find_output_position(firstParamColumn)
+    output_position = find_output_position(Config.firstParamColumn)
     
-    for i in range(tcFirstLine, noRows):
-        testcase_name = sheet.cell_value(i, tcNameColumn)
-        testcase_invoked_func = sheet.cell_value(i, tcInvokedFuncColumn)
+    for i in range(Config.tcFirstLine, noRows):
+        testcase_name = sheet.cell_value(i, Config.tcNameColumn)
+        testcase_invoked_func = sheet.cell_value(i, Config.tcInvokedFuncColumn)
         
         # Count all parameters
-        noParams = (output_position - firstParamColumn) // 2 # division with result of integer number
+        noParams = (output_position - Config.firstParamColumn) // 2 # division with result of integer number
         
         # Count all return object
         noReturnObjs = 0
-        firstOutputObject = sheet.cell_value(tcFirstLine - 2, output_position)
+        firstOutputObject = sheet.cell_value(Config.tcFirstLine - 2, output_position)
         if "Return" == firstOutputObject:
             noReturnObjs = 1
             
@@ -146,10 +146,10 @@ for tcSheet in testcaseSheetList:
         
         # Collect all parameters
         index = 0
-        for j in range(firstParamColumn, output_position, 2): 
+        for j in range(Config.firstParamColumn, output_position, 2): 
             gen_name = "param_" + str(index + 1)
-            type = sheet.cell_value(ioTypeRow, j) # unchanged
-            param_name = sheet.cell_value(ioNameRow, j) # unchanged
+            type = sheet.cell_value(Config.ioTypeRow, j) # unchanged
+            param_name = sheet.cell_value(Config.ioNameRow, j) # unchanged
             init_value = sheet.cell_value(i, j)        
             isStructType = isStructure(type)            
             testcase.params[index] = \
@@ -160,19 +160,19 @@ for tcSheet in testcaseSheetList:
         # Collect all global variables
         index = 0
         for j in range(output_position, noCols - 1, 2): 
-            currentOutputObject = sheet.cell_value(ioNameRow, j)
+            currentOutputObject = sheet.cell_value(Config.ioNameRow, j)
             if "Return" == currentOutputObject:
                 gen_name = "return_obj"
-                type = sheet.cell_value(ioTypeRow, j) # unchanged                
+                type = sheet.cell_value(Config.ioTypeRow, j) # unchanged                
                 expected_value = sheet.cell_value(i, j)
                 isPtr = isPointer(type)
                 testcase.return_objs[0] = \
                 returnObjCollection(gen_name, type, expected_value, isPtr)
             else:
                 gen_name = "global_var_" + str(index + 1)
-                type = sheet.cell_value(ioTypeRow, j) # unchanged
+                type = sheet.cell_value(Config.ioTypeRow, j) # unchanged
                 expected = sheet.cell_value(i, j)
-                actual_mem = sheet.cell_value(ioNameRow, j) # unchanged
+                actual_mem = sheet.cell_value(Config.ioNameRow, j) # unchanged
                 mask = sheet.cell_value(i, j + 1)
                 testcase.global_vars[index] = \
                 globalVarCollection(gen_name, type, expected, actual_mem, mask)
