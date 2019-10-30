@@ -12,6 +12,7 @@
  ******************************************************************************/
 #include "sample.h"
 
+
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
@@ -31,6 +32,7 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
+extern volatile uint8_t counter;
 extern const uint8_t CharacterLib_array[43][8];
 extern const Struct_Timer_PrescalerValue_Typedef PrescalerValue_array[5];
 
@@ -54,7 +56,7 @@ Struct_Spi_Config_Typedef SpiSampleConfig[1] =
  ******************************************************************************/
 void setup(void){
 #ifdef GPIO_HAL_SAMPLE	
-	Gpio_PinMode(ARDUINO_NANO_USER_LED, GPIO_DDRx_Output);
+	Gpio_PinMode(ARDUINO_NANO_USER_LED, Gpio_DDRx_Output);
 	Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
 #endif
 
@@ -74,21 +76,23 @@ void setup(void){
 #endif
 
 #ifdef TIMER_HAL_SAMPLE	
-	Enum_Timer_TCCR0B_ClockSelect_Typedef prescalerName_enum = Timer_TCCR0B_NoClockSource;
+	cli();
+	Enum_Timer_TCCRnB_ClockSelect_Typedef prescalerName_enum = Timer_TCCRnB_NoClockSource;
 	uint16_t clockPrescaler_uint16 = suggestPrescalerValue(1, Timer_16bitTimerMaxCounterValue);
 	
 	for(uint8_t i = 0; i < sizeof(PrescalerValue_array)/sizeof(PrescalerValue_array[0]); i++ ){
-		if(clockPrescaler_uint16 == PrescalerValue_array[i].prescalerValue){
-			prescalerName_enum = PrescalerValue_array[i].prescalerName;
+		if(clockPrescaler_uint16 == PrescalerValue_array[i].prescalerValue_uint16){
+			prescalerName_enum = PrescalerValue_array[i].prescalerName_enum;
 		}
 	}
 	
 	Struct_Timer_Config_Typedef config_struct;
-	config_struct.compareOutputMode = Timer_TCCR0A_CompareOutputMode0;
-	config_struct.waveformGenerationMode = Timer_TCCR0A_WaveformGenerationMode2;
-	config_struct.clockPrescaler = prescalerName_enum;
-	config_struct.compareOutputValue = 100;
-	Timer_InitTimer(&config_struct, Timer_ChannelA);
+	config_struct.compareOutputMode_enum = Timer_TCCRnA_CompareOutputMode0;
+	config_struct.waveformGenerationMode_enum = Timer_TCCRnA_WaveformGenerationMode2;
+	config_struct.clockPrescaler_enum = prescalerName_enum;
+	config_struct.compareOutputValue_uint8 = 100;
+	Timer_InitTimer1(&config_struct, Timer_ChannelA);
+	sei();
 #endif
 
 #ifdef MAX7219_KIT_SAMPLE	
@@ -104,7 +108,11 @@ void setup(void){
 
 void loop(void){	
 	while(1){
-		
+		if(1 == (counter%2)){
+			Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
+		} else {
+			Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, Low);
+		}
 	}	
 }
 

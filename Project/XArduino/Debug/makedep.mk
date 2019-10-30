@@ -10,6 +10,8 @@ hal\source\boards.c
 
 hal\source\gpio_hal.c
 
+hal\source\interrupt.c
+
 hal\source\misc.c
 
 hal\source\spi_hal.c

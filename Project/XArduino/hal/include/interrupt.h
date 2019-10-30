@@ -1,27 +1,24 @@
-/** @file sample.h
- *  @brief Function prototypes for Arduino samples.
+/** @file interrupt.h
+ *  @brief Function prototypes for interrupt handlers.
  * 
- *  This is the header file for the definition of Arduino samples.
+ *  This is the header file for the definition of interrupt handlers.
  *  
  * 	@author Tran Nhat Duat (duattn)
  *	@version 	V1.0
  */
 
-#ifndef SAMPLE_H_
-#define SAMPLE_H_
+#ifndef INTERRUPT_H_
+#define INTERRUPT_H_
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-/* HAL including */
-#include "interrupt.h"
-#include "gpio_hal.h"
-#include "usart_hal.h"
-#include "spi_hal.h"
-#include "timer_hal.h"
-
-/* Kit interfaces including */	
-#include "ledMatrix_Max7219.h"
+#include <avr/io.h>
+#include <stdint.h>
+#include <stddef.h>
+#include <avr/interrupt.h>
+#include "boards.h"
+#include "misc.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -31,7 +28,6 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-
 
 	
 /*******************************************************************************
@@ -51,24 +47,11 @@
 extern "C"{
 #endif
 
-/** @brief Set up the Arduino.
- *
- *  @param none.
- *  @return none.
- */
-void setup(void);
-
-/** @brief Perform the infinite loop.
- *
- *  @param none.
- *  @return none.
- */
-void loop(void);
 
 #ifdef __cplusplus
 } // extern "C"
 #endif
 
-#endif /* SAMPLE_H_ */
+#endif /* INTERRUPT_H_ */
 
 /** End of File ***************************************************************/

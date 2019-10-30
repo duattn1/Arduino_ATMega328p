@@ -1,7 +1,7 @@
 /** @file boards.h
  *  @brief Pin mapping of Arduino boards.
  * 
- *  This is the header file for in mapping of Arduino boards.
+ *  This is the header file for pin mapping of Arduino boards.
  
  *  
  * 	@author Tran Nhat Duat (duattn)

@@ -34,46 +34,90 @@
  ******************************************************************************/
 const Struct_Timer_PrescalerValue_Typedef PrescalerValue_array[5] = 
 {
-	{Timer_TCCR0B_ClkIoDiv1, 1},
-	{Timer_TCCR0B_ClkIoDiv8, 8},
-	{Timer_TCCR0B_ClkIoDiv64, 64},
-	{Timer_TCCR0B_ClkIoDiv256, 256},
-	{Timer_TCCR0B_ClkIoDiv1024, 1024}
+	{Timer_TCCRnB_ClkIoDiv1, 1},
+	{Timer_TCCRnB_ClkIoDiv8, 8},
+	{Timer_TCCRnB_ClkIoDiv64, 64},
+	{Timer_TCCRnB_ClkIoDiv256, 256},
+	{Timer_TCCRnB_ClkIoDiv1024, 1024}
 };
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Timer_InitTimer(Struct_Timer_Config_Typedef *config_ptr, Enum_Timer_Channels_Typedef channel_enum){
-	uint8_t COM0x0_Position_uint8;
+void Timer_InitTimer0(Struct_Timer_Config_Typedef *config_ptr, Enum_Timer_Channels_Typedef channel_enum){
+	// TODO; show error when (compareOutputValue_uint8 > 255) AND (waveformGenerationMode_enum > mode7)
+	uint8_t COM0x0_Position_uint8, OCIE0x_Position_uint8;
 	uint8_t *OCR0x_ptr;
-	uint8_t WGMn2_uint8 = (config_ptr->waveformGenerationMode) & 0x04;
-	uint8_t WGMn1To0_uint8 = (config_ptr->waveformGenerationMode) & 0x03;
+	uint8_t WGM0_Bit2_uint8 = (config_ptr->waveformGenerationMode_enum) & 0x04;
+	uint8_t WGM0_Bit1To0_uint8 = (config_ptr->waveformGenerationMode_enum) & 0x03;
 	
 	if (Timer_ChannelA == channel_enum)
 	{
 		COM0x0_Position_uint8 = COM0A0;
+		OCIE0x_Position_uint8 = OCIE0A;
 		OCR0x_ptr = (uint8_t*)&OCR0A;
 	} 
 	else if (Timer_ChannelB == channel_enum)
 	{
 		COM0x0_Position_uint8 = COM0B0;
+		OCIE0x_Position_uint8 = OCIE0B;
 		OCR0x_ptr = (uint8_t*)&OCR0B;
 	}
 	
 	// Select compare output mode for channel
 	TCCR0A &= ~(MASK_2BIT << COM0x0_Position_uint8);
-	TCCR0A |= config_ptr->compareOutputMode << COM0x0_Position_uint8;
+	TCCR0A |= config_ptr->compareOutputMode_enum << COM0x0_Position_uint8;
 	// Select waveform generation mode for channel
 	TCCR0B &= ~(MASK_1BIT << WGM02);
 	TCCR0A &= ~(MASK_2BIT << WGM00);
-	TCCR0B |= WGMn2_uint8 << WGM02;
-	TCCR0A |= WGMn1To0_uint8 << WGM00;	
+	TCCR0B |= WGM0_Bit2_uint8 << WGM02;
+	TCCR0A |= WGM0_Bit1To0_uint8 << WGM00;	
 	// Select Timer clock prescaler
 	TCCR0B &= ~(MASK_3BIT << CS00);
-	TCCR0B |= config_ptr->clockPrescaler << CS00;	
+	TCCR0B |= config_ptr->clockPrescaler_enum << CS00;	
 	// Set compared output value
-	*OCR0x_ptr = config_ptr->compareOutputValue;	
+	*OCR0x_ptr = config_ptr->compareOutputValue_uint8;
+	// Enable Output compare match interrupt
+	TIMSK1 |= 1 << OCIE0x_Position_uint8;	
+}
+
+void Timer_InitTimer1(Struct_Timer_Config_Typedef *config_ptr, Enum_Timer_Channels_Typedef channel_enum){
+	uint8_t COM1x0_Position_uint8, OCIE1x_Position_uint8;
+	uint8_t *OCR1xL_ptr, *OCR1xH_ptr;
+	uint8_t WGM1_Bit3To2_uint8 = (config_ptr->waveformGenerationMode_enum) & 0x0C;
+	uint8_t WGM1_Bit1To0_uint8 = (config_ptr->waveformGenerationMode_enum) & 0x03;
+	
+	if (Timer_ChannelA == channel_enum)
+	{
+		COM1x0_Position_uint8 = COM1A0;
+		OCIE1x_Position_uint8 = OCIE1A;
+		OCR1xL_ptr = (uint8_t*)&OCR1AL;
+		OCR1xH_ptr = (uint8_t*)&OCR1AH;
+	} 
+	else if (Timer_ChannelB == channel_enum)
+	{
+		COM1x0_Position_uint8 = COM1B0;
+		OCIE1x_Position_uint8 = OCIE1B;
+		OCR1xL_ptr = (uint8_t*)&OCR1BL;
+		OCR1xH_ptr = (uint8_t*)&OCR1BH;
+	}
+	
+	// Select compare output mode for channel
+	TCCR1A &= ~(MASK_2BIT << COM1x0_Position_uint8);
+	TCCR1A |= config_ptr->compareOutputMode_enum << COM1x0_Position_uint8;
+	// Select waveform generation mode for channel
+	TCCR1B &= ~(MASK_2BIT << WGM12);
+	TCCR1A &= ~(MASK_2BIT << WGM10);
+	TCCR1B |= WGM1_Bit3To2_uint8 << WGM12;
+	TCCR1A |= WGM1_Bit1To0_uint8 << WGM10;	
+	// Select Timer clock prescaler
+	TCCR1B &= ~(MASK_3BIT << CS10);
+	TCCR1B |= config_ptr->clockPrescaler_enum << CS10;	
+	// Set compared output value
+	*OCR1xL_ptr = (config_ptr->compareOutputValue_uint8) & MASK_8BIT;	
+	*OCR1xH_ptr = (config_ptr->compareOutputValue_uint8) & (MASK_8BIT << 8);
+	// Enable Output compare match interrupt
+	TIMSK1 |= 1 << OCIE1x_Position_uint8;
 }
 
 uint16_t suggestPrescalerValue(uint32_t seconds_uint32, Enum_Timer_TimerMaxCounterValue_Typedef maxCounterValue_enum){

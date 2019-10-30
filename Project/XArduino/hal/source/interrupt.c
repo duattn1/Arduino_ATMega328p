@@ -1,27 +1,18 @@
-/** @file sample.h
- *  @brief Function prototypes for Arduino samples.
- * 
- *  This is the header file for the definition of Arduino samples.
- *  
- * 	@author Tran Nhat Duat (duattn)
- *	@version 	V1.0
+/** @file gpio_hal.c
+ *  @brief Function implementation for GPIO driver.
+ *
+ *  This is the source file for the definition of GPIO driver.
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
  */
 
-#ifndef SAMPLE_H_
-#define SAMPLE_H_
+#ifdef USE_INTERRUPT
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-/* HAL including */
 #include "interrupt.h"
-#include "gpio_hal.h"
-#include "usart_hal.h"
-#include "spi_hal.h"
-#include "timer_hal.h"
-
-/* Kit interfaces including */	
-#include "ledMatrix_Max7219.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -33,7 +24,6 @@
  ******************************************************************************/
 
 
-	
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
@@ -42,33 +32,16 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-
+volatile uint8_t counter = 0;
 
 /*******************************************************************************
- * 6. Function Prototypes
+ * 6. Function Definitions
  ******************************************************************************/
-#ifdef __cplusplus
-extern "C"{
-#endif
+ISR (TIMER1_COMPA_vect)
+{	
+    counter++;	
+}
 
-/** @brief Set up the Arduino.
- *
- *  @param none.
- *  @return none.
- */
-void setup(void);
-
-/** @brief Perform the infinite loop.
- *
- *  @param none.
- *  @return none.
- */
-void loop(void);
-
-#ifdef __cplusplus
-} // extern "C"
-#endif
-
-#endif /* SAMPLE_H_ */
+#endif /* USE_INTERRUPT */
 
 /** End of File ***************************************************************/
