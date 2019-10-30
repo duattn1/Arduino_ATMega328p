@@ -8,7 +8,7 @@
  *  @version 	V1.0
  */
 
-#ifdef UNIT_TESTING
+#if defined (UNIT_TESTING) && defined (USE_GPIO_HAL)
 
 /*******************************************************************************
  * 1. Included Files
@@ -2213,7 +2213,7 @@ void Test_Gpio_DigitalWrite_TC40(void)
 	compareBitsOnUint8(&global_var_1);
 }
 
-#endif /* UNIT_TESTING */
+#endif /* defined (UNIT_TESTING) && defined (USE_GPIO_HAL) */
 
 /** End of File ***************************************************************/
 

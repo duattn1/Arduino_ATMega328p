@@ -3,7 +3,6 @@
 ################################################################################
 import CodeGen as CodeGen
 import Configuration as Config  # This module is the global configuration
-import shutil               # This module is for file copying
 
 
 ################################################################################
@@ -19,57 +18,57 @@ import shutil               # This module is for file copying
 ################################################################################
 # 4. Function definition
 ################################################################################
-def gen_comment_line(fileType, comment):
+def gen_comment_line(file_type, comment):
     content = "/* " + comment + " */"
-    if "SourceFile" == fileType:
-        sourceFile(content)
-    if "HeaderFile" == fileType:
-        headerFile(content)
+    if "SourceFile" == file_type:
+        source_file(content)
+    if "HeaderFile" == file_type:
+        header_file(content)
 
-def gen_comment_block(fileType, section_name):
+def gen_comment_block(file_type, section_name):
     content = " * " + section_name
-    if "SourceFile" == fileType:
-        sourceFile("/*******************************************************************************")
-        sourceFile(content)
-        sourceFile(" ******************************************************************************/")
-    if "HeaderFile" == fileType:
-        headerFile("/*******************************************************************************")
-        headerFile(content)
-        headerFile(" ******************************************************************************/")
+    if "SourceFile" == file_type:
+        source_file("/*******************************************************************************")
+        source_file(content)
+        source_file(" ******************************************************************************/")
+    if "HeaderFile" == file_type:
+        header_file("/*******************************************************************************")
+        header_file(content)
+        header_file(" ******************************************************************************/")
 
-def gen_var_declaration(fileType, var_type, var_name):
+def gen_var_declaration(file_type, var_type, var_name):
     content = var_type + " " + var_name + ";" 
-    if "SourceFile" == fileType:
-        sourceFile(content)
-    if "HeaderFile" == fileType:
-        headerFile(content)
+    if "SourceFile" == file_type:
+        source_file(content)
+    if "HeaderFile" == file_type:
+        header_file(content)
 
-def gen_var_definition(fileType, var_type, var_name, init_value):
+def gen_var_definition(file_type, var_type, var_name, init_value):
     content = var_type + " " + var_name + " = " + init_value + ";" 
-    if "SourceFile" == fileType:
-        sourceFile(content)
-    if "HeaderFile" == fileType:
-        headerFile(content)
+    if "SourceFile" == file_type:
+        source_file(content)
+    if "HeaderFile" == file_type:
+        header_file(content)
 
-def gen_var_assignment(fileType, var_name, assign_operator, value):
+def gen_var_assignment(file_type, var_name, assign_operator, value):
     content = var_name + " " + assign_operator + " " + value + ";"
-    if "SourceFile" == fileType:
-        sourceFile(content)
-    if "HeaderFile" == fileType:
-        headerFile(content)
+    if "SourceFile" == file_type:
+        source_file(content)
+    if "HeaderFile" == file_type:
+        header_file(content)
 
-def gen_function_call_no_arg(fileType, func_name, result_var, type_cast):
+def gen_function_call_no_arg(file_Type, func_name, result_var, type_cast):
     content = ""
     if "" != result_var:
         content += result_var + " = "
 
     content += type_cast + func_name + "();"        
-    if "SourceFile" == fileType:
-        sourceFile(content)
-    if "HeaderFile" == fileType:
-        headerFile(content)
+    if "SourceFile" == file_Type:
+        source_file(content)
+    if "HeaderFile" == file_Type:
+        header_file(content)
     
-def gen_function_call_with_arg(fileType, func_name, result_var, type_cast, params): 
+def gen_function_call_with_arg(file_type, func_name, result_var, type_cast, params): 
     content = ""
     if "" != result_var:
         content += result_var + " = "
@@ -84,20 +83,20 @@ def gen_function_call_with_arg(fileType, func_name, result_var, type_cast, param
         else:
             content += ", " + param
     content += ");"
-    if "SourceFile" == fileType:
-        sourceFile(content)
-    if "HeaderFile" == fileType:
-        headerFile(content)
+    if "SourceFile" == file_type:
+        source_file(content)
+    if "HeaderFile" == file_type:
+        header_file(content)
 
 def gen_break_line(fileType):
     content = ""
     if "SourceFile" == fileType:
-        sourceFile(content)
+        source_file(content)
     if "HeaderFile" == fileType:
-        headerFile(content)
+        header_file(content)
  
 ################################################################################
 # 5. Main processing: Create the generated file
 ################################################################################ 
-headerFile = CodeGen.CppFile(Config.generatedHeaderFileName)
-sourceFile = CodeGen.CppFile(Config.generatedSourceFileName)
+header_file = CodeGen.CppFile(Config.generated_header_file_name)
+source_file = CodeGen.CppFile(Config.generated_source_file_name)

@@ -8,26 +8,27 @@
 ################################################################################
 
 # Test case Excel file global names
-testSuiteExcelFile = ("C:\\Users\\PC\\Documents\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
-testcaseSheetList = [1, 2, 3, 4]
-firstParamColumn = 3
-tcFirstLine = 5
-tcNameColumn = 0
-tcInvokedFuncColumn = 1
-ioTypeRow = 4
-ioNameRow = 3
+test_suite_excel_file = ("C:\\Users\\PC\\Documents\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
+test_case_sheet_list = [1, 2, 3, 4]
+first_param_column = 3
+tc_first_line = 5
+tc_name_column = 0
+tc_invoked_func_column = 1
+io_type_row = 4
+io_name_row = 3
 
-testedFile = "gpio_hal"
+tested_file = "gpio_hal"
 
-testedHeaderFile = testedFile + ".h"
-generatedHeaderFileName = "ut_" + testedFile + ".h"
-generatedSourceFileName = "ut_" + testedFile + ".c"
+tested_header_file = tested_file + ".h"
+generated_header_file_name = "ut_" + tested_file + ".h"
+generated_source_file_name = "ut_" + tested_file + ".c"
 
-testSuiteName = "ut_" + testedFile
-testTarget = "GPIO driver"
-headerIncludingGuard = "_UT_GPIO_HAL_H"
+test_suite_name = "ut_" + tested_file
+test_target = "GPIO driver"
+header_including_guard = "_UT_GPIO_HAL_H"
+test_HAL_enable_macro = "USE_GPIO_HAL"
 
-systemRegisterSize = 8 # Arduino is a 8-bit MCU 
+system_register_size = 8 # Arduino is a 8-bit MCU 
 ################################################################################
 # 3. Class definition
 ################################################################################
