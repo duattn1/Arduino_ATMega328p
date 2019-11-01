@@ -32,6 +32,10 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
+extern uint8_t buffer[256];
+extern uint8_t buffer_index;
+
+
 extern volatile uint8_t counter;
 extern const uint8_t CharacterLib_array[43][8];
 extern const Struct_Timer_PrescalerValue_Typedef PrescalerValue_array[5];
@@ -62,10 +66,12 @@ void setup(void){
 
 #ifdef USART_HAL_SAMPLE
 	uint8_t strStart_uint8[] = "Start";
+	cli();
 	Usart_InitUSART(&UsartSampleConfig[0]);
 	Usart_SetBaudrate(Usart_9600bps);
-	Usart_CommandTransmitter(Enable);
-	//Usart_CommandReceiver(Enable);
+	Usart_CommandTransmitter(Enable);	
+	Usart_CommandReceiver(Enable);
+	sei();
 	Usart_SendString(strStart_uint8);	
 #endif
 
@@ -108,10 +114,14 @@ void setup(void){
 
 void loop(void){	
 	while(1){
-		if(1 == (counter%2)){
-			Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
-		} else {
-			Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, Low);
+		if(buffer_index > 0){
+			buffer_index--;	
+			Usart_SendChar(buffer[buffer_index], 0);
+			switch (buffer[buffer_index]) {
+			case 5:
+				
+				break;
+			}
 		}
 	}	
 }

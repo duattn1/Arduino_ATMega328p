@@ -19,6 +19,7 @@
 #include <avr/interrupt.h>
 #include "boards.h"
 #include "misc.h"
+#include "usart_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros

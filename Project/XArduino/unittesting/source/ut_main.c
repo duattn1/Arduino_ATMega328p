@@ -33,8 +33,17 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-extern void (*TestcaseList_array[85])(void);
+Struct_FunctionCall_Typedef Function_array[] =
+{
+	{ 'd', Test_RunOneCase }	
+};
 
+extern void (*TestcaseList_array[46])(void);
+extern void Test_Gpio_GetPortBase_TC1(void);
+extern uint8_t buffer[256];
+extern uint8_t buffer_index;
+
+/* USART initializing configuration */
 const Struct_Usart_Config_Typedef UsartRedirectConfig_array[1] = 
 {
 	{ Usart_UCSRnC_AsyncMode, Usart_UCSRnC_DisabledParity,
@@ -66,21 +75,50 @@ void tearDown(void) {
  *       - Add "libprintf_flt.a" and "libm.a" to linker static libraries. 
  *       Adding "-r" flag for archiver will enable linker static libraries.
  */
-void runTest(void) {
-	uint16_t noTestcase_uint16 = sizeof(TestcaseList_array)/ sizeof(TestcaseList_array[0]);
-
+void Test_Init(void) {	
+	cli(); /* Disable all interrupts */
 	Usart_InitUSART(&(UsartRedirectConfig_array[0]));
 	Usart_SetBaudrate(Usart_9600bps);
 	Usart_CommandTransmitter(Enable);
+	Usart_CommandReceiver(Enable);
 	stdout = &Usart_stream;
+	sei(); /* Enable all interrupts */
 	
-	UNITY_BEGIN();
-	
-	for(uint8_t i = 0; i < noTestcase_uint16; i++) {
-		RUN_TEST(TestcaseList_array[i]);
-	}	
-	
-	UNITY_END();	
+	uint8_t end[] = "Start";
+	Usart_SendString(end);
+	UNITY_BEGIN();		
+}
+
+void Test_One(void){
+	RUN_TEST(Test_Gpio_GetPortBase_TC1);
+}
+
+void Test_Loop(void){	
+	while(1){
+		if(buffer_index > 0){
+			buffer_index--;	
+			Usart_SendChar(buffer[buffer_index], 0);
+			
+			if ('q' == buffer[buffer_index]) {
+				break;
+			} 
+			if ('d' == buffer[buffer_index]) {
+				Function_array[0].function();
+			} 
+			
+			/*switch (buffer[buffer_index]){
+			case q:
+				break;
+			}*/
+			
+		}
+	}
+}
+
+void Test_Conclude(void){
+	UNITY_END();
+	uint8_t end[] = "end";
+	Usart_SendString(end);
 }
 
 #endif /* UNIT_TESTING	*/

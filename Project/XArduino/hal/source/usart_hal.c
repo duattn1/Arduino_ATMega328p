@@ -57,6 +57,8 @@ void Usart_InitUSART(const Struct_Usart_Config_Typedef *config_ptr){
 	UCSR0C &= ~(MASK_2BIT << UCSZ00);
 	UCSR0B |= UCSZn2_uint8 << UCSZ02;	
 	UCSR0C |= UCSZn1To0_uint8 << UCSZ00;
+	// enable RX irq
+	UCSR0B |= 1 << RXCIE0;
 }
 
 

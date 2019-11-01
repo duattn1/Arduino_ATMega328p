@@ -179,31 +179,31 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 app/source/%.o: ../app/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DTIMER_HAL_SAMPLE -DUSE_TIMER_HAL -DUSE_GPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_INTERRUPT  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUNIT_TESTING -DUSE_GPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 hal/source/%.o: ../hal/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DTIMER_HAL_SAMPLE -DUSE_TIMER_HAL -DUSE_GPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_INTERRUPT  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUNIT_TESTING -DUSE_GPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 kits/source/%.o: ../kits/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DTIMER_HAL_SAMPLE -DUSE_TIMER_HAL -DUSE_GPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_INTERRUPT  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUNIT_TESTING -DUSE_GPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 unittesting/source/%.o: ../unittesting/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DTIMER_HAL_SAMPLE -DUSE_TIMER_HAL -DUSE_GPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_INTERRUPT  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUNIT_TESTING -DUSE_GPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 unittesting/UnityLibrary/%.o: ../unittesting/UnityLibrary/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DTIMER_HAL_SAMPLE -DUSE_TIMER_HAL -DUSE_GPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_INTERRUPT  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUNIT_TESTING -DUSE_GPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 
@@ -231,12 +231,12 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU C Linker
-	$(QUOTE)C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="XArduino.map" -Wl,-lm   -mmcu=atmega328p  
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="XArduino.map" -Wl,-lm   -mmcu=atmega328p  
 	@echo Finished building target: $@
-	"C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "XArduino.elf" "XArduino.hex"
-	"C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "XArduino.elf" "XArduino.eep" || exit 0
-	"C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objdump.exe" -h -S "XArduino.elf" > "XArduino.lss"
-	"C:\Program Files\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-size.exe" -C --mcu=atmega328p  "XArduino.elf"
+	"C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "XArduino.elf" "XArduino.hex"
+	"C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "XArduino.elf" "XArduino.eep" || exit 0
+	"C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objdump.exe" -h -S "XArduino.elf" > "XArduino.lss"
+	"C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-size.exe" -C --mcu=atmega328p  "XArduino.elf"
 	
 
 

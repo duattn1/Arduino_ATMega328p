@@ -45,7 +45,9 @@ int main(void)
 	setup();
 	loop();	
 #else
-	runTest();
+	Test_Init();
+	Test_Loop();
+	Test_Conclude();
 #endif
 }
 

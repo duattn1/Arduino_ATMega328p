@@ -30,7 +30,12 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-
+typedef struct {
+	Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum;
+	Enum_Gpio_DDRxDirection_Typedef direction_enum;
+	uint8_t expected;
+	uint8_t mask;
+} Struct_PinModeTestData_Typedef;
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/

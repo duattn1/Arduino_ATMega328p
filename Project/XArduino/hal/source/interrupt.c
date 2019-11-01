@@ -33,6 +33,8 @@
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 volatile uint8_t counter = 0;
+uint8_t buffer[255];
+uint8_t buffer_index = 0;
 
 /*******************************************************************************
  * 6. Function Definitions
@@ -40,6 +42,14 @@ volatile uint8_t counter = 0;
 ISR (TIMER1_COMPA_vect)
 {	
     counter++;	
+}
+
+
+ISR(USART_RX_vect)
+{
+    while (!(UCSR0A & (1 << RXC0)));	
+	buffer[buffer_index] = (uint8_t)UDR0;
+	buffer_index++;
 }
 
 #endif /* USE_INTERRUPT */
