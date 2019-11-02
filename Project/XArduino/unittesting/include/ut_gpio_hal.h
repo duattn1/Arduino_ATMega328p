@@ -15,9 +15,11 @@
  * 1. Included Files
  ******************************************************************************/
 #include <stdlib.h>
+#include <stdbool.h>
 #include "unity.h"
 #include "ut_base.h"
 #include "gpio_hal.h"
+#include "usart_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros

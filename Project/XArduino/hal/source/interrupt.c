@@ -35,6 +35,7 @@
 volatile uint8_t counter = 0;
 uint8_t buffer[255];
 uint8_t buffer_index = 0;
+bool endCommand = false;
 
 /*******************************************************************************
  * 6. Function Definitions
@@ -48,7 +49,12 @@ ISR (TIMER1_COMPA_vect)
 ISR(USART_RX_vect)
 {
     while (!(UCSR0A & (1 << RXC0)));	
-	buffer[buffer_index] = (uint8_t)UDR0;
+	uint8_t data = (uint8_t)UDR0;
+	if ('.' == data)
+	{ 
+		endCommand = true;
+	}
+	buffer[buffer_index] = data;
 	buffer_index++;
 }
 

@@ -8,7 +8,7 @@
 ################################################################################
 
 # Test case Excel file global names
-test_suite_excel_file = ("C:\\Users\\PC\\Documents\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
+test_suite_excel_file = ("F:\\Workspace\\GitHub\\Arduino_ATMega328p\\UT_TestSuite.xls") 
 test_case_sheet_list = [1, 2, 3, 4]
 first_param_column = 3
 tc_first_line = 5

@@ -72,6 +72,10 @@ const Struct_PinModeTestData_Typedef Test_Gpio_PinMode_Data[] =
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
+extern uint8_t buffer[256];
+extern uint8_t buffer_index;
+extern bool endCommand;
+
 /* List of all test cases */
 void (*TestcaseList_array[46])(void) = 
 {
@@ -142,8 +146,38 @@ void Test_Gpio_GetPortBase(Enum_Gpio_Port_Typedef port_enum, uint8_t* expected)
 }
 
 void Test_Gpio_GetPortBase_TC1(void)
-{
-	Test_Gpio_GetPortBase(Gpio_PortB, (uint8_t*)GPIOB);
+{	
+	uint8_t text[] = "TC1";
+	Usart_SendString(text);
+	
+	while(1){	
+		if(true == endCommand){
+			endCommand = false;
+			uint8_t read_index = 0;
+			uint8_t data;
+			uint8_t cmd;			
+			
+			while(read_index < buffer_index){
+				data = buffer[read_index];
+				Usart_SendChar(data, 0);
+				read_index++;
+			}
+			
+			/* Command format is  ":[cmd_character]." => get the [1] element of buffer array */
+			cmd = buffer[1];
+				
+			/* Quit the test loop when "q:" is received. */				
+			if ('d' == cmd) {
+				break;			 
+			}
+			
+			/* Reset buffer index */
+			buffer_index = 0;
+		} /* End of if(true == endCommand){ */	
+	}
+	
+	/* Parameters position starts from 2, since the command format is ":d[param1][param2][...]" */
+	Test_Gpio_GetPortBase(buffer[2], (uint8_t*)buffer[3]);
 }
 
 void Test_Gpio_GetPortBase_TC2(void)
