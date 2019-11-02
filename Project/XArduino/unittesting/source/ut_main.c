@@ -34,13 +34,7 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-Struct_FunctionCall_Typedef Function_array[] =
-{
-	{ 'd', Test_RunOneCase }	
-};
-
-extern void (*TestcaseList_array[46])(void);
-extern void Test_Gpio_GetPortBase_TC1(void);
+extern void Test_RunAll(void);
 extern uint8_t buffer[256];
 extern uint8_t buffer_index;
 extern bool endCommand;
@@ -71,6 +65,12 @@ void tearDown(void) {
 	// Thing to do after running test
 }
 
+void Test_RunTest(void){
+	Test_Init();
+	Test_Loop();
+	Test_Conclude();
+}
+
 /**
  * @note To redirect STDIO via usart, these things must be done.
  *       - Add "-Wl,-u,vfprintf -lprintf_flt -lm" flags to linker. 
@@ -86,57 +86,61 @@ void Test_Init(void) {
 	stdout = &Usart_stream;
 	sei(); /* Enable all interrupts */
 	
-	uint8_t text[] = "Start";
+	uint8_t text[] = "Start testing";
 	Usart_SendString(text);
 	UNITY_BEGIN();		
 }
 
-void Test_RunOneCase(void){
-	RUN_TEST(Test_Gpio_GetPortBase_TC1);
-}
-
-void Test_Loop(void){	
+void Test_Loop(void){
+	Struct_HostCommand_Typedef cmd;
+	
 	while(1) {
-		if(true == endCommand){
-			endCommand = false;
-			uint8_t read_index = 0;
-			uint8_t data;
-			uint8_t cmd;
-			
-			while(read_index < buffer_index){
-				data = buffer[read_index];
-				Usart_SendChar(data, 0);
-				read_index++;
+		cmd = Test_GetHostCommand();
+		
+		/* Quit the test loop when "q:" is received. */				
+		if ('q' == cmd.command) {
+			break;			 
+		} else {				
+			switch (cmd.command) {
+			case 's':
+				/* Reset buffer index before calling function*/
+				buffer_index = 0;
+				RUN_TEST(Test_RunAll);
+				break;
 			}
-			
-			/* Command format is  ":[cmd_character]." => get the [1] element of buffer array */
-			cmd = buffer[1];
-				
-			/* Quit the test loop when "q:" is received. */				
-			if ('q' == cmd) {
-				break;			 
-			} else {				
-				switch (cmd) {
-				case 's':
-					/* Reset buffer index before calling function*/
-					buffer_index = 0;
-					Function_array[0].function();
-					break;
-				}
-			}
-			
-			/* Reset buffer index */
-			buffer_index = 0;
-		} /* End of if(true == endCommand){ */	
+		}
 	}
 }
 
 void Test_Conclude(void){
 	UNITY_END();
-	uint8_t end[] = "end";
+	uint8_t end[] = "End testing";
 	Usart_SendString(end);
 }
 
+Struct_HostCommand_Typedef Test_GetHostCommand(void){
+	Struct_HostCommand_Typedef cmd;
+	if(true == endCommand){
+		endCommand = false;
+		uint8_t read_index = 0;
+		uint8_t data;			
+		
+		/* Print out received data */
+		while(read_index < buffer_index){
+			data = buffer[read_index];
+			Usart_SendChar(data, 0);
+			read_index++;
+		}
+		
+		/* Command format is  ":[cmd_character]." => get the [1] element of buffer array */
+		cmd.command = buffer[1];		
+		cmd.option = buffer[2];
+		
+		/* Reset buffer index */
+		buffer_index = 0;
+	} /* End of if(true == endCommand){ */
+	return cmd;
+}
 #endif /* UNIT_TESTING	*/
 
 /** End of File ***************************************************************/

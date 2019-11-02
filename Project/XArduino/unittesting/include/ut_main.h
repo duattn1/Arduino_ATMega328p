@@ -14,6 +14,7 @@
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
+#include "ut_base.h"
 #include "interrupt.h"
 #include "usart_hal.h"
 #include "ut_gpio_hal.h"
@@ -29,13 +30,6 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-/**
- * @struct This struct TODO
- */
-typedef struct{
-	uint8_t character;
-	void (*function)(void);
-} Struct_FunctionCall_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -47,6 +41,13 @@ typedef struct{
 #ifdef __cplusplus
 extern "C"{
 #endif
+
+/** @brief Perform testing
+ *
+ *  @param none
+ *  @return none
+ */
+void Test_RunTest(void);
 
 /** @brief Perform testing initialization
  *
@@ -62,12 +63,12 @@ void Test_Init(void);
  */
 void Test_Loop(void);
 
-/** @brief Run one test case.
+/** @brief Get the host command via serial connection.
  *
  *  @param none
- *  @return none
+ *  @return Host command object
  */
-void Test_RunOneCase(void);
+Struct_HostCommand_Typedef Test_GetHostCommand(void);
 
 /** @brief Perform the test conclusion
  *

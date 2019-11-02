@@ -20,7 +20,18 @@
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-
+/**
+ * @note This is hardcode TODO
+ */
+#define PARAM_1 buffer[3]
+#define PARAM_2 buffer[4]
+#define PARAM_3 buffer[5]
+#define PARAM_4 buffer[6]
+#define PARAM_5 buffer[7]
+#define PARAM_6 buffer[8]
+#define PARAM_7 buffer[9]
+#define PARAM_8 buffer[10]
+#define PARAM_9 buffer[11]
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
@@ -54,6 +65,13 @@ typedef struct {
 	uint32_t mask;
 } Struct_Uint32Data_Typedef;
 
+/**
+ * @struct This struct TODO
+ */
+typedef struct{
+	uint8_t command;
+	uint8_t option;
+} Struct_HostCommand_Typedef;
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
