@@ -1,63 +1,36 @@
-/** @file misc.h
- *  @brief Declaration of miscellaneous function and data.
+/** @file timer_hal_sample.h
+ *  @brief Declaration of Timer driver sample application function and data.
  *
- *  This is the header file for the definition of miscellaneous data.
+ *  This is the header file for the definition of Timer driver sample application.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
  *
  * ------------------------------ REVISION HISTORY -----------------------------
- * TODO<<Jan 01, 2019>> - TODO<< WHAT WAS UPDATED?>>
+ * Nov 03, 2019 - Initial version, moved Timer driver application from sample.c 
+ *                to a new file.
  * -----------------------------------------------------------------------------
  */
-#ifndef MISC_H_
-#define MISC_H_
+
+#ifndef TIMER_HAL_SAMPLE_H_
+#define TIMER_HAL_SAMPLE_H_
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include <avr/io.h>
+#include "timer_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-#ifndef F_CPU
-#define F_CPU 16000000UL
-#endif
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-/* Bit Masks definition */
-#define MASK_1BIT   0x01
-#define MASK_2BIT   0x03
-#define MASK_3BIT   0x07
-#define MASK_4BIT   0x0F
-#define MASK_5BIT   0x1F
-#define MASK_6BIT   0x3F
-#define MASK_7BIT   0x7F
-#define MASK_8BIT   0xFF
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
-/**
- * @enum This enumeration is a list of pin direction modes.
- */
-typedef enum
-{
-    Low = 0x00,     /**< I/O Low(0) value */
-    High = 0x01     /**< I/O High(1) value */
-} Enum_IOValue_Typedef;
-
-/**
- * @enum This enumeration is a list of pin direction modes.
- */
-typedef enum
-{
-    Disable = 0x00,     /**< Disable a configuration */
-    Enable = 0x01       /**< Enable a configuration */
-} Enum_Command_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
@@ -70,11 +43,36 @@ typedef enum
 extern "C"{
 #endif
 
+/** 
+ * @brief Set up Timer driver
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see None
+ */
+void Timer_Setup(void);
+
+/** 
+ * @brief Perform the Timer driver infinite loop
+ *
+ * PRE-CONDITION: Timer_Setup() function is invoked
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see Timer_Setup()
+ */
+void Timer_Loop(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* MISC_H_ */
+#endif /* TIMER_HAL_SAMPLE_H_ */
 
 /** End of File ***************************************************************/

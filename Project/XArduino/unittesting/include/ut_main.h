@@ -1,12 +1,15 @@
 /** @file ut_main.h
- *  @brief Function prototypes for unit testing main controlling.
- * 
+ *  @brief Declaration of unit testing main controlling function and data.
+ *
  *  This is the header file for the definition of unit testing main controlling.
- *  
- * 	@author Tran Nhat Duat (duattn)
- *	@version 	V1.0
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * TODO<<Jan 01, 2019>> - TODO<< WHAT WAS UPDATED?>>
+ * -----------------------------------------------------------------------------
  */
-
 
 #ifndef _UT_MAIN_H
 #define _UT_MAIN_H
@@ -28,11 +31,11 @@
  ******************************************************************************/
 
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
 
 /*******************************************************************************
@@ -42,43 +45,73 @@
 extern "C"{
 #endif
 
-/** @brief Perform testing
+/** 
+ * @brief Perform testing
  *
- *  @param none
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see Test_Init(), Test_Loop(), Test_Conclude()
  */
 void Test_RunTest(void);
 
-/** @brief Perform testing initialization
+/** 
+ * @brief Perform testing initialization
  *
- *  @param none
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see None
  */
 void Test_Init(void);
 
-/** @brief Perform the test loop: wait for testing data from host
+/** 
+ * @brief Perform the test loop: wait for testing data from host
  *
- *  @param none
- *  @return none
+ * PRE-CONDITION: Testing is initialized with Test_Init()
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see Test_Init()
  */
 void Test_Loop(void);
 
-/** @brief Get the host command via serial connection.
+/** 
+ * @brief Perform the test conclusion
  *
- *  @param none
- *  @return Host command object
- */
-Struct_HostCommand_Typedef Test_GetHostCommand(void);
-
-/** @brief Perform the test conclusion
+ * PRE-CONDITION: Test cases are run with Test_Loop()
+ * POST-CONDITION: None
  *
- *  @param none
- *  @return none
+ * @param None
+ * @return None
+ *
+ * @see Test_Loop()
  */
 void Test_Conclude(void);
 
+/** 
+ * @brief Get the host command via serial connection
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param NoneF
+ * @return Host command object
+ *
+ * @see None
+ */
+Struct_HostCommand_Typedef Test_GetHostCommand(void);
+
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif
 
 #endif /* _UT_MAIN_H */

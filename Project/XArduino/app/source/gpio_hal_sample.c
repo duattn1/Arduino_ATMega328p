@@ -1,63 +1,54 @@
-/** @file gpio_hal.c
- *  @brief Function implementation for GPIO driver.
+/** @file gpio_hal_sample.c
+ *  @brief Definition of GPIO driver sample application function and data.
  *
- *  This is the source file for the definition of GPIO driver.
+ *  This is the source file for the definition of GPIO driver sample application.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * Nov 03, 2019 - Initial version, moved GPIO driver application from sample.c 
+ *                to a new file.
+ * -----------------------------------------------------------------------------
  */
 
-#ifdef USE_INTERRUPT
-
+#ifdef GPIO_HAL_SAMPLE
+ 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "interrupt.h"
+#include "gpio_hal_sample.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-volatile uint8_t counter = 0;
-uint8_t buffer[255];
-uint8_t buffer_index = 0;
-bool endCommand = false;
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-ISR (TIMER1_COMPA_vect)
-{	
-    counter++;	
+void Gpio_Setup(void){
+    Gpio_PinMode(ARDUINO_NANO_USER_LED, Gpio_DDRx_Output);
+    Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
 }
 
-
-ISR(USART_RX_vect)
-{
-    while (!(UCSR0A & (1 << RXC0)));	
-	uint8_t data = (uint8_t)UDR0;
-	if ('.' == data)
-	{ 
-		endCommand = true;
-	}
-	buffer[buffer_index] = data;
-	buffer_index++;
+void Gpio_Loop(void){	
+    while(1){
+    
+    }
 }
 
-#endif /* USE_INTERRUPT */
+#endif /* GPIO_HAL_SAMPLE */
 
 /** End of File ***************************************************************/

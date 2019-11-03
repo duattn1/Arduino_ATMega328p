@@ -2,15 +2,23 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+app\source\gpio_hal_sample.c
+
 app\source\main.c
 
+app\source\max7219_kit_sample.c
+
 app\source\sample.c
+
+app\source\spi_hal_sample.c
+
+app\source\timer_hal_sample.c
+
+app\source\usart_hal_sample.c
 
 hal\source\boards.c
 
 hal\source\gpio_hal.c
-
-hal\source\interrupt.c
 
 hal\source\misc.c
 

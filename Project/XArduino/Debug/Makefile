@@ -48,11 +48,15 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../app/source/gpio_hal_sample.c \
 ../app/source/main.c \
+../app/source/max7219_kit_sample.c \
 ../app/source/sample.c \
+../app/source/spi_hal_sample.c \
+../app/source/timer_hal_sample.c \
+../app/source/usart_hal_sample.c \
 ../hal/source/boards.c \
 ../hal/source/gpio_hal.c \
-../hal/source/interrupt.c \
 ../hal/source/misc.c \
 ../hal/source/spi_hal.c \
 ../hal/source/timer_hal.c \
@@ -71,11 +75,15 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+app/source/gpio_hal_sample.o \
 app/source/main.o \
+app/source/max7219_kit_sample.o \
 app/source/sample.o \
+app/source/spi_hal_sample.o \
+app/source/timer_hal_sample.o \
+app/source/usart_hal_sample.o \
 hal/source/boards.o \
 hal/source/gpio_hal.o \
-hal/source/interrupt.o \
 hal/source/misc.o \
 hal/source/spi_hal.o \
 hal/source/timer_hal.o \
@@ -88,11 +96,15 @@ unittesting/UnityLibrary/unity.o
 
 
 OBJS_AS_ARGS +=  \
+app/source/gpio_hal_sample.o \
 app/source/main.o \
+app/source/max7219_kit_sample.o \
 app/source/sample.o \
+app/source/spi_hal_sample.o \
+app/source/timer_hal_sample.o \
+app/source/usart_hal_sample.o \
 hal/source/boards.o \
 hal/source/gpio_hal.o \
-hal/source/interrupt.o \
 hal/source/misc.o \
 hal/source/spi_hal.o \
 hal/source/timer_hal.o \
@@ -105,11 +117,15 @@ unittesting/UnityLibrary/unity.o
 
 
 C_DEPS +=  \
+app/source/gpio_hal_sample.d \
 app/source/main.d \
+app/source/max7219_kit_sample.d \
 app/source/sample.d \
+app/source/spi_hal_sample.d \
+app/source/timer_hal_sample.d \
+app/source/usart_hal_sample.d \
 hal/source/boards.d \
 hal/source/gpio_hal.d \
-hal/source/interrupt.d \
 hal/source/misc.d \
 hal/source/spi_hal.d \
 hal/source/timer_hal.d \
@@ -122,11 +138,15 @@ unittesting/UnityLibrary/unity.d
 
 
 C_DEPS_AS_ARGS +=  \
+app/source/gpio_hal_sample.d \
 app/source/main.d \
+app/source/max7219_kit_sample.d \
 app/source/sample.d \
+app/source/spi_hal_sample.d \
+app/source/timer_hal_sample.d \
+app/source/usart_hal_sample.d \
 hal/source/boards.d \
 hal/source/gpio_hal.d \
-hal/source/interrupt.d \
 hal/source/misc.d \
 hal/source/spi_hal.d \
 hal/source/timer_hal.d \
@@ -176,34 +196,42 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 
 
+
+
+
+
+
+
+
+
 app/source/%.o: ../app/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUSE_GPIO_HAL -DUNIT_TESTING  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 hal/source/%.o: ../hal/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUSE_GPIO_HAL -DUNIT_TESTING  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 kits/source/%.o: ../kits/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUSE_GPIO_HAL -DUNIT_TESTING  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 unittesting/source/%.o: ../unittesting/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUSE_GPIO_HAL -DUNIT_TESTING  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 unittesting/UnityLibrary/%.o: ../unittesting/UnityLibrary/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_USART_HAL -DUSE_INTERRUPT -DUSE_GPIO_HAL -DUNIT_TESTING  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 

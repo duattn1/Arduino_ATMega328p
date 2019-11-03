@@ -1,10 +1,14 @@
 /** @file misc.c
- *  @brief Function implementation for miscellaneous things.
+ *  @brief Definition of miscellaneous function and data.
  *
- *  This is the source file for the definition of miscellaneous things.
+ *  This is the source file for the definition of miscellaneous data.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * TODO<<Jan 01, 2019>> - TODO<< WHAT WAS UPDATED?>>
+ * -----------------------------------------------------------------------------
  */
  
 /*******************************************************************************
@@ -16,25 +20,20 @@
  * 2. Object-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-
 
 /** End of File ***************************************************************/

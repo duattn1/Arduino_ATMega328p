@@ -1,10 +1,14 @@
 /** @file sample.c
- *  @brief Function implementation for Arduino samples.
+ *  @brief Definition of sample application function and data.
  *
- *  This is the source file for the definition of Arduino samples.
+ *  This is the source file for the definition of sample application.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * TODO<<Jan 01, 2019>> - TODO<< WHAT WAS UPDATED?>>
+ * -----------------------------------------------------------------------------
  */
  
 /*******************************************************************************
@@ -12,118 +16,57 @@
  ******************************************************************************/
 #include "sample.h"
 
-
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-/* Arduino Nano clock frequency */
-
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-extern uint8_t buffer[256];
-extern uint8_t buffer_index;
 
-
-extern volatile uint8_t counter;
-extern const uint8_t CharacterLib_array[43][8];
-extern const Struct_Timer_PrescalerValue_Typedef PrescalerValue_array[5];
-
-#ifdef USART_HAL_SAMPLE
-const Struct_Usart_Config_Typedef UsartSampleConfig[1] = 
-{
-	{ Usart_UCSRnC_AsyncMode, Usart_UCSRnC_DisabledParity,
-	Usart_UCSRnC_1StopBit, Usart_UCSRnC_8bitsData }
-};
-#endif
-
-#ifdef SPI_HAL_SAMPLE
-Struct_Spi_Config_Typedef SpiSampleConfig[1] =
-{
-	{ Spi_SPCR_TransmitMSBFirst, Spi_SPCR_MasterMode,
-	Spi_SPCR_IdleLow, Spi_SPCR_LeadingEdgeSampling,	Spi_FoscDiv16 }
-};
-#endif
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void setup(void){
-#ifdef GPIO_HAL_SAMPLE	
-	Gpio_PinMode(ARDUINO_NANO_USER_LED, Gpio_DDRx_Output);
-	Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
+void Sample_RunApp(void){
+
+/** HAL sample application ****************************************************/	
+
+#ifdef GPIO_HAL_SAMPLE
+Gpio_Setup();
+Gpio_Loop();
 #endif
 
 #ifdef USART_HAL_SAMPLE
-	uint8_t strStart_uint8[] = "Start";
-	cli();
-	Usart_InitUSART(&UsartSampleConfig[0]);
-	Usart_SetBaudrate(Usart_9600bps);
-	Usart_CommandTransmitter(Enable);	
-	Usart_CommandReceiver(Enable);
-	sei();
-	Usart_SendString(strStart_uint8);	
+Usart_Setup();
+Usart_Loop();
 #endif
 
-#ifdef SPI_HAL_SAMPLE	
-	Spi_InitSPI(&SpiSampleConfig[0]);
-	Spi_CommandSPI(Enable);
-	Spi_MasterTransmit('A');
+#ifdef SPI_HAL_SAMPLE
+Spi_Setup();
+Spi_Loop();
 #endif
 
-#ifdef TIMER_HAL_SAMPLE	
-	cli();
-	Enum_Timer_TCCRnB_ClockSelect_Typedef prescalerName_enum = Timer_TCCRnB_NoClockSource;
-	uint16_t clockPrescaler_uint16 = suggestPrescalerValue(1, Timer_16bitTimerMaxCounterValue);
-	
-	for(uint8_t i = 0; i < sizeof(PrescalerValue_array)/sizeof(PrescalerValue_array[0]); i++ ){
-		if(clockPrescaler_uint16 == PrescalerValue_array[i].prescalerValue_uint16){
-			prescalerName_enum = PrescalerValue_array[i].prescalerName_enum;
-		}
-	}
-	
-	Struct_Timer_Config_Typedef config_struct;
-	config_struct.compareOutputMode_enum = Timer_TCCRnA_CompareOutputMode0;
-	config_struct.waveformGenerationMode_enum = Timer_TCCRnA_WaveformGenerationMode2;
-	config_struct.clockPrescaler_enum = prescalerName_enum;
-	config_struct.compareOutputValue_uint8 = 100;
-	Timer_InitTimer1(&config_struct, Timer_ChannelA);
-	sei();
+#ifdef TIMER_HAL_SAMPLE
+Timer_Setup();
+Timer_Loop();
 #endif
 
+/** Kits sample application ***************************************************/
 #ifdef MAX7219_KIT_SAMPLE	
-	init_Max7219();	
-	for(uint8_t i = 0; i < 8; i++){
-		write_Max7219(i + 1, CharacterLib_array['A' - '0'][i]);
-	}
+Max7219_Setup();
+Max7219_Loop();
 #endif	
 
-
-
 }
 
-void loop(void){	
-	while(1){
-		if(buffer_index > 0){
-			buffer_index--;	
-			Usart_SendChar(buffer[buffer_index], 0);
-			switch (buffer[buffer_index]) {
-			case 5:
-				
-				break;
-			}
-		}
-	}	
-}
+
 
 /** End of File ***************************************************************/

@@ -1,14 +1,18 @@
 /** @file ut_gpio_hal.c
- *  @brief Function implementation for unit test of GPIO driver.
+ *  @brief Definition of GPIO driver unit testing function and data.
  *
  *  This file is generated from scripts. This is the source file for 
- *  the unit test definition of GPIO driver.
+ *  the unit test definition of GPIO driver unit testing.
  *
- *  @author 	Tran Nhat Duat (duattn)
- *  @version 	V1.0
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ *
+ * -------------------------------- INFORMATION --------------------------------
+ * - Be generated on Mmm DD, YYYY
+ * -----------------------------------------------------------------------------
  */
 
-#if defined (UNIT_TESTING) && defined (USE_GPIO_HAL)
+#if (defined (UNIT_TESTING) && defined (GPIO_HAL))
 
 /*******************************************************************************
  * 1. Included Files
@@ -24,11 +28,11 @@
  ******************************************************************************/
 
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
 extern uint8_t buffer[256];
 extern uint8_t buffer_index;
@@ -140,7 +144,7 @@ void Test_Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_I
 	compareBitsOnUint8(&global_var_1);
 }
 
-#endif /* defined (UNIT_TESTING) && defined (USE_GPIO_HAL) */
+#endif /* defined (UNIT_TESTING) && defined (GPIO_HAL) */
 
 /** End of File ***************************************************************/
 

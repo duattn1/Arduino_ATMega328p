@@ -1,46 +1,40 @@
-/** @file interrupt.h
- *  @brief Function prototypes for interrupt handlers.
- * 
- *  This is the header file for the definition of interrupt handlers.
- *  
- * 	@author Tran Nhat Duat (duattn)
- *	@version 	V1.0
+/** @file gpio_hal_sample.h
+ *  @brief Declaration of GPIO driver sample application function and data.
+ *
+ *  This is the header file for the definition of GPIO driver sample application.
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * Nov 03, 2019 - Initial version, moved GPIO driver application from sample.c 
+ *                to a new file.
+ * -----------------------------------------------------------------------------
  */
 
-#ifndef INTERRUPT_H_
-#define INTERRUPT_H_
+#ifndef GPIO_HAL_SAMPLE_H_
+#define GPIO_HAL_SAMPLE_H_
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include <avr/io.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <avr/interrupt.h>
-#include "boards.h"
-#include "misc.h"
-#include "usart_hal.h"
+#include "gpio_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
 
-	
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-
 
 /*******************************************************************************
  * 6. Function Prototypes
@@ -49,11 +43,36 @@
 extern "C"{
 #endif
 
+/** 
+ * @brief Set up Gpio driver
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see None
+ */
+void Gpio_Setup(void);
+
+/** 
+ * @brief Perform the Gpio driver infinite loop
+ *
+ * PRE-CONDITION: Gpio_Setup() function is invoked
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see Gpio_Setup()
+ */
+void Gpio_Loop(void);
 
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif
 
-#endif /* INTERRUPT_H_ */
+#endif /* GPIO_HAL_SAMPLE_H_ */
 
 /** End of File ***************************************************************/

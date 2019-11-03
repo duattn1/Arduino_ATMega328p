@@ -1,11 +1,15 @@
 /** @file ut_gpio_hal.h
- *  @brief Function prototypes for unit test of GPIO driver.
+ *  @brief Declaration of GPIO driver unit testing function and data.
  *
  *  This file is generated from scripts. This is the header file for 
- *  the unit test definition of GPIO driver.
+ *  the definition of GPIO driver unit testing.
  *
- *  @author 	Tran Nhat Duat (duattn)
- *  @version 	V1.0
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ *
+ * -------------------------------- INFORMATION --------------------------------
+ * - Be generated on Mmm DD, YYYY
+ * -----------------------------------------------------------------------------
  */
 
 #ifndef _UT_GPIO_HAL_H
@@ -30,11 +34,11 @@
  ******************************************************************************/
 
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
 
 /*******************************************************************************
@@ -51,7 +55,7 @@ void Test_Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_D
 void Test_Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_IOValue_Typedef value_enum, uint8_t expected, uint8_t mask);
 
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif
 
 #endif /* _UT_GPIO_HAL_H */

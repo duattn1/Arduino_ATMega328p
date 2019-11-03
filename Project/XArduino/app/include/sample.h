@@ -1,10 +1,14 @@
 /** @file sample.h
- *  @brief Function prototypes for Arduino samples.
- * 
- *  This is the header file for the definition of Arduino samples.
- *  
- * 	@author Tran Nhat Duat (duattn)
- *	@version 	V1.0
+ *  @brief Declaration of sample application function and data.
+ *
+ *  This is the header file for the definition of sample application.
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * TODO<<Jan 01, 2019>> - TODO<< WHAT WAS UPDATED?>>
+ * -----------------------------------------------------------------------------
  */
 
 #ifndef SAMPLE_H_
@@ -13,36 +17,30 @@
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-/* HAL including */
-#include "interrupt.h"
-#include "gpio_hal.h"
-#include "usart_hal.h"
-#include "spi_hal.h"
-#include "timer_hal.h"
+/* HAL sample application*/
+#include "gpio_hal_sample.h"
+#include "spi_hal_sample.h"
+#include "usart_hal_sample.h"
+#include "timer_hal_sample.h"
 
-/* Kit interfaces including */	
-#include "ledMatrix_Max7219.h"
+/* Kit application */	
+#include "max7219_kit_sample.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
 
-
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
 
-
-	
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 
-
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-
 
 /*******************************************************************************
  * 6. Function Prototypes
@@ -51,22 +49,21 @@
 extern "C"{
 #endif
 
-/** @brief Set up the Arduino.
+/** 
+ * @brief Run the sample application
  *
- *  @param none.
- *  @return none.
- */
-void setup(void);
-
-/** @brief Perform the infinite loop.
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
  *
- *  @param none.
- *  @return none.
+ * @param None
+ * @return None
+ *
+ * @see None
  */
-void loop(void);
+void Sample_RunApp(void);
 
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif
 
 #endif /* SAMPLE_H_ */

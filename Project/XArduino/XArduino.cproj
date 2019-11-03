@@ -68,10 +68,8 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
-      <Value>USE_USART_HAL</Value>
-      <Value>USE_INTERRUPT</Value>
-      <Value>USE_GPIO_HAL</Value>
-      <Value>UNIT_TESTING</Value>
+      <Value>GPIO_HAL_SAMPLE</Value>
+      <Value>GPIO_HAL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -97,13 +95,43 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\include\gpio_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\include\max7219_kit_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\include\timer_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\include\sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\include\spi_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\include\usart_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\source\gpio_hal_sample.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="app\source\main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\source\max7219_kit_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="app\source\sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\source\spi_hal_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\source\timer_hal_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\source\usart_hal_sample.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\include\atmega328.h">
@@ -113,9 +141,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\include\gpio_hal.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\include\interrupt.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\include\misc.h">
@@ -134,9 +159,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\source\gpio_hal.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="hal\source\interrupt.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\source\misc.c">

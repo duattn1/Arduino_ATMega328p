@@ -1,10 +1,14 @@
 /** @file ut_base.h
- *  @brief Function prototypes for unit testing base.
- * 
+ *  @brief Declaration of unit testing base function and data.
+ *
  *  This is the header file for the definition of unit testing base.
- *  
- * 	@author Tran Nhat Duat (duattn)
- *	@version 	V1.0
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *  @version V1.0
+ *
+ * ------------------------------ REVISION HISTORY -----------------------------
+ * TODO<<Jan 01, 2019>> - TODO<< WHAT WAS UPDATED?>>
+ * -----------------------------------------------------------------------------
  */
 
 #ifndef _UT_BASE_H
@@ -37,43 +41,44 @@
  ******************************************************************************/
 
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
 /**
  * @struct This structure is a object for comparison with type of uint8_t.
  */
 typedef struct {
-	uint8_t actual;
-	uint8_t expected;
-	uint8_t mask;
+    uint8_t actual;     /**< Testing actual result */
+    uint8_t expected;   /**< Testing expected result */
+    uint8_t mask;       /**< Testing result mask */
 } Struct_Uint8Data_Typedef;
 
 /**
  * @struct This structure is a object for comparison with type of uint8_t pointer.
  */
 typedef struct {
-	uint8_t *actual;
-	uint8_t *expected;
+    uint8_t *actual;    /**< Testing actual result */
+    uint8_t *expected;  /**< Testing expected result */
 } Struct_Uint8PtrData_Typedef;
 
 /**
  * @struct This structure is a object for comparison with type of uint32_t.
  */
 typedef struct {
-	uint32_t actual;
-	uint32_t expected;
-	uint32_t mask;
+    uint32_t actual;    /**< Testing actual result */
+    uint32_t expected;  /**< Testing expected result */
+    uint32_t mask;      /**< Testing result mask */
 } Struct_Uint32Data_Typedef;
 
 /**
  * @struct This struct TODO
  */
 typedef struct{
-	uint8_t command;
-	uint8_t option;
+    uint8_t command;    /**< Host command to device target */
+    uint8_t option;     /**< Command option */
 } Struct_HostCommand_Typedef;
+
 /*******************************************************************************
- * 5. Global, Static and Extern Variables
+ * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
 
 /*******************************************************************************
@@ -83,43 +88,73 @@ typedef struct{
 extern "C"{
 #endif
 
-/** @brief Perform binary comparison on register values with type of uint8_t.
+/** 
+ * @brief Perform binary comparison on register values with type of uint8_t
  *
- *  @param data_ptr The object which contains compared mask, expected and actual value
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param data_ptr The object which contains compared mask, expected and actual value
+ * @return None
+ *
+ * @see None
  */
 void compareBitsOnUint8(Struct_Uint8Data_Typedef *data_ptr);
 
-/** @brief Perform binary comparison on register values with type of uint32_t.
+/** 
+ * @brief Perform binary comparison on register values with type of uint32_t
  *
- *  @param data_ptr The object which contains compared mask, expected and actual value
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param data_ptr The object which contains compared mask, expected and actual value
+ * @return None
+ *
+ * @see None
  */
 void compareBitsOnUint32(Struct_Uint32Data_Typedef *data_ptr);
 
-/** @brief Perform comparison with 2 uint8_t values.
+/** 
+ * @brief Perform comparison with 2 uint8_t values
  *
- *  @param data_ptr The object which contains expected and actual value
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param data_ptr The object which contains expected and actual value
+ * @return None
+ *
+ * @see None
  */
 void compareOnUint8(Struct_Uint8Data_Typedef *data_ptr);
 
-/** @brief Perform comparison with 2 uint8_t pointers.
+/** 
+ * @brief Perform comparison with 2 uint8_t pointers
  *
- *  @param data_ptr The object which contains expected and actual value
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param data_ptr The object which contains expected and actual value
+ * @return None
+ *
+ * @see None
  */
 void compareOnUint8Ptr(Struct_Uint8PtrData_Typedef *data_ptr);
 
-/** @brief Perform comparison with 2 uint32_t values.
+/** 
+ * @brief Perform comparison with 2 uint32_t values
  *
- *  @param data_ptr The object which contains expected and actual value
- *  @return none
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param data_ptr The object which contains expected and actual value
+ * @return None
+ *
+ * @see None
  */
 void compareOnUint32(Struct_Uint32Data_Typedef *data_ptr);
 
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif
 
 #endif /* _UT_BASE_H */
