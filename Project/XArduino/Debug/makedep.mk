@@ -16,6 +16,8 @@ App\source\usart_hal_sample.cpp
 
 App\source\XArduino.cpp
 
+Configuration\config_base.c
+
 Driver\source\gpio_hal.c
 
 Driver\source\misc.c

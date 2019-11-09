@@ -1,13 +1,14 @@
 /** @file config_base.h
- *  @brief Declaration of hardware abstract layer configuration.
+ *  @brief Declaration of basic configuration.
  *
- *  This is the header file for the definition of miscellaneous data.
+ *  This is the header file for the definition of basic configuration.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
  *
  * ------------------------------ REVISION HISTORY -----------------------------
  * Nov 09, 2019 - Initial version
+ *              - Added assertion definition.
  * -----------------------------------------------------------------------------
  */
 #ifndef CONFIG_BASE_H_
@@ -47,7 +48,18 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-
+/** 
+ * @def Do assertion for an expression
+ *
+ *  @param expression The evaluated expression.
+ *  @retval nothing When the expression is true
+ *  @retval error notification When the expression is false
+ */
+#ifdef USE_FULL_ASSERT
+#define assert(expression) ((expression) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
+#else
+#define assert(expression) ((void)0) 
+#endif
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
@@ -62,6 +74,20 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
+
+/** 
+ * @brief Show the file name and line of code where the assertion failed.
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param file Name of file.
+ * @param line Code line number.
+ * @return None
+ *
+ * @see None
+ */
+void assert_failed(uint8_t* file, uint32_t line);
 
 
 #ifdef __cplusplus

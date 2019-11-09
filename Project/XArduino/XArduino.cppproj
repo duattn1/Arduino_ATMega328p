@@ -51,8 +51,9 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
-      <Value>USART_HAL_SAMPLE</Value>
-      <Value>USART_HAL</Value>
+      <Value>USE_FULL_ASSERT</Value>
+      <Value>GPIO_HAL_SAMPLE</Value>
+      <Value>GPIO_HAL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -76,8 +77,9 @@
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
-      <Value>USART_HAL</Value>
-      <Value>USART_HAL_SAMPLE</Value>
+      <Value>GPIO_HAL</Value>
+      <Value>GPIO_HAL_SAMPLE</Value>
+      <Value>USE_FULL_ASSERT</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
@@ -146,6 +148,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Configuration\config_app.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration\config_base.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Configuration\config_base.h">
