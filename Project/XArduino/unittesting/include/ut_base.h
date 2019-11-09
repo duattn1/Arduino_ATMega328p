@@ -18,6 +18,7 @@
  * 1. Included Files
  ******************************************************************************/
 #include <stdint.h>
+#include <string.h>
 #include "unity.h"
 
 
@@ -25,17 +26,48 @@
  * 2. Object-like Macros
  ******************************************************************************/
 /**
- * @note This is hardcode TODO
+ * Command index according to the unit testing data frame
+ * @note Syntax:
+ *       :[command][...]. 
  */
-#define PARAM_1 buffer[3]
-#define PARAM_2 buffer[4]
-#define PARAM_3 buffer[5]
-#define PARAM_4 buffer[6]
-#define PARAM_5 buffer[7]
-#define PARAM_6 buffer[8]
-#define PARAM_7 buffer[9]
-#define PARAM_8 buffer[10]
-#define PARAM_9 buffer[11]
+#define CMD_INDEX           1                   /* Start testing */
+#define CMD_NAME            buffer[CMD_INDEX]   /* Command name */
+#define CMD_END_CHARACTER   '.'                 /* Command ending character */
+
+/**
+ * List of host commands for unit testing
+ */
+#define CMD_START_TESTING   's'     /* Start testing */
+#define CMD_QUIT_TESTING    'q'     /* Quit testing */
+#define CMD_TEST_FUNCTION   'f'     /* Send testing function name */
+#define CMD_TEST_PARAMETER  'p'     /* Send testing parameters */
+
+/**
+ * Function name index according to the unit testing data frame
+ * @note Syntax:
+ *       :f,[...]. 
+ */
+#define FUNCTION_NAME_INDEX     3   /* Index of function name */
+
+/**
+ * Parameter index according to the unit testing data frame
+ * @note Syntax:
+ *       :p,[param_1],[param_2],[...],[param_n]. 
+ */
+#define PARAM_1_INDEX           3   /* Index of first parameter */
+#define PARAM_DELIMITER         ',' /* Delimiter character */
+#define PARAM_DELIMITER_SIZE    1   /* Delimiter size: 1 byte */
+#define DEVICE_WORD_SIZE        1   /* Parameter size (= word size): 1 byte */
+#define PARAM_1         buffer[PARAM_1_INDEX + 0*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_2         buffer[PARAM_1_INDEX + 1*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_3         buffer[PARAM_1_INDEX + 2*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_4         buffer[PARAM_1_INDEX + 3*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_5         buffer[PARAM_1_INDEX + 4*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_6         buffer[PARAM_1_INDEX + 5*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_7         buffer[PARAM_1_INDEX + 6*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_8         buffer[PARAM_1_INDEX + 7*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+#define PARAM_9         buffer[PARAM_1_INDEX + 8*(DEVICE_WORD_SIZE + PARAM_DELIMITER_SIZE)]
+
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
@@ -87,6 +119,21 @@ typedef struct{
 #ifdef __cplusplus
 extern "C"{
 #endif
+
+/** 
+ * @brief Get function index from an array of function names
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param name Searched function name
+ * @param functions List of function names
+ * @param functionsLength Length of function list
+ * @return Function index in the function list
+ *
+ * @see None
+ */
+uint8_t getFunctionIndex(const char *name, const char *functions[], uint8_t functionsLength);
 
 /** 
  * @brief Perform binary comparison on register values with type of uint8_t

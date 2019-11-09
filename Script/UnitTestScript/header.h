@@ -1,7 +1,7 @@
-/** @file ut_main.h
- *  @brief Declaration of unit testing main controlling function and data.
+/** @file gpio_hal.h
+ *  @brief Declaration of GPIO driver function and data.
  *
- *  This is the header file for the definition of unit testing main controlling.
+ *  This is the header file for the definition of GPIO driver.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -11,16 +11,17 @@
  * -----------------------------------------------------------------------------
  */
 
-#ifndef _UT_MAIN_H
-#define _UT_MAIN_H
+#ifndef GPIO_HAL_H_
+#define GPIO_HAL_H_
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include <avr/interrupt.h>
-#include "ut_base.h"
-#include "usart_hal.h"
-#include "ut_gpio_hal.h"
+#include <avr/io.h>
+#include <stdint.h>
+#include <stddef.h>
+#include "boards.h"
+#include "misc.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -33,10 +34,19 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
+/**
+ * @enum This enumeration is a list of pin direction modes.
+ */
+typedef enum
+{
+    Gpio_DDRx_Input = 0x00,      /**< Input mode */
+    Gpio_DDRx_Output = 0x01      /**< Output mode */
+} Enum_Gpio_DDRxDirection_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
+extern const Struct_BoardPin_Typedef Pins_array[];
 
 /*******************************************************************************
  * 6. Function Prototypes
@@ -46,74 +56,64 @@ extern "C"{
 #endif
 
 /** 
- * @brief Perform testing
+ * @brief Get the pointer to desired GPIO register structure
  *
  * PRE-CONDITION: None
  * POST-CONDITION: None
  *
- * @param None
- * @return None
+ * @param port_enum Port name
+ * @return Pointer to port X structure
  *
- * @see Test_Init(), Test_Loop(), Test_Conclude()
+ * @see None
  */
-void Test_RunTest(void);
+Struct_Gpio_Typedef* Gpio_GetPortBase(Enum_Gpio_Port_Typedef port_enum);
 
 /** 
- * @brief Perform testing initialization
+ * @brief Disable or enable pull-up resistor
  *
  * PRE-CONDITION: None
  * POST-CONDITION: None
  *
- * @param None
+ * @param cmd_enum Enable or Disable option
  * @return None
  *
  * @see None
  */
-void Test_Init(void);
+void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd_enum);
 
 /** 
- * @brief Perform the test loop: wait for testing data from host
- *
- * PRE-CONDITION: Testing is initialized with Test_Init()
- * POST-CONDITION: None
- *
- * @param None
- * @return None
- *
- * @see Test_Init()
- */
-void Test_Loop(void);
-
-/** 
- * @brief Perform the test conclusion
- *
- * PRE-CONDITION: Test cases are run with Test_Loop()
- * POST-CONDITION: None
- *
- * @param None
- * @return None
- *
- * @see Test_Loop()
- */
-void Test_Conclude(void);
-
-/** 
- * @brief Get the host command via serial connection
+ * @brief Configure a pin direction
  *
  * PRE-CONDITION: None
  * POST-CONDITION: None
  *
- * @param NoneF
- * @return Host command
+ * @param arduinoPin_enum Arduino digital pin
+ * @param direction_enum Pin direction
+ * @return None
  *
- * @see None
+ * @see Gpio_GetPortBase()
  */
-uint8_t Test_GetHostCommand(void);
+void Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirection_Typedef direction_enum);
+
+/** 
+ * @brief Set or reset a pin value
+ *
+ * PRE-CONDITION: Pin direction is set to output with Gpio_PinMode()
+ * POST-CONDITION: None
+ *
+ * @param arduinoPin_enum Arduino digital pin
+ * @param value_enum Pin value
+ * @return None
+ *
+ * @see Gpio_GetPortBase(), Gpio_PinMode()
+ */
+void Gpio_DigitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_IOValue_Typedef value_enum);
+
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* _UT_MAIN_H */
+#endif /* GPIO_HAL_H_ */
 
 /** End of File ***************************************************************/

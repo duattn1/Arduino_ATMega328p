@@ -37,6 +37,16 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
+uint8_t getFunctionIndex(const char *name, const char *functions[], uint8_t functionsLength){
+	int i, result = -1;
+	for(i = 0; i < functionsLength; i++){
+		if(0 == strcmp(name, functions[i])){
+			result = i;
+		}
+	}
+	return result;
+}
+
 void compareBitsOnUint8(Struct_Uint8Data_Typedef *data_ptr){
     TEST_ASSERT_BITS(data_ptr->mask, data_ptr->expected, data_ptr->actual);	
 }

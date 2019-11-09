@@ -207,31 +207,31 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 app/source/%.o: ../app/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 hal/source/%.o: ../hal/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 kits/source/%.o: ../kits/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 unittesting/source/%.o: ../unittesting/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 unittesting/UnityLibrary/%.o: ../unittesting/UnityLibrary/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL_SAMPLE -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 

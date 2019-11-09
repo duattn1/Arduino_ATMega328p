@@ -32,6 +32,7 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
+#define NAME(x) #x
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
@@ -48,7 +49,7 @@
 extern "C"{
 #endif
 
-void Test_RunAll(void);
+void Test_RunTestcase(void);
 void Test_Gpio_GetPortBase(Enum_Gpio_Port_Typedef port_enum, uint8_t* expected);
 void Test_Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd_enum, uint8_t expected, uint8_t mask);
 void Test_Gpio_PinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirection_Typedef direction_enum, uint8_t expected, uint8_t mask);

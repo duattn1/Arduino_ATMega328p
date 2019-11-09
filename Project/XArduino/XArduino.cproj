@@ -68,7 +68,8 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
-      <Value>GPIO_HAL_SAMPLE</Value>
+      <Value>USART_HAL</Value>
+      <Value>UNIT_TESTING</Value>
       <Value>GPIO_HAL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>

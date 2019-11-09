@@ -36,7 +36,6 @@
  ******************************************************************************/
 uint8_t buffer[255];
 uint8_t buffer_index = 0;
-bool endCommand = false;
 
 const Struct_Usart_Config_Typedef UsartSampleConfig[1] = 
 {
@@ -74,11 +73,7 @@ void Usart_Loop(void){
 ISR(USART_RX_vect)
 {
     while (!(UCSR0A & (1 << RXC0)));	
-    uint8_t data = (uint8_t)UDR0;
-    if ('.' == data)
-    { 
-        endCommand = true;
-    }
+    uint8_t data = (uint8_t)UDR0;    
     buffer[buffer_index] = data;
     buffer_index++;
 }

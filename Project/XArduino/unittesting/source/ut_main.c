@@ -38,10 +38,11 @@
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-extern void Test_RunAll(void);
-extern uint8_t buffer[256];
-extern uint8_t buffer_index;
-extern bool endCommand;
+extern void Test_RunTestcase(void);
+uint8_t buffer[256];
+uint8_t buffer_index = 0;
+char functionName[255] = "";
+bool endCommand = false;
 
 /* USART initializing configuration */
 const Struct_Usart_Config_Typedef UsartRedirectConfig_array[1] = 
@@ -90,61 +91,81 @@ void Test_Init(void) {
     stdout = &Usart_stream;
     sei(); /* Enable all interrupts */
     
-    uint8_t text[] = "Start testing";
-    Usart_SendString(text);
+    Usart_SendString("Start testing");
     UNITY_BEGIN();
 }
 
 void Test_Loop(void){
-    Struct_HostCommand_Typedef cmd;
+    uint8_t cmd;
 
     while(1) {
         cmd = Test_GetHostCommand();
-
-        /* Quit the test loop when "q:" is received. */
-        if ('q' == cmd.command) {
-            break;
-        } else {
-            switch (cmd.command) {
-            case 's':
-                /* Reset buffer index before calling function*/
-                buffer_index = 0;
-                RUN_TEST(Test_RunAll);
-                break;
-            }
+        
+        if (CMD_QUIT_TESTING == cmd) {
+			/* 
+			 * Quit the test loop 
+			 */
+            break; 
+        } else if (CMD_START_TESTING == cmd){
+			/* 
+			 * Run a test case 
+			 */
+            buffer_index = 0;
+            RUN_TEST(Test_RunTestcase);
         }
     }
 }
 
 void Test_Conclude(void){
     UNITY_END();
-    uint8_t end[] = "End testing";
-    Usart_SendString(end);
+    Usart_SendString("End testing");
 }
 
-Struct_HostCommand_Typedef Test_GetHostCommand(void){
-    Struct_HostCommand_Typedef cmd;
+uint8_t Test_GetHostCommand(void){
+    uint8_t cmd;
     if(true == endCommand){
         endCommand = false;
         uint8_t read_index = 0;
         uint8_t data;
         
+		/* Command format is  ":[cmd_character][...]." => get the [1] element of buffer array */
+        cmd = CMD_NAME;			
+		
         /* Print out received data */
         while(read_index < buffer_index){
             data = buffer[read_index];
             Usart_SendChar(data, 0);
+			
+			/* Store function name if host send the function command*/
+			if((CMD_TEST_FUNCTION == cmd) && (read_index >= FUNCTION_NAME_INDEX) && (CMD_END_CHARACTER != data)){
+				/* Append the received character to function name when host send the ":f" command */
+			    strncat(functionName, &data, 1);
+		    }	
+		
             read_index++;
         }
-        
-        /* Command format is  ":[cmd_character]." => get the [1] element of buffer array */
-        cmd.command = buffer[1];
-        cmd.option = buffer[2];
         
         /* Reset buffer index */
         buffer_index = 0;
     } /* End of if(true == endCommand){ */
     return cmd;
 }
+
+/**
+ * USART reception complete interrupt handler
+ */
+ISR(USART_RX_vect)
+{
+    while (!(UCSR0A & (1 << RXC0)));	
+    uint8_t data = (uint8_t)UDR0;
+	if ('.' == data){
+		endCommand = true;
+	}
+	
+    buffer[buffer_index] = data;
+    buffer_index++;
+}
+
 #endif /* UNIT_TESTING	*/
 
 /** End of File ***************************************************************/

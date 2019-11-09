@@ -34,42 +34,66 @@
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
+/* List of function names */
+const char *functions[] = 
+{   
+	NULL, /* Default value for function index = 0*/
+	NAME(Test_Gpio_GetPortBase),
+	NAME(Test_Gpio_CommandPullUpResistorSetting),
+	NAME(Test_Gpio_PinMode),
+	NAME(Test_Gpio_DigitalWrite)    	
+};
+
 extern uint8_t buffer[256];
 extern uint8_t buffer_index;
 extern bool endCommand;
+extern char functionName[255];
 
-extern Struct_HostCommand_Typedef Test_GetHostCommand(void);
+extern uint8_t Test_GetHostCommand(void);
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Test_RunAll(void)
+void Test_RunTestcase(void)
 {	
-	Struct_HostCommand_Typedef cmd;
+	uint8_t cmd;
+	uint8_t functionIndex = 0; /*  */
+	uint8_t functionsLength = sizeof(functions)/sizeof(functions[0]);
 	
+	Usart_SendString("TC."); // Debug
 	while(1) {
 		cmd = Test_GetHostCommand();
 				
-		/* Quit the test loop when "q:" is received. */				
-		if ('d' == cmd.command) {
-			break;			 
-		}
+		/* Perform the test when the command is ":p" */				
+		if (CMD_TEST_PARAMETER == cmd) {
+			if (0 != functionIndex){
+                break;
+			}					 
+		} else if(CMD_TEST_FUNCTION == cmd){
+			printf("Func: %s", functionName);
+			functionIndex = getFunctionIndex(functionName, functions, functionsLength);
+	        printf("index: %d", functionIndex);			
+		}		
 	}
 	
-	switch (cmd.option) {
-		case 0: 
-			/* Parameters position starts from 3, since the command format is ":d[option][param1][param2][...]" */
+	/*
+	 * @note Each case of the below processing must refer to data of "functions" array.
+	 */
+	switch (functionIndex) {
+		case 1:			
 			Test_Gpio_GetPortBase(PARAM_1, (uint8_t*)PARAM_2);
 			break;
-		case 1:
+		case 2:
 			Test_Gpio_CommandPullUpResistorSetting(PARAM_1, PARAM_2, PARAM_3);
 			break;
-		case 2:
+		case 3:
 			Test_Gpio_PinMode(PARAM_1, PARAM_2, PARAM_3, PARAM_4);
 			break;
-		case 3:
+		case 4:
 			Test_Gpio_DigitalWrite(PARAM_1, PARAM_2, PARAM_3, PARAM_4);
 			break;
+		default:
+		    break;
 	};	
 }
 
