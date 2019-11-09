@@ -18,7 +18,7 @@
  * 1. Included Files
  ******************************************************************************/
 #include "config_app.h"
-#include "usart_hal.h"
+#include "wrapper_arduinoUsart.h"
 
 /*******************************************************************************
  * 2. Object-like Macros

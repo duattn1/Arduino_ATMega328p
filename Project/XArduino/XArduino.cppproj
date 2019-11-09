@@ -50,9 +50,9 @@
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>GPIO_HAL_SAMPLE</Value>
-      <Value>GPIO_HAL</Value>
       <Value>ARDUINO_NANO</Value>
+      <Value>USART_HAL_SAMPLE</Value>
+      <Value>USART_HAL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -75,9 +75,9 @@
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>GPIO_HAL_SAMPLE</Value>
-      <Value>GPIO_HAL</Value>
       <Value>ARDUINO_NANO</Value>
+      <Value>USART_HAL</Value>
+      <Value>USART_HAL_SAMPLE</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
@@ -139,7 +139,7 @@
     <Compile Include="App\source\timer_hal_sample.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="App\source\usart_hal_sample.c">
+    <Compile Include="App\source\usart_hal_sample.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\source\XArduino.cpp">
@@ -211,7 +211,7 @@
     <Compile Include="Middleware\Wrapper\Arduino\source\wrapper_arduinoGpio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Middleware\Wrapper\Arduino\source\wrapper_arduinoUsart.c">
+    <Compile Include="Middleware\Wrapper\Arduino\source\wrapper_arduinoUsart.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Testing\Unittesting\include\ut_base.h">

@@ -12,7 +12,7 @@ App\source\spi_hal_sample.c
 
 App\source\timer_hal_sample.c
 
-App\source\usart_hal_sample.c
+App\source\usart_hal_sample.cpp
 
 App\source\XArduino.cpp
 
@@ -32,7 +32,7 @@ Middleware\Wrapper\Arduino\source\boards.c
 
 Middleware\Wrapper\Arduino\source\wrapper_arduinoGpio.c
 
-Middleware\Wrapper\Arduino\source\wrapper_arduinoUsart.c
+Middleware\Wrapper\Arduino\source\wrapper_arduinoUsart.cpp
 
 Testing\Unittesting\source\ut_base.c
 

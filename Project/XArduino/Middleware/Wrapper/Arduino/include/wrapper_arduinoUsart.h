@@ -7,7 +7,7 @@
  *  @version V1.0
  *
  * ------------------------------ REVISION HISTORY -----------------------------
- * Nov 09, 2019 - Changed project language from C to C++.
+ * Nov 09, 2019 - Initial version
  * -----------------------------------------------------------------------------
  */
 
@@ -32,11 +32,23 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
+/**
+ * 
+ */ 
+#ifdef __cplusplus
+class Serial
+{
+    public:
+        void begin(Enum_Usart_Baudrate_Typedef baudrate_enum);
+        void print(char *string_ptr);
+    protected:
+    private:
+};
+#endif
 
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-extern const Struct_BoardPin_Typedef Pins_array[];
 
 /*******************************************************************************
  * 6. Function Prototypes
