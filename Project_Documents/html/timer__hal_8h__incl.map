@@ -1,0 +1,9 @@
+<map id="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/Driver/include/timer_hal.h" name="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/Driver/include/timer_hal.h">
+<area shape="rect" id="node1" title="Declaration of Timer driver function and data." alt="" coords="87,5,246,76"/>
+<area shape="rect" id="node2" title=" " alt="" coords="54,273,116,300"/>
+<area shape="rect" id="node3" title=" " alt="" coords="216,273,282,300"/>
+<area shape="rect" id="node4" title=" " alt="" coords="331,124,399,151"/>
+<area shape="rect" id="node5" href="$boards_8h.html" title="Declaration of Arduino boards function and data." alt="" coords="130,124,202,151"/>
+<area shape="rect" id="node7" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="21,199,82,225"/>
+<area shape="rect" id="node6" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="158,199,255,225"/>
+</map>
