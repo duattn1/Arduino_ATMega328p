@@ -18,6 +18,7 @@
  * 1. Included Files
  ******************************************************************************/
 /* HAL sample application*/
+#include "config_app.h"
 #include "gpio_hal_sample.h"
 #include "spi_hal_sample.h"
 #include "usart_hal_sample.h"

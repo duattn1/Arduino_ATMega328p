@@ -45,6 +45,7 @@ SUBDIRS :=  \
 ../Middleware/Wrapper/Arduino \
 ../Middleware/Wrapper/Arduino/include \
 ../Middleware/Wrapper/Arduino/source \
+../Configuration \
 ../Testing \
 ../Testing/IntegrationTesting \
 ../Testing/Unittesting \
@@ -228,43 +229,43 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 App/source/%.o: ../App/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 App/source/%.o: ../App/source/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE -DUSE_INTERRUPT  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
 	@echo Finished building: $<
 
 Driver/source/%.o: ../Driver/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 Middleware/Kit/source/%.o: ../Middleware/Kit/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 Middleware/Wrapper/Arduino/source/%.o: ../Middleware/Wrapper/Arduino/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 Testing/Unittesting/source/%.o: ../Testing/Unittesting/source/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 Testing/Unittesting/UnityLibrary/%.o: ../Testing/Unittesting/UnityLibrary/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DGPIO_HAL_SAMPLE -DGPIO_HAL -DARDUINO_NANO  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 

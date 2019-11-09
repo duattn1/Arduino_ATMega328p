@@ -1,7 +1,6 @@
 <map id="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/Middleware/Wrapper/Arduino/source/boards.c" name="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/Middleware/Wrapper/Arduino/source/boards.c">
 <area shape="rect" id="node1" title="Definition of Arduino boards pin mapping." alt="" coords="5,5,225,76"/>
 <area shape="rect" id="node2" href="$boards_8h.html" title="Declaration of Arduino boards function and data." alt="" coords="79,124,151,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="41,273,104,300"/>
+<area shape="rect" id="node3" title=" " alt="" coords="84,273,147,300"/>
 <area shape="rect" id="node4" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="111,199,208,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="128,273,193,300"/>
 </map>

@@ -50,9 +50,9 @@
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
+      <Value>GPIO_HAL_SAMPLE</Value>
+      <Value>GPIO_HAL</Value>
       <Value>ARDUINO_NANO</Value>
-      <Value>USART_HAL</Value>
-      <Value>USART_HAL_SAMPLE</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -63,6 +63,7 @@
       <Value>../Testing/Unittesting/include</Value>
       <Value>../Testing/Unittesting/UnityLibrary</Value>
       <Value>../Middleware/Kit/include</Value>
+      <Value>../Configuration</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -74,10 +75,9 @@
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
+      <Value>GPIO_HAL_SAMPLE</Value>
+      <Value>GPIO_HAL</Value>
       <Value>ARDUINO_NANO</Value>
-      <Value>USART_HAL</Value>
-      <Value>USART_HAL_SAMPLE</Value>
-      <Value>USE_INTERRUPT</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
@@ -88,6 +88,7 @@
       <Value>../Testing/Unittesting/include</Value>
       <Value>../Testing/Unittesting/UnityLibrary</Value>
       <Value>../Middleware/Kit/include</Value>
+      <Value>../Configuration</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -142,6 +143,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\source\XArduino.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration\config_app.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration\config_base.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration\config_driver.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Configuration\config_middleware.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Driver\include\atmega328.h">
@@ -244,6 +257,7 @@
     <Folder Include="Middleware\Wrapper\Arduino" />
     <Folder Include="Middleware\Wrapper\Arduino\include" />
     <Folder Include="Middleware\Wrapper\Arduino\source" />
+    <Folder Include="Configuration" />
     <Folder Include="Testing" />
     <Folder Include="Testing\IntegrationTesting" />
     <Folder Include="Testing\Unittesting" />

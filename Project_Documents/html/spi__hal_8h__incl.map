@@ -1,8 +1,13 @@
 <map id="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/Driver/include/spi_hal.h" name="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/Driver/include/spi_hal.h">
-<area shape="rect" id="node1" title="Declaration of SPI driver function and data." alt="" coords="108,5,267,76"/>
-<area shape="rect" id="node2" title=" " alt="" coords="147,273,209,300"/>
-<area shape="rect" id="node3" title=" " alt="" coords="15,273,80,300"/>
-<area shape="rect" id="node4" href="$boards_8h.html" title="Declaration of Arduino boards function and data." alt="" coords="115,124,187,151"/>
-<area shape="rect" id="node6" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="194,199,255,225"/>
-<area shape="rect" id="node5" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="21,199,119,225"/>
+<area shape="rect" id="node1" title="Declaration of SPI driver function and data." alt="" coords="403,5,561,76"/>
+<area shape="rect" id="node2" href="$config__driver_8h.html" title="Declaration of hardware abstract layer configuration." alt="" coords="430,124,534,151"/>
+<area shape="rect" id="node3" href="$config__base_8h.html" title="Declaration of hardware abstract layer configuration." alt="" coords="260,199,363,225"/>
+<area shape="rect" id="node10" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="433,199,531,225"/>
+<area shape="rect" id="node11" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="555,199,617,225"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,273,71,300"/>
+<area shape="rect" id="node5" title=" " alt="" coords="95,273,157,300"/>
+<area shape="rect" id="node6" title=" " alt="" coords="181,273,249,300"/>
+<area shape="rect" id="node7" title=" " alt="" coords="274,273,349,300"/>
+<area shape="rect" id="node8" title=" " alt="" coords="497,273,560,300"/>
+<area shape="rect" id="node9" title=" " alt="" coords="373,273,473,300"/>
 </map>

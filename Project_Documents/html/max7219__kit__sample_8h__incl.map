@@ -1,10 +1,16 @@
 <map id="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/App/include/max7219_kit_sample.h" name="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/App/include/max7219_kit_sample.h">
-<area shape="rect" id="node1" title="Declaration of LED matrix (based on Max7219) sample application function and data." alt="" coords="234,5,439,76"/>
-<area shape="rect" id="node2" href="$led_matrix___max7219_8h.html" title="Declaration of LED matrix (based on Max7219) function and data." alt="" coords="263,124,410,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="280,348,343,375"/>
-<area shape="rect" id="node4" href="$gpio__hal_8h.html" title="Declaration of GPIO driver function and data." alt="" coords="192,199,273,225"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,348,71,375"/>
-<area shape="rect" id="node6" title=" " alt="" coords="155,273,223,300"/>
-<area shape="rect" id="node7" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="247,273,309,300"/>
-<area shape="rect" id="node8" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="33,273,131,300"/>
+<area shape="rect" id="node1" title="Declaration of LED matrix (based on Max7219) sample application function and data." alt="" coords="267,5,473,76"/>
+<area shape="rect" id="node2" href="$config__app_8h_source.html" title=" " alt="" coords="268,199,363,225"/>
+<area shape="rect" id="node10" href="$led_matrix___max7219_8h.html" title="Declaration of LED matrix (based on Max7219) function and data." alt="" coords="353,124,499,151"/>
+<area shape="rect" id="node3" href="$config__base_8h.html" title="Declaration of hardware abstract layer configuration." alt="" coords="260,348,363,375"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,423,71,449"/>
+<area shape="rect" id="node5" title=" " alt="" coords="95,423,157,449"/>
+<area shape="rect" id="node6" title=" " alt="" coords="181,423,249,449"/>
+<area shape="rect" id="node7" title=" " alt="" coords="274,423,349,449"/>
+<area shape="rect" id="node8" title=" " alt="" coords="497,423,560,449"/>
+<area shape="rect" id="node9" title=" " alt="" coords="373,423,473,449"/>
+<area shape="rect" id="node11" href="$gpio__hal_8h.html" title="Declaration of GPIO driver function and data." alt="" coords="392,199,473,225"/>
+<area shape="rect" id="node12" href="$config__driver_8h.html" title="Declaration of hardware abstract layer configuration." alt="" coords="382,273,486,300"/>
+<area shape="rect" id="node13" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="387,348,484,375"/>
+<area shape="rect" id="node14" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="509,348,570,375"/>
 </map>

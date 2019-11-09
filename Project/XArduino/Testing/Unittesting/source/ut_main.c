@@ -20,7 +20,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-#include <avr/io.h>
 #include <avr/pgmspace.h>
 
 /*******************************************************************************

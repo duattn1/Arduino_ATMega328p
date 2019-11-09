@@ -78,57 +78,59 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*******************************************************************************</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * 1. Included Files</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="boards_8h.html">boards.h</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gpio__hal_8h.html">gpio_hal.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * 2. Object-like Macros</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * 3. Function-like Macros</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * 5. Global, Static, Constant, Extern Variables and Extern Functions</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="struct_struct___board_pin___typedef.html">Struct_BoardPin_Typedef</a> Pins_array[];</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*******************************************************************************</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * 6. Function Prototypes</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span>{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<a class="code" href="struct_struct___gpio___typedef.html">Struct_Gpio_Typedef</a>* <a class="code" href="wrapper__arduino_gpio_8h.html#acefd2069673fd3d7819a4e49da55ab57">Arduino_GetPortBase</a>(<a class="code" href="atmega328_8h.html#a55dd459527a286a5678f7420b9150603">Enum_Gpio_Port_Typedef</a> port_enum);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wrapper__arduino_gpio_8h.html#af3508be63baec4b5c93aeddf03be9cda">pinMode</a>(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, <a class="code" href="gpio__hal_8h.html#acfee64205ca04f001dc3b7a5821592e0">Enum_Gpio_DDRxDirection_Typedef</a> direction_enum);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wrapper__arduino_gpio_8h.html#a6ecff79eb89f304d319b79fc489842d6">digitalWrite</a>(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, <a class="code" href="misc_8h.html#a5636c2769bfee9ec564dec9f131f9254">Enum_IOValue_Typedef</a> value_enum);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="config__middleware_8h.html">config_middleware.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="boards_8h.html">boards.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gpio__hal_8h.html">gpio_hal.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * 2. Object-like Macros</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * 3. Function-like Macros</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * 5. Global, Static, Constant, Extern Variables and Extern Functions</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="struct_struct___board_pin___typedef.html">Struct_BoardPin_Typedef</a> Pins_array[];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*******************************************************************************</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * 6. Function Prototypes</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="struct_struct___gpio___typedef.html">Struct_Gpio_Typedef</a>* <a class="code" href="wrapper__arduino_gpio_8h.html#acefd2069673fd3d7819a4e49da55ab57">Arduino_GetPortBase</a>(<a class="code" href="atmega328_8h.html#a55dd459527a286a5678f7420b9150603">Enum_Gpio_Port_Typedef</a> port_enum);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wrapper__arduino_gpio_8h.html#af3508be63baec4b5c93aeddf03be9cda">pinMode</a>(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, <a class="code" href="gpio__hal_8h.html#acfee64205ca04f001dc3b7a5821592e0">Enum_Gpio_DDRxDirection_Typedef</a> direction_enum);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="wrapper__arduino_gpio_8h.html#a6ecff79eb89f304d319b79fc489842d6">digitalWrite</a>(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, <a class="code" href="misc_8h.html#a5636c2769bfee9ec564dec9f131f9254">Enum_IOValue_Typedef</a> value_enum);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <span class="comment">/* extern &quot;C&quot; */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* WRAPPER_ARDUINOGPIO_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">/* extern &quot;C&quot; */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* WRAPPER_ARDUINOGPIO_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="amisc_8h_html_a5636c2769bfee9ec564dec9f131f9254"><div class="ttname"><a href="misc_8h.html#a5636c2769bfee9ec564dec9f131f9254">Enum_IOValue_Typedef</a></div><div class="ttdeci">Enum_IOValue_Typedef</div><div class="ttdef"><b>Definition:</b> misc.h:43</div></div>
+<div class="ttc" id="aconfig__middleware_8h_html"><div class="ttname"><a href="config__middleware_8h.html">config_middleware.h</a></div><div class="ttdoc">Declaration of middle ware layer configuration.</div></div>
+<div class="ttc" id="amisc_8h_html_a5636c2769bfee9ec564dec9f131f9254"><div class="ttname"><a href="misc_8h.html#a5636c2769bfee9ec564dec9f131f9254">Enum_IOValue_Typedef</a></div><div class="ttdeci">Enum_IOValue_Typedef</div><div class="ttdef"><b>Definition:</b> misc.h:42</div></div>
 <div class="ttc" id="agpio__hal_8h_html"><div class="ttname"><a href="gpio__hal_8h.html">gpio_hal.h</a></div><div class="ttdoc">Declaration of GPIO driver function and data.</div></div>
 <div class="ttc" id="awrapper__arduino_gpio_8h_html_acefd2069673fd3d7819a4e49da55ab57"><div class="ttname"><a href="wrapper__arduino_gpio_8h.html#acefd2069673fd3d7819a4e49da55ab57">Arduino_GetPortBase</a></div><div class="ttdeci">Struct_Gpio_Typedef * Arduino_GetPortBase(Enum_Gpio_Port_Typedef port_enum)</div><div class="ttdoc">Get the pointer to desired GPIO register structure.</div></div>
 <div class="ttc" id="awrapper__arduino_gpio_8h_html_a6ecff79eb89f304d319b79fc489842d6"><div class="ttname"><a href="wrapper__arduino_gpio_8h.html#a6ecff79eb89f304d319b79fc489842d6">digitalWrite</a></div><div class="ttdeci">void digitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_IOValue_Typedef value_enum)</div><div class="ttdoc">Set or reset a pin value.</div></div>
 <div class="ttc" id="aboards_8h_html"><div class="ttname"><a href="boards_8h.html">boards.h</a></div><div class="ttdoc">Declaration of Arduino boards function and data.</div></div>
-<div class="ttc" id="aatmega328_8h_html_a55dd459527a286a5678f7420b9150603"><div class="ttname"><a href="atmega328_8h.html#a55dd459527a286a5678f7420b9150603">Enum_Gpio_Port_Typedef</a></div><div class="ttdeci">Enum_Gpio_Port_Typedef</div><div class="ttdef"><b>Definition:</b> atmega328.h:46</div></div>
-<div class="ttc" id="astruct_struct___gpio___typedef_html"><div class="ttname"><a href="struct_struct___gpio___typedef.html">Struct_Gpio_Typedef</a></div><div class="ttdef"><b>Definition:</b> atmega328.h:71</div></div>
+<div class="ttc" id="aatmega328_8h_html_a55dd459527a286a5678f7420b9150603"><div class="ttname"><a href="atmega328_8h.html#a55dd459527a286a5678f7420b9150603">Enum_Gpio_Port_Typedef</a></div><div class="ttdeci">Enum_Gpio_Port_Typedef</div><div class="ttdef"><b>Definition:</b> atmega328.h:45</div></div>
+<div class="ttc" id="astruct_struct___gpio___typedef_html"><div class="ttname"><a href="struct_struct___gpio___typedef.html">Struct_Gpio_Typedef</a></div><div class="ttdef"><b>Definition:</b> atmega328.h:70</div></div>
 <div class="ttc" id="astruct_struct___board_pin___typedef_html"><div class="ttname"><a href="struct_struct___board_pin___typedef.html">Struct_BoardPin_Typedef</a></div><div class="ttdef"><b>Definition:</b> boards.h:63</div></div>
 <div class="ttc" id="awrapper__arduino_gpio_8h_html_af3508be63baec4b5c93aeddf03be9cda"><div class="ttname"><a href="wrapper__arduino_gpio_8h.html#af3508be63baec4b5c93aeddf03be9cda">pinMode</a></div><div class="ttdeci">void pinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirection_Typedef direction_enum)</div><div class="ttdoc">Configure a pin direction.</div></div>
-<div class="ttc" id="agpio__hal_8h_html_acfee64205ca04f001dc3b7a5821592e0"><div class="ttname"><a href="gpio__hal_8h.html#acfee64205ca04f001dc3b7a5821592e0">Enum_Gpio_DDRxDirection_Typedef</a></div><div class="ttdeci">Enum_Gpio_DDRxDirection_Typedef</div><div class="ttdef"><b>Definition:</b> gpio_hal.h:37</div></div>
+<div class="ttc" id="agpio__hal_8h_html_acfee64205ca04f001dc3b7a5821592e0"><div class="ttname"><a href="gpio__hal_8h.html#acfee64205ca04f001dc3b7a5821592e0">Enum_Gpio_DDRxDirection_Typedef</a></div><div class="ttdeci">Enum_Gpio_DDRxDirection_Typedef</div><div class="ttdef"><b>Definition:</b> gpio_hal.h:32</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,23 +1,27 @@
 <map id="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/App/include/sample.h" name="F:/Workspace/GitHub/Arduino_ATMega328p/Project/XArduino/App/include/sample.h">
-<area shape="rect" id="node1" title="Declaration of sample application function and data." alt="" coords="333,5,487,76"/>
-<area shape="rect" id="node2" href="$gpio__hal__sample_8h.html" title="Declaration of GPIO driver sample application function and data." alt="" coords="345,124,475,151"/>
-<area shape="rect" id="node11" href="$spi__hal__sample_8h.html" title="Declaration of SPI driver sample application function and data." alt="" coords="738,124,861,151"/>
-<area shape="rect" id="node13" href="$usart__hal__sample_8h.html" title="Declaration of USART driver sample application function and data." alt="" coords="533,124,668,151"/>
-<area shape="rect" id="node18" href="$timer__hal__sample_8h.html" title="Declaration of Timer driver sample application function and data." alt="" coords="185,124,320,151"/>
-<area shape="rect" id="node20" href="$max7219__kit__sample_8h.html" title="Declaration of LED matrix (based on Max7219) sample application function and data." alt="" coords="5,124,161,151"/>
-<area shape="rect" id="node3" href="$wrapper__arduino_gpio_8h.html" title="Declaration of Arduino wrapper for GPIO driver function and data." alt="" coords="293,199,447,225"/>
-<area shape="rect" id="node4" href="$boards_8h.html" title="Declaration of Arduino boards function and data." alt="" coords="491,273,563,300"/>
-<area shape="rect" id="node8" href="$gpio__hal_8h.html" title="Declaration of GPIO driver function and data." alt="" coords="284,273,365,300"/>
-<area shape="rect" id="node5" title=" " alt="" coords="379,423,441,449"/>
-<area shape="rect" id="node6" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="431,348,528,375"/>
-<area shape="rect" id="node7" title=" " alt="" coords="669,423,735,449"/>
-<area shape="rect" id="node9" title=" " alt="" coords="185,348,253,375"/>
-<area shape="rect" id="node10" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="553,348,614,375"/>
-<area shape="rect" id="node12" href="$spi__hal_8h.html" title="Declaration of SPI driver function and data." alt="" coords="807,199,882,225"/>
-<area shape="rect" id="node14" title=" " alt="" coords="472,199,572,225"/>
-<area shape="rect" id="node15" title=" " alt="" coords="597,199,671,225"/>
-<area shape="rect" id="node16" href="$usart__hal_8h.html" title="Declaration of USART driver function and data." alt="" coords="696,199,783,225"/>
-<area shape="rect" id="node17" title=" " alt="" coords="689,273,750,300"/>
-<area shape="rect" id="node19" href="$timer__hal_8h.html" title="Declaration of Timer driver function and data." alt="" coords="181,199,268,225"/>
-<area shape="rect" id="node21" href="$led_matrix___max7219_8h.html" title="Declaration of LED matrix (based on Max7219) function and data." alt="" coords="10,199,157,225"/>
+<area shape="rect" id="node1" title="Declaration of sample application function and data." alt="" coords="339,5,493,76"/>
+<area shape="rect" id="node2" href="$config__app_8h_source.html" title=" " alt="" coords="355,199,450,225"/>
+<area shape="rect" id="node10" href="$gpio__hal__sample_8h.html" title="Declaration of GPIO driver sample application function and data." alt="" coords="17,124,148,151"/>
+<area shape="rect" id="node18" href="$spi__hal__sample_8h.html" title="Declaration of SPI driver sample application function and data." alt="" coords="404,124,527,151"/>
+<area shape="rect" id="node20" href="$usart__hal__sample_8h.html" title="Declaration of USART driver sample application function and data." alt="" coords="551,124,686,151"/>
+<area shape="rect" id="node22" href="$timer__hal__sample_8h.html" title="Declaration of Timer driver sample application function and data." alt="" coords="710,124,845,151"/>
+<area shape="rect" id="node24" href="$max7219__kit__sample_8h.html" title="Declaration of LED matrix (based on Max7219) sample application function and data." alt="" coords="173,124,329,151"/>
+<area shape="rect" id="node3" href="$config__base_8h.html" title="Declaration of hardware abstract layer configuration." alt="" coords="341,423,443,449"/>
+<area shape="rect" id="node4" title=" " alt="" coords="543,497,609,524"/>
+<area shape="rect" id="node5" title=" " alt="" coords="633,497,695,524"/>
+<area shape="rect" id="node6" title=" " alt="" coords="227,497,295,524"/>
+<area shape="rect" id="node7" title=" " alt="" coords="320,497,395,524"/>
+<area shape="rect" id="node8" title=" " alt="" coords="141,497,203,524"/>
+<area shape="rect" id="node9" title=" " alt="" coords="419,497,519,524"/>
+<area shape="rect" id="node11" href="$wrapper__arduino_gpio_8h.html" title="Declaration of Arduino wrapper for GPIO driver function and data." alt="" coords="5,199,160,225"/>
+<area shape="rect" id="node12" href="$config__middleware_8h.html" title="Declaration of middle ware layer configuration." alt="" coords="119,273,257,300"/>
+<area shape="rect" id="node13" href="$boards_8h.html" title="Declaration of Arduino boards function and data." alt="" coords="103,348,175,375"/>
+<area shape="rect" id="node15" href="$gpio__hal_8h.html" title="Declaration of GPIO driver function and data." alt="" coords="282,273,363,300"/>
+<area shape="rect" id="node14" href="$atmega328_8h.html" title="Declaration of Atmega328 abstract data." alt="" coords="177,423,274,449"/>
+<area shape="rect" id="node16" href="$config__driver_8h.html" title="Declaration of hardware abstract layer configuration." alt="" coords="439,348,543,375"/>
+<area shape="rect" id="node17" href="$misc_8h.html" title="Declaration of miscellaneous function and data." alt="" coords="468,423,529,449"/>
+<area shape="rect" id="node19" href="$spi__hal_8h.html" title="Declaration of SPI driver function and data." alt="" coords="453,273,528,300"/>
+<area shape="rect" id="node21" href="$usart__hal_8h.html" title="Declaration of USART driver function and data." alt="" coords="563,273,650,300"/>
+<area shape="rect" id="node23" href="$timer__hal_8h.html" title="Declaration of Timer driver function and data." alt="" coords="711,199,798,225"/>
+<area shape="rect" id="node25" href="$led_matrix___max7219_8h.html" title="Declaration of LED matrix (based on Max7219) function and data." alt="" coords="184,199,331,225"/>
 </map>
