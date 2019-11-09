@@ -8,6 +8,7 @@
  *
  * ------------------------------ REVISION HISTORY -----------------------------
  * Nov 09, 2019 - Changed project language from C to C++.
+ *              - Added function-like macro for Arduino pin enum
  * -----------------------------------------------------------------------------
  */
 
@@ -28,6 +29,31 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
+/**
+ * Check if port is valid
+ */
+#define IS_VALID_ARDUINO_PIN(pin) \
+    ((Pin0 == (pin)) || \
+	(Pin1 == (pin)) || \
+	(Pin2 == (pin)) || \
+	(Pin3 == (pin)) || \
+	(Pin4 == (pin)) || \
+	(Pin5 == (pin)) || \
+	(Pin6 == (pin)) || \
+	(Pin7 == (pin)) || \
+	(Pin8 == (pin)) || \
+	(Pin9 == (pin)) || \
+	(Pin10 == (pin)) || \
+	(Pin11 == (pin)) || \
+	(Pin12 == (pin)) || \
+	(Pin13 == (pin)) || \
+	(Pin14 == (pin)) || \
+	(Pin15 == (pin)) || \
+	(Pin16 == (pin)) || \
+	(Pin17 == (pin)) || \
+	(Pin18 == (pin)) || \
+	(Pin19 == (pin)))
+	
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others

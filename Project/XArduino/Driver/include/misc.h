@@ -25,9 +25,6 @@
 #define F_CPU 16000000UL
 #endif
 
-/*******************************************************************************
- * 3. Function-like Macros
- ******************************************************************************/
 /* Bit Masks definition */
 #define MASK_1BIT   0x01
 #define MASK_2BIT   0x03
@@ -38,12 +35,22 @@
 #define MASK_7BIT   0x7F
 #define MASK_8BIT   0xFF
 
+/*******************************************************************************
+ * 3. Function-like Macros
+ ******************************************************************************/
 /**
  * @def Check if command selection is valid.
  */
 #define IS_VALID_COMMAND(cmd) \
     ((Disable == (cmd)) || \
 	(Enable == (cmd)))
+
+/**
+ * @def Check if command selection is valid.
+ */
+#define IS_VALID_IOVALUE(value) \
+    ((Low == (value)) || \
+	(High == (value)))
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others

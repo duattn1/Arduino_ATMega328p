@@ -77,9 +77,9 @@
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>ARDUINO_NANO</Value>
+      <Value>USE_FULL_ASSERT</Value>
       <Value>GPIO_HAL</Value>
       <Value>GPIO_HAL_SAMPLE</Value>
-      <Value>USE_FULL_ASSERT</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>

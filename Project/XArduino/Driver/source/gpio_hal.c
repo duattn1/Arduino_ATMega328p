@@ -43,11 +43,11 @@
 void Gpio_Init(Struct_Gpio_Typedef *gpio_ptr,Struct_Gpio_Config_Typedef *config_ptr){
     /* Check gpio_ptr, no need to check DDRx_uint8 since gpio_ptr is a peripheral pointer */
     assert(NULL != gpio_ptr);
-	assert(IS_VALID_PORT(gpio_ptr));
+	assert(IS_VALID_PORT_BASE(gpio_ptr));
     /* Check config_ptr and members of the pointed structure */
     assert(NULL != config_ptr);
-    assert(IS_VALID_PIN(config_ptr->pin_enum));
-	assert(IS_VALID_DIRECTION(config_ptr->direction_enum));
+    assert(IS_VALID_GPIO_PIN(config_ptr->pin_enum));
+	assert(IS_VALID_GPIO_DDRXDIRECTION(config_ptr->direction_enum));
     
 #ifdef ARDUINO_NANO
     /* Check if pin differs with PB6, PB7, PC6, PC7 since these pins are not available in Arduino Nano board */
@@ -64,9 +64,9 @@ void Gpio_Init(Struct_Gpio_Typedef *gpio_ptr,Struct_Gpio_Config_Typedef *config_
 void Gpio_PinSet(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enum){
 	/* Check gpio_ptr, no need to check DDRx_uint8 since gpio_ptr is a peripheral pointer */
     assert(NULL != gpio_ptr);
-	assert(IS_VALID_PORT(gpio_ptr));
+	assert(IS_VALID_PORT_BASE(gpio_ptr));
     /* Check pin_enum */
-    assert(IS_VALID_PIN(pin_enum));
+    assert(IS_VALID_GPIO_PIN(pin_enum));
     
 #ifdef ARDUINO_NANO
     /* Check if pin differs with PB6, PB7, PC6, PC7 since these pins are not available in Arduino Nano board */
@@ -85,9 +85,9 @@ void Gpio_PinSet(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enum){
 void Gpio_PinReset(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enum){
 	/* Check gpio_ptr, no need to check DDRx_uint8 since gpio_ptr is a peripheral pointer */
     assert(NULL != gpio_ptr);
-	assert(IS_VALID_PORT(gpio_ptr));
+	assert(IS_VALID_PORT_BASE(gpio_ptr));
     /* Check pin_enum */
-    assert(IS_VALID_PIN(pin_enum));
+    assert(IS_VALID_GPIO_PIN(pin_enum));
     
 #ifdef ARDUINO_NANO
     /* Check if pin differs with PB6, PB7, PC6, PC7 since these pins are not available in Arduino Nano board */
@@ -106,9 +106,9 @@ void Gpio_PinReset(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enum
 void Gpio_PinToggle(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enum){
 	/* Check gpio_ptr, no need to check DDRx_uint8 since gpio_ptr is a peripheral pointer */
     assert(NULL != gpio_ptr);
-	assert(IS_VALID_PORT(gpio_ptr));
+	assert(IS_VALID_PORT_BASE(gpio_ptr));
     /* Check pin_enum */
-    assert(IS_VALID_PIN(pin_enum));
+    assert(IS_VALID_GPIO_PIN(pin_enum));
     
 #ifdef ARDUINO_NANO
     /* Check if pin differs with PB6, PB7, PC6, PC7 since these pins are not available in Arduino Nano board */
@@ -127,9 +127,9 @@ void Gpio_PinToggle(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enu
 uint8_t Gpio_ReadPin(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_enum){
 	/* Check gpio_ptr, no need to check DDRx_uint8 since gpio_ptr is a peripheral pointer */
     assert(NULL != gpio_ptr);
-	assert(IS_VALID_PORT(gpio_ptr));
+	assert(IS_VALID_PORT_BASE(gpio_ptr));
     /* Check pin_enum */
-    assert(IS_VALID_PIN(pin_enum));
+    assert(IS_VALID_GPIO_PIN(pin_enum));
     
 #ifdef ARDUINO_NANO
     /* Check if pin differs with PB6, PB7, PC6, PC7 since these pins are not available in Arduino Nano board */
@@ -148,7 +148,7 @@ uint8_t Gpio_ReadPin(Struct_Gpio_Typedef *gpio_ptr, Enum_Gpio_Pin_Typedef pin_en
 
 void Gpio_CommandPullUpResistorSetting(Enum_Command_Typedef cmd_enum)
 {
-    /* Check cmd_enum*/
+    /* Check cmd_enum */
     assert(IS_VALID_COMMAND(cmd_enum));
 	
 	if (Disable == cmd_enum)

@@ -28,32 +28,12 @@
  * 3. Function-like Macros
  ******************************************************************************/
 /**
- * @def Check if a port is valid
- */
-#define IS_VALID_PORT(port) \
-    ((GPIOB == (port)) || \
-	(GPIOC == (port)) || \
-	(GPIOD == (port)))
-
-/**
- * @def Check if a pin is valid
- */
-#define IS_VALID_PIN(pin) \
-    ((Gpio_Pin0 == (pin)) || \
-    (Gpio_Pin1 == (pin)) || \
-    (Gpio_Pin2 == (pin)) || \
-    (Gpio_Pin3 == (pin)) || \
-    (Gpio_Pin4 == (pin)) || \
-    (Gpio_Pin5 == (pin)) || \
-    (Gpio_Pin6 == (pin)) || \
-    (Gpio_Pin7 == (pin)))
-
-/**
  * @def Check if a pin direction is valid
  */
-#define IS_VALID_DIRECTION(direction) \
+#define IS_VALID_GPIO_DDRXDIRECTION(direction) \
     ((Gpio_DDRx_Input == (direction)) || \
 	(Gpio_DDRx_Output == (direction)))
+	
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/

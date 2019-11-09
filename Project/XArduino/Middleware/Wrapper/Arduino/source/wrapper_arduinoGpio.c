@@ -39,6 +39,9 @@
  * 6. Function Definitions
  ******************************************************************************/
 Struct_Gpio_Typedef* Arduino_GetPortBase(Enum_Gpio_Port_Typedef port_enum){
+	/* Check port_enum */
+    assert(IS_VALID_GPIO_PORT(port_enum));
+	
     Struct_Gpio_Typedef* gpiox_ptr = NULL;
 
     switch(port_enum){
@@ -57,6 +60,11 @@ Struct_Gpio_Typedef* Arduino_GetPortBase(Enum_Gpio_Port_Typedef port_enum){
 }
 
 void pinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirection_Typedef direction_enum){
+	/* Check arduinoPin_enum */
+    assert(IS_VALID_ARDUINO_PIN(arduinoPin_enum));
+	/* Check direction_enum */
+	assert(IS_VALID_GPIO_DDRXDIRECTION(direction_enum));
+	
     Struct_Gpio_Typedef *gpiox_ptr = NULL;
     Enum_Gpio_Port_Typedef port_enum = Pins_array[arduinoPin_enum].port;
      
@@ -74,6 +82,11 @@ void pinMode(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_Gpio_DDRxDirecti
 }
 
 void digitalWrite(Enum_Gpio_ArduinoPin_Typedef arduinoPin_enum, Enum_IOValue_Typedef value_enum){
+	/* Check arduinoPin_enum */
+    assert(IS_VALID_ARDUINO_PIN(arduinoPin_enum));
+	/* Check value_enum */
+    assert(IS_VALID_IOVALUE(value_enum));
+	
     Struct_Gpio_Typedef *gpiox_ptr = NULL;
     Enum_Gpio_Port_Typedef port_enum = Pins_array[arduinoPin_enum].port;
     Enum_Gpio_Pin_Typedef pin_enum = Pins_array[arduinoPin_enum].pin;

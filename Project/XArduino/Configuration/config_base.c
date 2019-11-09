@@ -11,9 +11,7 @@
  *              - Added definition for fail assertion.
  * -----------------------------------------------------------------------------
  */
- 
- #ifdef USE_FULL_ASSERT
- 
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
@@ -38,13 +36,13 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
+#ifdef USE_FULL_ASSERT
 void assert_failed(uint8_t* file, uint32_t line){
 	printf("File %s:\n", file);
 	printf("Assertion was failed at line %d.\n", line);
 	/* Perform a infinite loop to pause the application */
 	while(1);
 }
-
 #endif /* USE_FULL_ASSERT */
 
 /** End of File ***************************************************************/

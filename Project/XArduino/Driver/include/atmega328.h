@@ -8,6 +8,7 @@
  *
  * ------------------------------ REVISION HISTORY -----------------------------
  * Nov 09, 2019 - Changed project language from C to C++.
+ *              - Added function-like macro for Gpio port and pin enums
  * -----------------------------------------------------------------------------
  */
 
@@ -39,7 +40,34 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
+/**
+ * @def Check if a port base is valid
+ */
+#define IS_VALID_PORT_BASE(port) \
+    ((GPIOB == (port)) || \
+	(GPIOC == (port)) || \
+	(GPIOD == (port)))
+
+/**
+ * Check if port is valid
+ */
+#define IS_VALID_GPIO_PORT(port) \
+    ((Gpio_PortB == (port)) || \
+	(Gpio_PortC == (port)) || \
+	(Gpio_PortD == (port)))
 	
+/**
+ * @def Check if a pin is valid
+ */
+#define IS_VALID_GPIO_PIN(pin) \
+    ((Gpio_Pin0 == (pin)) || \
+    (Gpio_Pin1 == (pin)) || \
+    (Gpio_Pin2 == (pin)) || \
+    (Gpio_Pin3 == (pin)) || \
+    (Gpio_Pin4 == (pin)) || \
+    (Gpio_Pin5 == (pin)) || \
+    (Gpio_Pin6 == (pin)) || \
+    (Gpio_Pin7 == (pin)))	
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/

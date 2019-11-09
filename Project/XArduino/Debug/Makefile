@@ -242,7 +242,7 @@ App/source/%.o: ../App/source/%.c
 App/source/%.o: ../App/source/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_FULL_ASSERT  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_FULL_ASSERT -DGPIO_HAL -DGPIO_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
 	@echo Finished building: $<
 
 Configuration/%.o: ../Configuration/%.c
@@ -272,7 +272,7 @@ Middleware/Wrapper/Arduino/source/%.o: ../Middleware/Wrapper/Arduino/source/%.c
 Middleware/Wrapper/Arduino/source/%.o: ../Middleware/Wrapper/Arduino/source/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C++ Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DGPIO_HAL -DGPIO_HAL_SAMPLE -DUSE_FULL_ASSERT  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSE_FULL_ASSERT -DGPIO_HAL -DGPIO_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include" -I"../Configuration"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
 	@echo Finished building: $<
 
 Testing/Unittesting/source/%.o: ../Testing/Unittesting/source/%.c
