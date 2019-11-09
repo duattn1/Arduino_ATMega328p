@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file boards.h
+ *  @brief Declaration of Arduino boards function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the header file for the definition of Arduino boards.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -10,15 +10,20 @@
  * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
- 
+
+#ifndef BOARDS_H_
+#define BOARDS_H_
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include <avr/io.h>
+#include "atmega328.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
+#define ARDUINO_NANO_USER_LED Pin13
 
 /*******************************************************************************
  * 3. Function-like Macros
@@ -27,46 +32,59 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
+#ifdef ARDUINO_NANO
+/**
+ * @enum This enumeration is a list of pin direction modes.
+ */
+typedef enum
+{
+    Pin0 = 0,   /**< Arduino pin 0 */
+    Pin1,       /**< Arduino pin 1 */
+    Pin2,       /**< Arduino pin 2 */
+    Pin3,       /**< Arduino pin 3 */
+    Pin4,       /**< Arduino pin 4 */
+    Pin5,       /**< Arduino pin 5 */
+    Pin6,       /**< Arduino pin 6 */
+    Pin7,       /**< Arduino pin 7 */
+    Pin8,       /**< Arduino pin 8 */
+    Pin9,       /**< Arduino pin 9 */
+    Pin10,      /**< Arduino pin 10 */
+    Pin11,      /**< Arduino pin 11 */
+    Pin12,      /**< Arduino pin 12 */
+    Pin13,      /**< Arduino pin 13 */
+    Pin14,      /**< Arduino pin 14 */
+    Pin15,      /**< Arduino pin 15 */
+    Pin16,      /**< Arduino pin 16 */
+    Pin17,      /**< Arduino pin 17 */
+    Pin18,      /**< Arduino pin 18 */
+    Pin19       /**< Arduino pin 19 */
+} Enum_Gpio_ArduinoPin_Typedef;
+#endif /* ARDUINO_NANO */
+
+/**
+ * @struct This structure define a way for Arduino pin naming.
+ */
+typedef struct {
+    Enum_Gpio_Port_Typedef port;
+    Enum_Gpio_Pin_Typedef pin;
+} Struct_BoardPin_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
 
 /*******************************************************************************
- * 6. Function Definitions
+ * 6. Function Prototypes
  ******************************************************************************/
-void Sample_RunApp(void){
-
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
+#ifdef __cplusplus
+extern "C"{
 #endif
 
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
+
+#ifdef __cplusplus
+} /* extern "C" */
 #endif
 
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
-}
-
-
+#endif /* BOARDS_H_ */
 
 /** End of File ***************************************************************/

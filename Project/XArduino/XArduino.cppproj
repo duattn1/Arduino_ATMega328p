@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>5.1</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
+    <ProjectGuid>{43993ec3-c8ea-4ab5-ae31-024d9fd0fb5a}</ProjectGuid>
+    <avrdevice>ATmega328P</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>XArduino</AssemblyName>
+    <Name>XArduino</Name>
+    <RootNamespace>XArduino</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AsfVersion>2.11.1</AsfVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>None</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+        <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+        <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcccpp.compiler.optimization.DebugLevel>None</avrgcccpp.compiler.optimization.DebugLevel>
+        <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+        <avrgcccpp.linker.libraries.Libraries>
+          <ListValues>
+            <Value>m</Value>
+          </ListValues>
+        </avrgcccpp.linker.libraries.Libraries>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>ARDUINO_NANO</Value>
+      <Value>USART_HAL</Value>
+      <Value>USART_HAL_SAMPLE</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../App/include</Value>
+      <Value>../Driver/include</Value>
+      <Value>../Middleware/Wrapper/Arduino/include</Value>
+      <Value>../Testing/Unittesting/include</Value>
+      <Value>../Testing/Unittesting/UnityLibrary</Value>
+      <Value>../Middleware/Kit/include</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>ARDUINO_NANO</Value>
+      <Value>USART_HAL</Value>
+      <Value>USART_HAL_SAMPLE</Value>
+      <Value>USE_INTERRUPT</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../App/include</Value>
+      <Value>../Driver/include</Value>
+      <Value>../Middleware/Wrapper/Arduino/include</Value>
+      <Value>../Testing/Unittesting/include</Value>
+      <Value>../Testing/Unittesting/UnityLibrary</Value>
+      <Value>../Middleware/Kit/include</Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>m</Value>
+    </ListValues>
+  </avrgcccpp.linker.libraries.Libraries>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-g2)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App\include\gpio_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\include\max7219_kit_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\include\sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\include\spi_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\include\timer_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\include\usart_hal_sample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\gpio_hal_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\max7219_kit_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\spi_hal_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\timer_hal_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\usart_hal_sample.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\source\XArduino.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\include\atmega328.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\include\gpio_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\include\misc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\include\spi_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\include\timer_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\include\usart_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\source\gpio_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\source\misc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\source\spi_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\source\timer_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Driver\source\usart_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Kit\include\ledMatrix_Max7219.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Kit\source\ledMatrix_Max7219.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Wrapper\Arduino\include\boards.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Wrapper\Arduino\include\wrapper_arduinoGpio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Wrapper\Arduino\include\wrapper_arduinoUsart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Wrapper\Arduino\source\boards.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Wrapper\Arduino\source\wrapper_arduinoGpio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Middleware\Wrapper\Arduino\source\wrapper_arduinoUsart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\include\ut_base.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\include\ut_gpio_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\include\ut_main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\source\ut_base.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\source\ut_gpio_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\source\ut_main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\UnityLibrary\unity.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\UnityLibrary\unity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\Unittesting\UnityLibrary\unity_internals.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App" />
+    <Folder Include="App\include" />
+    <Folder Include="App\source" />
+    <Folder Include="Driver" />
+    <Folder Include="Driver\include" />
+    <Folder Include="Driver\source" />
+    <Folder Include="Middleware" />
+    <Folder Include="Middleware\Kit" />
+    <Folder Include="Middleware\Kit\include" />
+    <Folder Include="Middleware\Kit\source" />
+    <Folder Include="Middleware\Wrapper" />
+    <Folder Include="Middleware\Wrapper\Arduino" />
+    <Folder Include="Middleware\Wrapper\Arduino\include" />
+    <Folder Include="Middleware\Wrapper\Arduino\source" />
+    <Folder Include="Testing" />
+    <Folder Include="Testing\IntegrationTesting" />
+    <Folder Include="Testing\Unittesting" />
+    <Folder Include="Testing\Unittesting\include" />
+    <Folder Include="Testing\Unittesting\source" />
+    <Folder Include="Testing\Unittesting\UnityLibrary" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>

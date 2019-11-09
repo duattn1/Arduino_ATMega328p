@@ -7,8 +7,7 @@
  *  @version V1.0
  *
  * ------------------------------ REVISION HISTORY -----------------------------
- * Nov 03, 2019 - Initial version, moved GPIO driver application from sample.c 
- *                to a new file.
+ * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
 
@@ -39,8 +38,8 @@
  * 6. Function Definitions
  ******************************************************************************/
 void Gpio_Setup(void){
-    Gpio_PinMode(ARDUINO_NANO_USER_LED, Gpio_DDRx_Output);
-    Gpio_DigitalWrite(ARDUINO_NANO_USER_LED, High);
+    pinMode(ARDUINO_NANO_USER_LED, Gpio_DDRx_Output);
+    digitalWrite(ARDUINO_NANO_USER_LED, High);
 }
 
 void Gpio_Loop(void){	

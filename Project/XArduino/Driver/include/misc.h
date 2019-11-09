@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file misc.h
+ *  @brief Declaration of miscellaneous function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the header file for the definition of miscellaneous data.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -10,63 +10,71 @@
  * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
- 
+#ifndef MISC_H_
+#define MISC_H_
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include <avr/io.h>
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
+#ifndef F_CPU
+#define F_CPU 16000000UL
+#endif
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
+/* Bit Masks definition */
+#define MASK_1BIT   0x01
+#define MASK_2BIT   0x03
+#define MASK_3BIT   0x07
+#define MASK_4BIT   0x0F
+#define MASK_5BIT   0x1F
+#define MASK_6BIT   0x3F
+#define MASK_7BIT   0x7F
+#define MASK_8BIT   0xFF
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
+/**
+ * @enum This enumeration is a list of pin direction modes.
+ */
+typedef enum
+{
+    Low = 0x00,     /**< I/O Low(0) value */
+    High = 0x01     /**< I/O High(1) value */
+} Enum_IOValue_Typedef;
+
+/**
+ * @enum This enumeration is a list of pin direction modes.
+ */
+typedef enum
+{
+    Disable = 0x00,     /**< Disable a configuration */
+    Enable = 0x01       /**< Enable a configuration */
+} Enum_Command_Typedef;
 
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
 
 /*******************************************************************************
- * 6. Function Definitions
+ * 6. Function Prototypes
  ******************************************************************************/
-void Sample_RunApp(void){
-
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
+#ifdef __cplusplus
+extern "C"{
 #endif
 
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
+
+#ifdef __cplusplus
+} /* extern "C" */
 #endif
 
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
-}
-
-
+#endif /* MISC_H_ */
 
 /** End of File ***************************************************************/

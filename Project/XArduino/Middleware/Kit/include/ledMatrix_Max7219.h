@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file ledMatrix_Max7219.h
+ *  @brief Declaration of LED matrix (based on Max7219) function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the header file for the definition of LED matrix based on Max7219.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -10,20 +10,28 @@
  * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
- 
+
+#ifndef LEDMATRIX_MAX7219_H_
+#define LEDMATRIX_MAX7219_H_
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include <avr/io.h>
+#include "gpio_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
+#define CS_PIN      10
+#define CLK_PIN     13
+#define MOSI_PIN    11
+#define MISO_PIN    12
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-
+	
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Unions, Pointers, Others
  ******************************************************************************/
@@ -31,42 +39,59 @@
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
+extern const uint8_t CharacterLib_array[43][8];
 
 /*******************************************************************************
- * 6. Function Definitions
+ * 6. Function Prototypes
  ******************************************************************************/
-void Sample_RunApp(void){
-
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
+#ifdef __cplusplus
+extern "C"{
 #endif
 
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
+/** 
+ * @brief Send 1 byte to Max7219
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param data_uint8 To be sent data
+ * @return None
+ *
+ * @see Gpio_DigitalWrite()
+ */
+void write_Max7219_byte(uint8_t data_uint8);
+
+/** 
+ * @brief Send a command to Max7219
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param address_uint8 Address to receive the command
+ * @param data_uint8 To be sent command
+ * @return None
+ *
+ * @see Gpio_DigitalWrite(), write_Max7219_byte()
+ */
+void write_Max7219(uint8_t address_uint8, uint8_t data_uint8);
+
+/** 
+ * @brief Initialize Max7219
+ *
+ * PRE-CONDITION: None
+ * POST-CONDITION: None
+ *
+ * @param None
+ * @return None
+ *
+ * @see write_Max7219()
+ */
+void init_Max7219(void);
+
+#ifdef __cplusplus
+} /* extern "C" */
 #endif
 
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
-}
-
-
+#endif /* LEDMATRIX_MAX7219_H_ */
 
 /** End of File ***************************************************************/

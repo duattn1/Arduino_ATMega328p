@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Atmel Studio Solution File, Format Version 11.00
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "XArduino", "XArduino\XArduino.cproj", "{F1B9F6BF-BE45-4843-AF81-B4CA53AAA287}"
+# AvrStudio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "XArduino", "XArduino\XArduino.cppproj", "{43993EC3-C8EA-4AB5-AE31-024D9FD0FB5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|AVR = Release|AVR
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F1B9F6BF-BE45-4843-AF81-B4CA53AAA287}.Debug|AVR.ActiveCfg = Debug|AVR
-		{F1B9F6BF-BE45-4843-AF81-B4CA53AAA287}.Debug|AVR.Build.0 = Debug|AVR
-		{F1B9F6BF-BE45-4843-AF81-B4CA53AAA287}.Release|AVR.ActiveCfg = Release|AVR
-		{F1B9F6BF-BE45-4843-AF81-B4CA53AAA287}.Release|AVR.Build.0 = Release|AVR
+		{43993EC3-C8EA-4AB5-AE31-024D9FD0FB5A}.Debug|AVR.ActiveCfg = Debug|AVR
+		{43993EC3-C8EA-4AB5-AE31-024D9FD0FB5A}.Debug|AVR.Build.0 = Debug|AVR
+		{43993EC3-C8EA-4AB5-AE31-024D9FD0FB5A}.Release|AVR.ActiveCfg = Release|AVR
+		{43993EC3-C8EA-4AB5-AE31-024D9FD0FB5A}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

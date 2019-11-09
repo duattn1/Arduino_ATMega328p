@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file ut_base.c
+ *  @brief Definition of unit testing base function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the source file for the definition of unit testing base.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -10,11 +10,13 @@
  * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
- 
+
+#ifdef UNIT_TESTING	
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include "ut_base.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -35,38 +37,37 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Sample_RunApp(void){
+uint8_t getFunctionIndex(const char *name, const char *functions[], uint8_t functionsLength){
+	int i, result = -1;
+	for(i = 0; i < functionsLength; i++){
+		if(0 == strcmp(name, functions[i])){
+			result = i;
+		}
+	}
+	return result;
+}
 
-/** HAL sample application ****************************************************/	
+void compareBitsOnUint8(Struct_Uint8Data_Typedef *data_ptr){
+    TEST_ASSERT_BITS(data_ptr->mask, data_ptr->expected, data_ptr->actual);	
+}
 
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
-#endif
+void compareBitsOnUint32(Struct_Uint32Data_Typedef *data_ptr){
+    TEST_ASSERT_BITS(data_ptr->mask, data_ptr->expected, data_ptr->actual);	
+}
 
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
-#endif
+void compareOnUint8(Struct_Uint8Data_Typedef *data_ptr){
+    TEST_ASSERT_EQUAL(data_ptr->expected, data_ptr->actual);	
+}
 
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
+void compareOnUint8Ptr(Struct_Uint8PtrData_Typedef *data_ptr){
+    TEST_ASSERT_EQUAL_PTR(data_ptr->expected, data_ptr->actual);	
+}
 
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
+void compareOnUint32(Struct_Uint32Data_Typedef *data_ptr){
+    TEST_ASSERT_EQUAL(data_ptr->expected, data_ptr->actual);	
 }
 
 
+#endif /* UNIT_TESTING */
 
 /** End of File ***************************************************************/

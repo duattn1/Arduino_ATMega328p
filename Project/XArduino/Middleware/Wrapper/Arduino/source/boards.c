@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file boards.c
+ *  @brief Definition of Arduino boards pin mapping.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the source file for the definition of Arduino boards pin mapping.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -14,7 +14,7 @@
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include "boards.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -31,42 +31,34 @@
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
+#ifdef ARDUINO_NANO
+const Struct_BoardPin_Typedef Pins_array[20] = 
+{
+    {Gpio_PortD, Gpio_Pin0},    /* Arduino Nano Pin 0 */
+    {Gpio_PortD, Gpio_Pin1},    /* Arduino Nano Pin 1 */
+    {Gpio_PortD, Gpio_Pin2},    /* Arduino Nano Pin 2 */
+    {Gpio_PortD, Gpio_Pin3},    /* Arduino Nano Pin 3 */
+    {Gpio_PortD, Gpio_Pin4},    /* Arduino Nano Pin 4 */
+    {Gpio_PortD, Gpio_Pin5},    /* Arduino Nano Pin 5 */
+    {Gpio_PortD, Gpio_Pin6},    /* Arduino Nano Pin 6 */
+    {Gpio_PortD, Gpio_Pin7},    /* Arduino Nano Pin 7 */
+    {Gpio_PortB, Gpio_Pin0},    /* Arduino Nano Pin 8 */
+    {Gpio_PortB, Gpio_Pin1},    /* Arduino Nano Pin 9 */
+    {Gpio_PortB, Gpio_Pin2},    /* Arduino Nano Pin 10 */
+    {Gpio_PortB, Gpio_Pin3},    /* Arduino Nano Pin 11 */
+    {Gpio_PortB, Gpio_Pin4},    /* Arduino Nano Pin 12 */
+    {Gpio_PortB, Gpio_Pin5},    /* Arduino Nano Pin 13 */
+    {Gpio_PortC, Gpio_Pin0},    /* Arduino Nano Pin 14 */
+    {Gpio_PortC, Gpio_Pin1},    /* Arduino Nano Pin 15 */
+    {Gpio_PortC, Gpio_Pin2},    /* Arduino Nano Pin 16 */
+    {Gpio_PortC, Gpio_Pin3},    /* Arduino Nano Pin 17 */
+    {Gpio_PortC, Gpio_Pin4},    /* Arduino Nano Pin 18 */
+    {Gpio_PortC, Gpio_Pin5}     /* Arduino Nano Pin 19 */
+};
+#endif /* ARDUINO_NANO */
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Sample_RunApp(void){
-
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
-#endif
-
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
-#endif
-
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
-}
-
-
 
 /** End of File ***************************************************************/

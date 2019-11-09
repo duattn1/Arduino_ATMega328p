@@ -7,8 +7,7 @@
  *  @version V1.0
  *
  * ------------------------------ REVISION HISTORY -----------------------------
- * Nov 03, 2019 - Initial version, moved SPI driver application from sample.c 
- *                to a new file.
+ * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
 

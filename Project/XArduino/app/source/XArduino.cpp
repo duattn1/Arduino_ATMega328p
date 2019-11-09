@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file main.c
+ *  @brief Definition of main processing function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the source file for the definition of main processing.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -14,8 +14,12 @@
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
+#include <avr/io.h>
 #include "sample.h"
 
+#ifdef UNIT_TESTING
+#include "ut_main.h"
+#endif
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
@@ -35,38 +39,13 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Sample_RunApp(void){
-
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
+int main(void)
+{
+#ifndef UNIT_TESTING	
+    Sample_RunApp();
+#else
+    Test_RunTest();	
 #endif
-
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
-#endif
-
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
 }
-
-
 
 /** End of File ***************************************************************/

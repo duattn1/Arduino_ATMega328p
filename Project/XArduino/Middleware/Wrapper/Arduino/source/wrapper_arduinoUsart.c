@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file wrapper_arduinoUsart.c
+ *  @brief Definition of Arduino wrapper for USART driver function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the source file for the definition of Arduino wrapper for USART driver.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -11,10 +11,13 @@
  * -----------------------------------------------------------------------------
  */
  
+
+#ifdef USART_HAL
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include "wrapper_arduinoUsart.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -31,42 +34,11 @@
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
-
+	
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void Sample_RunApp(void){
 
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
-#endif
-
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
-#endif
-
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
-}
-
-
+#endif /* USART_HAL */
 
 /** End of File ***************************************************************/

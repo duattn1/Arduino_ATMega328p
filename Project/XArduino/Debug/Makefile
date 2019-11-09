@@ -31,41 +31,50 @@ OUTPUT_FILE_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../app/include \
-../app/source \
-../hal \
-../hal/include \
-../hal/source \
-../app \
-../kits \
-../kits/include \
-../kits/source \
-../unittesting \
-../unittesting/include \
-../unittesting/source \
-../unittesting/UnityLibrary
+../App \
+../App/include \
+../App/source \
+../Driver \
+../Driver/include \
+../Driver/source \
+../Middleware \
+../Middleware/Kit \
+../Middleware/Kit/include \
+../Middleware/Kit/source \
+../Middleware/Wrapper \
+../Middleware/Wrapper/Arduino \
+../Middleware/Wrapper/Arduino/include \
+../Middleware/Wrapper/Arduino/source \
+../Testing \
+../Testing/IntegrationTesting \
+../Testing/Unittesting \
+../Testing/Unittesting/include \
+../Testing/Unittesting/source \
+../Testing/Unittesting/UnityLibrary
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../app/source/gpio_hal_sample.c \
-../app/source/main.c \
-../app/source/max7219_kit_sample.c \
-../app/source/sample.c \
-../app/source/spi_hal_sample.c \
-../app/source/timer_hal_sample.c \
-../app/source/usart_hal_sample.c \
-../hal/source/boards.c \
-../hal/source/gpio_hal.c \
-../hal/source/misc.c \
-../hal/source/spi_hal.c \
-../hal/source/timer_hal.c \
-../hal/source/usart_hal.c \
-../kits/source/ledMatrix_Max7219.c \
-../unittesting/source/ut_base.c \
-../unittesting/source/ut_gpio_hal.c \
-../unittesting/source/ut_main.c \
-../unittesting/UnityLibrary/unity.c
+../App/source/gpio_hal_sample.c \
+../App/source/max7219_kit_sample.c \
+../App/source/sample.c \
+../App/source/spi_hal_sample.c \
+../App/source/timer_hal_sample.c \
+../App/source/usart_hal_sample.c \
+../App/source/XArduino.cpp \
+../Driver/source/gpio_hal.c \
+../Driver/source/misc.c \
+../Driver/source/spi_hal.c \
+../Driver/source/timer_hal.c \
+../Driver/source/usart_hal.c \
+../Middleware/Kit/source/ledMatrix_Max7219.c \
+../Middleware/Wrapper/Arduino/source/boards.c \
+../Middleware/Wrapper/Arduino/source/wrapper_arduinoGpio.c \
+../Middleware/Wrapper/Arduino/source/wrapper_arduinoUsart.c \
+../Testing/Unittesting/source/ut_base.c \
+../Testing/Unittesting/source/ut_gpio_hal.c \
+../Testing/Unittesting/source/ut_main.c \
+../Testing/Unittesting/UnityLibrary/unity.c
 
 
 PREPROCESSING_SRCS += 
@@ -75,87 +84,95 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-app/source/gpio_hal_sample.o \
-app/source/main.o \
-app/source/max7219_kit_sample.o \
-app/source/sample.o \
-app/source/spi_hal_sample.o \
-app/source/timer_hal_sample.o \
-app/source/usart_hal_sample.o \
-hal/source/boards.o \
-hal/source/gpio_hal.o \
-hal/source/misc.o \
-hal/source/spi_hal.o \
-hal/source/timer_hal.o \
-hal/source/usart_hal.o \
-kits/source/ledMatrix_Max7219.o \
-unittesting/source/ut_base.o \
-unittesting/source/ut_gpio_hal.o \
-unittesting/source/ut_main.o \
-unittesting/UnityLibrary/unity.o
+App/source/gpio_hal_sample.o \
+App/source/max7219_kit_sample.o \
+App/source/sample.o \
+App/source/spi_hal_sample.o \
+App/source/timer_hal_sample.o \
+App/source/usart_hal_sample.o \
+App/source/XArduino.o \
+Driver/source/gpio_hal.o \
+Driver/source/misc.o \
+Driver/source/spi_hal.o \
+Driver/source/timer_hal.o \
+Driver/source/usart_hal.o \
+Middleware/Kit/source/ledMatrix_Max7219.o \
+Middleware/Wrapper/Arduino/source/boards.o \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoGpio.o \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoUsart.o \
+Testing/Unittesting/source/ut_base.o \
+Testing/Unittesting/source/ut_gpio_hal.o \
+Testing/Unittesting/source/ut_main.o \
+Testing/Unittesting/UnityLibrary/unity.o
 
 
 OBJS_AS_ARGS +=  \
-app/source/gpio_hal_sample.o \
-app/source/main.o \
-app/source/max7219_kit_sample.o \
-app/source/sample.o \
-app/source/spi_hal_sample.o \
-app/source/timer_hal_sample.o \
-app/source/usart_hal_sample.o \
-hal/source/boards.o \
-hal/source/gpio_hal.o \
-hal/source/misc.o \
-hal/source/spi_hal.o \
-hal/source/timer_hal.o \
-hal/source/usart_hal.o \
-kits/source/ledMatrix_Max7219.o \
-unittesting/source/ut_base.o \
-unittesting/source/ut_gpio_hal.o \
-unittesting/source/ut_main.o \
-unittesting/UnityLibrary/unity.o
+App/source/gpio_hal_sample.o \
+App/source/max7219_kit_sample.o \
+App/source/sample.o \
+App/source/spi_hal_sample.o \
+App/source/timer_hal_sample.o \
+App/source/usart_hal_sample.o \
+App/source/XArduino.o \
+Driver/source/gpio_hal.o \
+Driver/source/misc.o \
+Driver/source/spi_hal.o \
+Driver/source/timer_hal.o \
+Driver/source/usart_hal.o \
+Middleware/Kit/source/ledMatrix_Max7219.o \
+Middleware/Wrapper/Arduino/source/boards.o \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoGpio.o \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoUsart.o \
+Testing/Unittesting/source/ut_base.o \
+Testing/Unittesting/source/ut_gpio_hal.o \
+Testing/Unittesting/source/ut_main.o \
+Testing/Unittesting/UnityLibrary/unity.o
 
 
 C_DEPS +=  \
-app/source/gpio_hal_sample.d \
-app/source/main.d \
-app/source/max7219_kit_sample.d \
-app/source/sample.d \
-app/source/spi_hal_sample.d \
-app/source/timer_hal_sample.d \
-app/source/usart_hal_sample.d \
-hal/source/boards.d \
-hal/source/gpio_hal.d \
-hal/source/misc.d \
-hal/source/spi_hal.d \
-hal/source/timer_hal.d \
-hal/source/usart_hal.d \
-kits/source/ledMatrix_Max7219.d \
-unittesting/source/ut_base.d \
-unittesting/source/ut_gpio_hal.d \
-unittesting/source/ut_main.d \
-unittesting/UnityLibrary/unity.d
+App/source/gpio_hal_sample.d \
+App/source/max7219_kit_sample.d \
+App/source/sample.d \
+App/source/spi_hal_sample.d \
+App/source/timer_hal_sample.d \
+App/source/usart_hal_sample.d \
+App/source/XArduino.d \
+Driver/source/gpio_hal.d \
+Driver/source/misc.d \
+Driver/source/spi_hal.d \
+Driver/source/timer_hal.d \
+Driver/source/usart_hal.d \
+Middleware/Kit/source/ledMatrix_Max7219.d \
+Middleware/Wrapper/Arduino/source/boards.d \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoGpio.d \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoUsart.d \
+Testing/Unittesting/source/ut_base.d \
+Testing/Unittesting/source/ut_gpio_hal.d \
+Testing/Unittesting/source/ut_main.d \
+Testing/Unittesting/UnityLibrary/unity.d
 
 
 C_DEPS_AS_ARGS +=  \
-app/source/gpio_hal_sample.d \
-app/source/main.d \
-app/source/max7219_kit_sample.d \
-app/source/sample.d \
-app/source/spi_hal_sample.d \
-app/source/timer_hal_sample.d \
-app/source/usart_hal_sample.d \
-hal/source/boards.d \
-hal/source/gpio_hal.d \
-hal/source/misc.d \
-hal/source/spi_hal.d \
-hal/source/timer_hal.d \
-hal/source/usart_hal.d \
-kits/source/ledMatrix_Max7219.d \
-unittesting/source/ut_base.d \
-unittesting/source/ut_gpio_hal.d \
-unittesting/source/ut_main.d \
-unittesting/UnityLibrary/unity.d
+App/source/gpio_hal_sample.d \
+App/source/max7219_kit_sample.d \
+App/source/sample.d \
+App/source/spi_hal_sample.d \
+App/source/timer_hal_sample.d \
+App/source/usart_hal_sample.d \
+App/source/XArduino.d \
+Driver/source/gpio_hal.d \
+Driver/source/misc.d \
+Driver/source/spi_hal.d \
+Driver/source/timer_hal.d \
+Driver/source/usart_hal.d \
+Middleware/Kit/source/ledMatrix_Max7219.d \
+Middleware/Wrapper/Arduino/source/boards.d \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoGpio.d \
+Middleware/Wrapper/Arduino/source/wrapper_arduinoUsart.d \
+Testing/Unittesting/source/ut_base.d \
+Testing/Unittesting/source/ut_gpio_hal.d \
+Testing/Unittesting/source/ut_main.d \
+Testing/Unittesting/UnityLibrary/unity.d
 
 
 OUTPUT_FILE_PATH +=XArduino.elf
@@ -204,34 +221,50 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 
 
-app/source/%.o: ../app/source/%.c
+
+
+
+
+App/source/%.o: ../App/source/%.c
 	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
-hal/source/%.o: ../hal/source/%.c
+App/source/%.o: ../App/source/%.cpp
 	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE -DUSE_INTERRUPT  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p   -o"$@" "$<" 
 	@echo Finished building: $<
 
-kits/source/%.o: ../kits/source/%.c
+Driver/source/%.o: ../Driver/source/%.c
 	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
-unittesting/source/%.o: ../unittesting/source/%.c
+Middleware/Kit/source/%.o: ../Middleware/Kit/source/%.c
 	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
-unittesting/UnityLibrary/%.o: ../unittesting/UnityLibrary/%.c
+Middleware/Wrapper/Arduino/source/%.o: ../Middleware/Wrapper/Arduino/source/%.c
 	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUNIT_TESTING -DGPIO_HAL  -I"../hal/include" -I"../app/include" -I"../kits/include" -I"../unittesting/include" -I"../unittesting/UnityLibrary"  -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Finished building: $<
+
+Testing/Unittesting/source/%.o: ../Testing/Unittesting/source/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
+	@echo Finished building: $<
+
+Testing/Unittesting/UnityLibrary/%.o: ../Testing/Unittesting/UnityLibrary/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C++ Compiler
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DARDUINO_NANO -DUSART_HAL -DUSART_HAL_SAMPLE  -I"../App/include" -I"../Driver/include" -I"../Middleware/Wrapper/Arduino/include" -I"../Testing/Unittesting/include" -I"../Testing/Unittesting/UnityLibrary" -I"../Middleware/Kit/include"  -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -mmcu=atmega328p  -o"$@" "$<" 
 	@echo Finished building: $<
 
 
@@ -258,8 +291,8 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP)
 	@echo Building target: $@
-	@echo Invoking: AVR/GNU C Linker
-	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="XArduino.map" -Wl,-lm   -mmcu=atmega328p  
+	@echo Invoking: AVR8/GNU C++ Linker
+	$(QUOTE)C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-g++.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="XArduino.map" -Wl,-lm   -mmcu=atmega328p  
 	@echo Finished building target: $@
 	"C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "XArduino.elf" "XArduino.hex"
 	"C:\Program Files (x86)\Atmel\AVR Studio 5.1\extensions\Atmel\AVRGCC\3.3.1.27\AVRToolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "XArduino.elf" "XArduino.eep" || exit 0

@@ -1,7 +1,7 @@
-/** @file sample.c
- *  @brief Definition of sample application function and data.
+/** @file wrapper_arduinoUsart.h
+ *  @brief Declaration of Arduino wrapper for USART driver function and data.
  *
- *  This is the source file for the definition of sample application.
+ *  This is the header file for the definition of Arduino wrapper for USART driver.
  *
  *  @author Tran Nhat Duat (duattn)
  *  @version V1.0
@@ -10,11 +10,15 @@
  * Nov 09, 2019 - Changed project language from C to C++.
  * -----------------------------------------------------------------------------
  */
- 
+
+#ifndef WRAPPER_ARDUINOUSART_H_
+#define WRAPPER_ARDUINOUSART_H_
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "sample.h"
+#include "boards.h"
+#include "usart_hal.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -31,42 +35,21 @@
 /*******************************************************************************
  * 5. Global, Static, Constant, Extern Variables and Extern Functions
  ******************************************************************************/
+extern const Struct_BoardPin_Typedef Pins_array[];
 
 /*******************************************************************************
- * 6. Function Definitions
+ * 6. Function Prototypes
  ******************************************************************************/
-void Sample_RunApp(void){
-
-/** HAL sample application ****************************************************/	
-
-#ifdef GPIO_HAL_SAMPLE
-Gpio_Setup();
-Gpio_Loop();
+#ifdef __cplusplus
+extern "C"{
 #endif
 
-#ifdef USART_HAL_SAMPLE
-Usart_Setup();
-Usart_Loop();
+
+
+#ifdef __cplusplus
+} /* extern "C" */
 #endif
 
-#ifdef SPI_HAL_SAMPLE
-Spi_Setup();
-Spi_Loop();
-#endif
-
-#ifdef TIMER_HAL_SAMPLE
-Timer_Setup();
-Timer_Loop();
-#endif
-
-/** Kits sample application ***************************************************/
-#ifdef MAX7219_KIT_SAMPLE	
-Max7219_Setup();
-Max7219_Loop();
-#endif	
-
-}
-
-
+#endif /* WRAPPER_ARDUINOUSART_H_ */
 
 /** End of File ***************************************************************/

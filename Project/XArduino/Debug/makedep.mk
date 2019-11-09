@@ -2,39 +2,43 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-app\source\gpio_hal_sample.c
+App\source\gpio_hal_sample.c
 
-app\source\main.c
+App\source\max7219_kit_sample.c
 
-app\source\max7219_kit_sample.c
+App\source\sample.c
 
-app\source\sample.c
+App\source\spi_hal_sample.c
 
-app\source\spi_hal_sample.c
+App\source\timer_hal_sample.c
 
-app\source\timer_hal_sample.c
+App\source\usart_hal_sample.c
 
-app\source\usart_hal_sample.c
+App\source\XArduino.cpp
 
-hal\source\boards.c
+Driver\source\gpio_hal.c
 
-hal\source\gpio_hal.c
+Driver\source\misc.c
 
-hal\source\misc.c
+Driver\source\spi_hal.c
 
-hal\source\spi_hal.c
+Driver\source\timer_hal.c
 
-hal\source\timer_hal.c
+Driver\source\usart_hal.c
 
-hal\source\usart_hal.c
+Middleware\Kit\source\ledMatrix_Max7219.c
 
-kits\source\ledMatrix_Max7219.c
+Middleware\Wrapper\Arduino\source\boards.c
 
-unittesting\source\ut_base.c
+Middleware\Wrapper\Arduino\source\wrapper_arduinoGpio.c
 
-unittesting\source\ut_gpio_hal.c
+Middleware\Wrapper\Arduino\source\wrapper_arduinoUsart.c
 
-unittesting\source\ut_main.c
+Testing\Unittesting\source\ut_base.c
 
-unittesting\UnityLibrary\unity.c
+Testing\Unittesting\source\ut_gpio_hal.c
+
+Testing\Unittesting\source\ut_main.c
+
+Testing\Unittesting\UnityLibrary\unity.c
 
